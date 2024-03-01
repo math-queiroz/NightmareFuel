@@ -1,0 +1,249 @@
+[gd_scene load_steps=34 format=3 uid="uid://dqaxloj2f6ui0"]
+
+[ext_resource type="Texture2D" uid="uid://vgjtrcq8cn3t" path="res://sprites/monster_sproutling.png" id="1_f5wi5"]
+[ext_resource type="Texture2D" uid="uid://cgn36c3g7xii2" path="res://sprites/margin.png" id="1_o76r0"]
+[ext_resource type="Shader" path="res://shaders/pixelated_background.gdshader" id="2_q81jx"]
+[ext_resource type="Texture2D" uid="uid://cl6lk5tp00bov" path="res://sprites/table.png" id="2_y5807"]
+[ext_resource type="Texture2D" uid="uid://bx124nkaqkrm8" path="res://sprites/book.png" id="3_oe0m2"]
+[ext_resource type="Texture2D" uid="uid://b6qw5x8p3dh0a" path="res://sprites/bar_frames.png" id="4_ccafu"]
+[ext_resource type="Texture2D" uid="uid://dpxa1u5iljjnr" path="res://sprites/bar_labels.png" id="5_25ox0"]
+[ext_resource type="Texture2D" uid="uid://biwn3glws21bo" path="res://sprites/time_orb.png" id="5_mj770"]
+[ext_resource type="Texture2D" uid="uid://dvrcs54d1ndg7" path="res://sprites/bar_time.png" id="7_4sejn"]
+[ext_resource type="Texture2D" uid="uid://c6u7bmv1qgo57" path="res://sprites/bottle3.png" id="8_o604l"]
+[ext_resource type="Texture2D" uid="uid://bnqr4j3hgta8t" path="res://sprites/bar_sanity.png" id="8_t83gj"]
+[ext_resource type="Texture2D" uid="uid://dqry0da64ct8u" path="res://sprites/bottle4.png" id="9_fpdu2"]
+[ext_resource type="Texture2D" uid="uid://cuu37hajkvki" path="res://sprites/bottle1.png" id="9_ftjdy"]
+[ext_resource type="Texture2D" uid="uid://dqmgphuqmrmo2" path="res://sprites/bottle2.png" id="10_h022f"]
+[ext_resource type="Script" path="res://scripts/Draggable.gd" id="11_fxfq5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fw7h2"]
+shader = ExtResource("2_q81jx")
+shader_parameter/transparency = 1.0
+shader_parameter/color0 = Color(0.00392157, 0.054902, 0.054902, 1)
+shader_parameter/color1 = Color(0.203922, 0.129412, 0.639216, 1)
+shader_parameter/color2 = Color(0.204, 0.2436, 0.6, 1)
+shader_parameter/color3 = Color(0.211765, 0.282353, 0.541176, 1)
+shader_parameter/Direction = Vector2(1, 1)
+shader_parameter/Speed = 15.0
+shader_parameter/thresholds = PackedFloat32Array(0.5, 0.7, 0.8)
+shader_parameter/OCTAVE = 6
+shader_parameter/pixel_size = 400
+shader_parameter/dithering = 4.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_klxyk"]
+diffuse_texture = ExtResource("7_4sejn")
+texture_filter = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ohgur"]
+diffuse_texture = ExtResource("8_t83gj")
+texture_filter = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_n1bsg"]
+diffuse_texture = ExtResource("1_f5wi5")
+texture_filter = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_dgkbj"]
+diffuse_texture = ExtResource("2_y5807")
+texture_filter = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4satd"]
+size = Vector2(400, 26)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_or7gx"]
+diffuse_texture = ExtResource("3_oe0m2")
+texture_filter = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y21k3"]
+radius = 19.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c07jn"]
+size = Vector2(14, 30)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gunvs"]
+diffuse_texture = ExtResource("8_o604l")
+texture_filter = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_08a4j"]
+radius = 32.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bxcqi"]
+diffuse_texture = ExtResource("9_fpdu2")
+texture_filter = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ddijk"]
+diffuse_texture = ExtResource("10_h022f")
+texture_filter = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cbbk8"]
+diffuse_texture = ExtResource("9_ftjdy")
+texture_filter = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_p4c3i"]
+diffuse_texture = ExtResource("1_o76r0")
+texture_filter = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gxpk"]
+size = Vector2(400, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fqae"]
+size = Vector2(6, 211)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pb45"]
+size = Vector2(5, 211)
+
+[node name="Level" type="Node"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Animated BG" type="ColorRect" parent="UI"]
+material = SubResource("ShaderMaterial_fw7h2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -79.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TimeOrb" type="Sprite2D" parent="UI"]
+texture_filter = 1
+position = Vector2(369, 30.5)
+texture = ExtResource("5_mj770")
+
+[node name="BarFrame" type="Sprite2D" parent="UI"]
+texture_filter = 1
+position = Vector2(306, 29.5)
+texture = ExtResource("4_ccafu")
+
+[node name="BarLabels" type="Sprite2D" parent="UI"]
+texture_filter = 1
+position = Vector2(324, 36.5)
+texture = ExtResource("5_25ox0")
+
+[node name="TimeBar" type="TextureProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 24.0
+offset_right = 345.0
+offset_bottom = 29.0
+max_value = 68.0
+page = 0.04
+value = 50.0
+texture_progress = SubResource("CanvasTexture_klxyk")
+
+[node name="SanityBar" type="TextureProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 32.0
+offset_right = 345.0
+offset_bottom = 35.0
+max_value = 16.0
+value = 8.0
+texture_progress = SubResource("CanvasTexture_ohgur")
+
+[node name="Monster" type="Sprite2D" parent="."]
+position = Vector2(155, 110)
+texture = SubResource("CanvasTexture_n1bsg")
+
+[node name="Table" type="StaticBody2D" parent="."]
+position = Vector2(201, 209)
+collision_mask = 3
+
+[node name="Table" type="Sprite2D" parent="Table"]
+texture = SubResource("CanvasTexture_dgkbj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
+position = Vector2(-1, 18)
+shape = SubResource("RectangleShape2D_4satd")
+
+[node name="Book" type="Sprite2D" parent="."]
+position = Vector2(54, 189)
+texture = SubResource("CanvasTexture_or7gx")
+
+[node name="Bottle3" type="RigidBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(315, 147)
+collision_layer = 2
+input_pickable = true
+can_sleep = false
+script = ExtResource("11_fxfq5")
+
+[node name="CollisionShape2DCircle" type="CollisionShape2D" parent="Bottle3"]
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_y21k3")
+
+[node name="CollisionShape2DCylinder" type="CollisionShape2D" parent="Bottle3"]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_c07jn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottle3"]
+texture = SubResource("CanvasTexture_gunvs")
+
+[node name="Bottle4" type="RigidBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(364, 137)
+collision_layer = 2
+input_pickable = true
+can_sleep = false
+script = ExtResource("11_fxfq5")
+
+[node name="CollisionShape2DCircle" type="CollisionShape2D" parent="Bottle4"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_08a4j")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottle4"]
+texture = SubResource("CanvasTexture_bxcqi")
+
+[node name="Bottle2" type="RigidBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(246, 158)
+collision_layer = 2
+input_pickable = true
+can_sleep = false
+script = ExtResource("11_fxfq5")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Bottle2"]
+polygon = PackedVector2Array(-13, 11, -24, -9, -10, -3, 0, -30, 10, -3, 24, -9, 13, 11, 23, 28, 0, 19, -23, 28)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottle2"]
+texture = SubResource("CanvasTexture_ddijk")
+
+[node name="Bottle1" type="RigidBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(266, 86)
+collision_layer = 2
+input_pickable = true
+can_sleep = false
+script = ExtResource("11_fxfq5")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Bottle1"]
+polygon = PackedVector2Array(-20, 38, -8, -38, 9, -38, 20, 38)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottle1"]
+texture = SubResource("CanvasTexture_cbbk8")
+
+[node name="Frame" type="StaticBody2D" parent="."]
+
+[node name="Frame" type="Sprite2D" parent="Frame"]
+position = Vector2(200, 120)
+texture = SubResource("CanvasTexture_p4c3i")
+
+[node name="CollisionShape2DTop" type="CollisionShape2D" parent="Frame"]
+position = Vector2(200, 1.5)
+shape = SubResource("RectangleShape2D_4gxpk")
+
+[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="Frame"]
+position = Vector2(3, 108.5)
+shape = SubResource("RectangleShape2D_4fqae")
+
+[node name="CollisionShape2DRight" type="CollisionShape2D" parent="Frame"]
+position = Vector2(397.5, 108.5)
+shape = SubResource("RectangleShape2D_4pb45")
