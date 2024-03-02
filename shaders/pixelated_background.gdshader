@@ -10,17 +10,17 @@ uniform vec4 color3 : source_color = vec4(0.39, 0.52, 1.0, 1.0);
 
 uniform vec2 Direction = vec2(1, 1);
 uniform float Speed = 1.00;
+uniform float RandomSeed = 1.00;
 
 uniform float thresholds[3];
-//my values: [0.6, 0.66, 0.75]
 
 uniform int OCTAVE = 6;
 uniform int pixel_size;
 uniform float dithering = 2.5;
 
 vec2 random(vec2 uv){
-    uv = vec2( dot(uv, vec2(127.1,311.7) ),
-               dot(uv, vec2(269.5,183.3) ) );
+    uv = vec2( dot(vec3(uv, RandomSeed), vec3(127.1,311.7,149.2) ),
+               dot(vec3(uv, RandomSeed), vec3(269.5,183.3,391.8) ) ).xy;
     return -1.0 + 2.0 * fract(sin(uv) * 43758.5453123);
 }
 

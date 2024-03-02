@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://iroykxv0rbm2"]
+
+[ext_resource type="Material" uid="uid://ckidvrdfni322" path="res://resources/liquid.tres" id="1_qnx7s"]
+[ext_resource type="Texture2D" uid="uid://0pttbjgme5hq" path="res://sprites/cup_large_mask.png" id="2_g1ujb"]
+
+[node name="Sprite2DLiquid" type="Sprite2D"]
+z_index = 1
+texture_filter = 1
+material = ExtResource("1_qnx7s")
+texture = ExtResource("2_g1ujb")

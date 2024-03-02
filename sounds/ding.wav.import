@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dkyli1kgj36x8"
-path="res://.godot/imported/bottle_open3.wav-80c6672e718b0ba9a1eae2c259ec212b.sample"
+uid="uid://bp2k1hace47mr"
+path="res://.godot/imported/ding.wav-6f98fb124afd4a1f6f70205ba5ef8e58.sample"
 
 [deps]
 
-source_file="res://sounds/bottle_open3.wav"
-dest_files=["res://.godot/imported/bottle_open3.wav-80c6672e718b0ba9a1eae2c259ec212b.sample"]
+source_file="res://sounds/ding.wav"
+dest_files=["res://.godot/imported/ding.wav-6f98fb124afd4a1f6f70205ba5ef8e58.sample"]
 
 [params]
 

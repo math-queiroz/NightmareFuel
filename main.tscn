@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dqaxloj2f6ui0"]
+[gd_scene load_steps=82 format=3 uid="uid://dqaxloj2f6ui0"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_caplr"]
 [ext_resource type="Texture2D" uid="uid://vgjtrcq8cn3t" path="res://sprites/monster_sproutling.png" id="1_f5wi5"]
@@ -10,8 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b6qw5x8p3dh0a" path="res://sprites/bar_frames.png" id="4_ccafu"]
 [ext_resource type="Script" path="res://scripts/IndicatorContainer.gd" id="4_i8sd8"]
 [ext_resource type="Texture2D" uid="uid://dpxa1u5iljjnr" path="res://sprites/bar_labels.png" id="5_25ox0"]
-[ext_resource type="Texture2D" uid="uid://biwn3glws21bo" path="res://sprites/time_orb.png" id="5_mj770"]
-[ext_resource type="Script" path="res://scripts/TimeOrb.gd" id="6_4xvvv"]
+[ext_resource type="Script" path="res://scripts/Indicators.gd" id="6_0rbp7"]
 [ext_resource type="Texture2D" uid="uid://dvrcs54d1ndg7" path="res://sprites/bar_time.png" id="7_4sejn"]
 [ext_resource type="Texture2D" uid="uid://c6u7bmv1qgo57" path="res://sprites/bottle3.png" id="8_o604l"]
 [ext_resource type="Texture2D" uid="uid://bnqr4j3hgta8t" path="res://sprites/bar_sanity.png" id="8_t83gj"]
@@ -19,24 +18,43 @@
 [ext_resource type="Texture2D" uid="uid://cuu37hajkvki" path="res://sprites/bottle1.png" id="9_ftjdy"]
 [ext_resource type="Script" path="res://scripts/Book.gd" id="10_5juax"]
 [ext_resource type="Texture2D" uid="uid://dqmgphuqmrmo2" path="res://sprites/bottle2.png" id="10_h022f"]
-[ext_resource type="Script" path="res://scripts/Draggable.gd" id="11_fxfq5"]
 [ext_resource type="Texture2D" uid="uid://sh2xldp6p1cr" path="res://sprites/bottle4 open.png" id="12_fbpnl"]
 [ext_resource type="Texture2D" uid="uid://bcwcda62yn3md" path="res://sprites/bottle3 open.png" id="13_fdd1i"]
+[ext_resource type="AudioStream" uid="uid://dyurahqpmf4sd" path="res://sounds/BookOpen.wav" id="14_bbt8l"]
 [ext_resource type="Texture2D" uid="uid://kqlqqxl3hmjq" path="res://sprites/bottle2 open.png" id="14_bsjys"]
 [ext_resource type="Texture2D" uid="uid://ctdg0edjta8k0" path="res://sprites/book_spot.png" id="14_q41w2"]
+[ext_resource type="AudioStream" uid="uid://dvih7ii4m6nmn" path="res://sounds/BookClose.wav" id="15_11nw7"]
 [ext_resource type="Texture2D" uid="uid://dpk0gq8avs52d" path="res://sprites/cup_small.png" id="15_83ufa"]
 [ext_resource type="Texture2D" uid="uid://6kr4fx2bmk64" path="res://sprites/bottle1_open.png" id="15_t8b5s"]
 [ext_resource type="Texture2D" uid="uid://c18twlbvu7lny" path="res://sprites/book_overlay.png" id="16_aju8d"]
-[ext_resource type="AudioStream" uid="uid://bgku4n6bn7r8p" path="res://sounds/book_close.wav" id="16_xenet"]
-[ext_resource type="AudioStream" uid="uid://basg1pxknis60" path="res://sounds/book_open.wav" id="17_dwnyw"]
-[ext_resource type="AudioStream" uid="uid://ddsm587wkgry6" path="res://sounds/bottle_open4.wav" id="19_vhx3s"]
-[ext_resource type="AudioStream" uid="uid://dkyli1kgj36x8" path="res://sounds/bottle_open3.wav" id="22_1wlhp"]
+[ext_resource type="AudioStream" uid="uid://5dp8wosrxl5l" path="res://sounds/BookPageNext.wav" id="16_blm3e"]
+[ext_resource type="AudioStream" uid="uid://bw30hmnvujdwm" path="res://sounds/BookPagePrev.wav" id="17_h5aay"]
+[ext_resource type="Texture2D" uid="uid://cbvggcrr045v2" path="res://sprites/bell.png" id="19_q1x2x"]
+[ext_resource type="AudioStream" uid="uid://d4m3p3s3uj6ow" path="res://sounds/BottleOpen3.wav" id="20_lpjbb"]
+[ext_resource type="Script" path="res://scripts/IceTray.gd" id="20_ymjlv"]
+[ext_resource type="Texture2D" uid="uid://ck4n334pm4h5g" path="res://sprites/Ice.png" id="21_372i1"]
+[ext_resource type="PackedScene" uid="uid://dydrl2jcvr54u" path="res://components/shadow.tscn" id="22_a1thx"]
+[ext_resource type="AudioStream" uid="uid://cqf33l51ineik" path="res://sounds/BottleOpen4.wav" id="23_cuulw"]
+[ext_resource type="Texture2D" uid="uid://ckg6ht3g4xkj7" path="res://sprites/shadow_medium.png" id="23_u2o86"]
+[ext_resource type="AudioStream" uid="uid://bpumixqjera2h" path="res://sounds/glass2.wav" id="24_6bjsd"]
 [ext_resource type="Script" path="res://scripts/Area2DOutOfBounds.gd" id="24_jmn7c"]
-[ext_resource type="AudioStream" uid="uid://bw0rlxrva7dg8" path="res://sounds/bottle_open1.wav" id="25_1qirx"]
-[ext_resource type="AudioStream" uid="uid://7lw1b6bkuyfd" path="res://sounds/bottle_open2.wav" id="25_u8pld"]
-[ext_resource type="AudioStream" uid="uid://dod8vq8kumsga" path="res://sounds/cup.wav" id="32_v6p5g"]
+[ext_resource type="Script" path="res://scripts/Bell.gd" id="25_bqjh5"]
+[ext_resource type="AudioStream" uid="uid://c1t245sffgikl" path="res://sounds/BottleOpen2.wav" id="26_8uq8g"]
+[ext_resource type="AudioStream" uid="uid://fil8mx0ujvce" path="res://sounds/double_ding.wav" id="27_b5e6g"]
+[ext_resource type="AudioStream" uid="uid://esxf4gtdheka" path="res://sounds/BottleOpen1.wav" id="29_xnahp"]
+[ext_resource type="PackedScene" uid="uid://c8va1d6q5rlfe" path="res://components/spill_point.tscn" id="32_12ovr"]
+[ext_resource type="VisualShaderNodeColorConstant" uid="uid://bfvqremr83vc0" path="res://resources/Bottle4Color.tres" id="33_dw6kf"]
 [ext_resource type="Texture2D" uid="uid://c7k6btop63xjv" path="res://sprites/cup_medium.png" id="34_c6xdm"]
+[ext_resource type="AudioStream" uid="uid://bslbvoirnlv0x" path="res://sounds/mug.wav" id="35_k0ply"]
 [ext_resource type="Texture2D" uid="uid://crb82o18qpi1o" path="res://sprites/cup_large.png" id="35_u16au"]
+[ext_resource type="VisualShaderNodeColorConstant" uid="uid://sffgflj2t5ui" path="res://resources/Bottle3Color.tres" id="37_ry5as"]
+[ext_resource type="Script" path="res://scripts/Bottle.gd" id="39_5b7e4"]
+[ext_resource type="VisualShaderNodeColorConstant" uid="uid://cvpajthcxnh50" path="res://resources/Bottle2Color.tres" id="41_nqg1v"]
+[ext_resource type="Texture2D" uid="uid://vftalu50ys74" path="res://sprites/cup_small_mask.png" id="42_u4m1m"]
+[ext_resource type="VisualShaderNodeColorConstant" uid="uid://cgg08yray1rfv" path="res://resources/Bottle1Color.tres" id="43_kauhe"]
+[ext_resource type="Texture2D" uid="uid://b2run7b01cd8t" path="res://sprites/cup_medium_mask.png" id="48_lksko"]
+[ext_resource type="Script" path="res://Cup.gd" id="53_k2nep"]
+[ext_resource type="PackedScene" uid="uid://iroykxv0rbm2" path="res://components/liquid_sprite.tscn" id="54_qxaqu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fw7h2"]
 shader = ExtResource("2_q81jx")
@@ -47,6 +65,7 @@ shader_parameter/color2 = Color(0.329412, 0.392157, 0.819608, 1)
 shader_parameter/color3 = Color(0.39, 0.52, 1, 1)
 shader_parameter/Direction = Vector2(1, 1)
 shader_parameter/Speed = 10.0
+shader_parameter/RandomSeed = 1.0
 shader_parameter/thresholds = PackedFloat32Array(0.5, 0.7, 0.8)
 shader_parameter/OCTAVE = 6
 shader_parameter/pixel_size = 400
@@ -64,15 +83,21 @@ texture_filter = 1
 diffuse_texture = ExtResource("1_f5wi5")
 texture_filter = 1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_svdcj"]
-size = Vector2(389, 12)
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_dgkbj"]
 diffuse_texture = ExtResource("2_y5807")
 texture_filter = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4satd"]
 size = Vector2(400, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svdcj"]
+size = Vector2(389, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvvaf"]
+size = Vector2(44, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc2ky"]
+size = Vector2(24, 18)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_or7gx"]
 diffuse_texture = ExtResource("3_oe0m2")
@@ -85,7 +110,139 @@ radius = 32.0
 radius = 19.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c07jn"]
-size = Vector2(14, 30)
+size = Vector2(14, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdipf"]
+size = Vector2(18, 14)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0ttnj"]
+polygon = PackedVector2Array(-5, -8, -1, 6, 5, 6, 9, -8)
+
+[sub_resource type="Shader" id="Shader_4lpws"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec3 Color1 : source_color;
+uniform vec3 Color2 : source_color;
+uniform vec3 Color3 : source_color;
+uniform vec3 Color4 : source_color;
+uniform vec4 Weights;
+
+uniform float RimHeight = 0.1;
+uniform float RimBightness = 0.25;
+
+uniform float Percentage = 0.5;
+
+varying float y_rotation;
+
+void vertex() {
+	y_rotation = atan(MODEL_MATRIX[0][1], MODEL_MATRIX[0][0]);
+}
+
+void fragment() {
+	float rotated_y = cos(-y_rotation) * (UV.y - 0.5) - sin(-y_rotation) * (UV.x - 0.5) + 0.5;
+	vec3 Color = (Color1*Weights.x + Color2*Weights.y + Color3*Weights.z + Color4*Weights.w) / (Weights.x+Weights.y+Weights.z+Weights.w);
+	COLOR.a -= step(rotated_y, 1.207 - Percentage * 1.207);
+	COLOR.rgb = Color.rgb;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h5xlv"]
+resource_local_to_scene = true
+shader = SubResource("Shader_4lpws")
+shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
+shader_parameter/Color2 = Color(0.8, 0.6, 1, 1)
+shader_parameter/Color3 = Color(1, 0.6, 0.607843, 1)
+shader_parameter/Color4 = Color(0.6, 0.760784, 1, 1)
+shader_parameter/Weights = Vector4(1, 0, 0, 0)
+shader_parameter/RimHeight = 0.035
+shader_parameter/RimBightness = -0.2
+shader_parameter/Percentage = 0.0
+
+[sub_resource type="Shader" id="Shader_86oqg"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec3 Color1 : source_color;
+uniform vec3 Color2 : source_color;
+uniform vec3 Color3 : source_color;
+uniform vec3 Color4 : source_color;
+uniform vec4 Weights;
+
+uniform float RimHeight = 0.1;
+uniform float RimBightness = 0.25;
+
+uniform float Percentage = 0.5;
+
+varying float y_rotation;
+
+void vertex() {
+	y_rotation = atan(MODEL_MATRIX[0][1], MODEL_MATRIX[0][0]);
+}
+
+void fragment() {
+	float rotated_y = cos(-y_rotation) * (UV.y - 0.5) - sin(-y_rotation) * (UV.x - 0.5) + 0.5;
+	vec3 Color = (Color1*Weights.x + Color2*Weights.y + Color3*Weights.z + Color4*Weights.w) / (Weights.x+Weights.y+Weights.z+Weights.w);
+	COLOR.a -= step(rotated_y, 1.207 - Percentage * 1.207);
+	COLOR.rgb = Color.rgb;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_53m4x"]
+resource_local_to_scene = true
+shader = SubResource("Shader_86oqg")
+shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
+shader_parameter/Color2 = Color(0.8, 0.6, 1, 1)
+shader_parameter/Color3 = Color(1, 0.6, 0.607843, 1)
+shader_parameter/Color4 = Color(0.6, 0.760784, 1, 1)
+shader_parameter/Weights = Vector4(1, 0, 0, 0)
+shader_parameter/RimHeight = 0.035
+shader_parameter/RimBightness = -0.2
+shader_parameter/Percentage = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j507e"]
+size = Vector2(18, 14)
+
+[sub_resource type="Shader" id="Shader_nb3gh"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec3 Color1 : source_color;
+uniform vec3 Color2 : source_color;
+uniform vec3 Color3 : source_color;
+uniform vec3 Color4 : source_color;
+uniform vec4 Weights;
+
+uniform float RimHeight = 0.1;
+uniform float RimBightness = 0.25;
+
+uniform float Percentage = 0.5;
+
+varying float y_rotation;
+
+void vertex() {
+	y_rotation = atan(MODEL_MATRIX[0][1], MODEL_MATRIX[0][0]);
+}
+
+void fragment() {
+	float rotated_y = cos(-y_rotation) * (UV.y - 0.5) - sin(-y_rotation) * (UV.x - 0.5) + 0.5;
+	vec3 Color = (Color1*Weights.x + Color2*Weights.y + Color3*Weights.z + Color4*Weights.w) / (Weights.x+Weights.y+Weights.z+Weights.w);
+	COLOR.a -= step(rotated_y, 1.207 - Percentage * 1.207);
+	COLOR.rgb = Color.rgb;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aumga"]
+resource_local_to_scene = true
+shader = SubResource("Shader_nb3gh")
+shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
+shader_parameter/Color2 = Color(0.8, 0.6, 1, 1)
+shader_parameter/Color3 = Color(1, 0.6, 0.607843, 1)
+shader_parameter/Color4 = Color(0.6, 0.760784, 1, 1)
+shader_parameter/Weights = Vector4(1, 0, 0, 0)
+shader_parameter/RimHeight = 0.035
+shader_parameter/RimBightness = -0.2
+shader_parameter/Percentage = 0.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_p4c3i"]
 diffuse_texture = ExtResource("1_o76r0")
@@ -104,6 +261,11 @@ size = Vector2(648, 20)
 script = ExtResource("1_caplr")
 cycle = 1
 
+[node name="LevelTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 180.0
+one_shot = true
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -113,22 +275,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Animated BG" type="ColorRect" parent="UI"]
+[node name="AnimatedBG" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
+z_index = -10
 material = SubResource("ShaderMaterial_fw7h2")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -25.0
-offset_top = -108.0
-offset_right = 25.0
-offset_bottom = 102.0
+offset_left = -20.0
+offset_top = -113.0
+offset_right = 30.0
+offset_bottom = 97.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.00093, 0.997859)
 mouse_filter = 2
 script = ExtResource("3_fwrbc")
 
-[node name="Node2D" type="Control" parent="UI"]
+[node name="IndicatorsContainer" type="Control" parent="UI"]
 anchors_preset = 0
 offset_left = 264.0
 offset_top = 17.0
@@ -137,30 +302,25 @@ offset_bottom = 39.0
 mouse_filter = 1
 script = ExtResource("4_i8sd8")
 
-[node name="TimeOrb" type="Sprite2D" parent="UI/Node2D"]
+[node name="IndicatorFrame" type="Sprite2D" parent="UI/IndicatorsContainer"]
 unique_name_in_owner = true
 texture_filter = 1
-position = Vector2(105, 12.5)
-texture = ExtResource("5_mj770")
-script = ExtResource("6_4xvvv")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Node2D/TimeOrb"]
-texture_filter = 1
-position = Vector2(0, -2)
-
-[node name="BarFrame" type="Sprite2D" parent="UI/Node2D"]
-texture_filter = 1
-position = Vector2(42, 11.5)
+position = Vector2(65, 12.5)
 texture = ExtResource("4_ccafu")
+script = ExtResource("6_0rbp7")
 
-[node name="BarLabels" type="Sprite2D" parent="UI/Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="UI/IndicatorsContainer/IndicatorFrame"]
+position = Vector2(40, -1.5)
+
+[node name="IndicatorLabels" type="Sprite2D" parent="UI/IndicatorsContainer"]
 unique_name_in_owner = true
 visible = false
 texture_filter = 1
 position = Vector2(59, 18.5)
 texture = ExtResource("5_25ox0")
 
-[node name="TimeBar" type="TextureProgressBar" parent="UI/Node2D"]
+[node name="TimeBar" type="TextureProgressBar" parent="UI/IndicatorsContainer"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 13.0
 offset_top = 6.0
@@ -168,11 +328,11 @@ offset_right = 81.0
 offset_bottom = 11.0
 mouse_filter = 2
 max_value = 68.0
-page = 0.04
-value = 50.0
+value = 68.0
 texture_progress = SubResource("CanvasTexture_klxyk")
 
-[node name="SanityBar" type="TextureProgressBar" parent="UI/Node2D"]
+[node name="SanityBar" type="TextureProgressBar" parent="UI/IndicatorsContainer"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 17.0
 offset_top = 14.0
@@ -184,31 +344,77 @@ value = 8.0
 texture_progress = SubResource("CanvasTexture_ohgur")
 
 [node name="Monster" type="Sprite2D" parent="."]
+z_index = -4
 position = Vector2(143, 121)
 texture = SubResource("CanvasTexture_n1bsg")
-
-[node name="Upper" type="StaticBody2D" parent="."]
-position = Vector2(201, 209)
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Upper"]
-position = Vector2(-0.5, -11)
-shape = SubResource("RectangleShape2D_svdcj")
 
 [node name="Table" type="StaticBody2D" parent="."]
 position = Vector2(201, 209)
 collision_layer = 4
 
 [node name="Table" type="Sprite2D" parent="Table"]
+z_index = -3
 texture = SubResource("CanvasTexture_dgkbj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
 position = Vector2(-1, 18)
 shape = SubResource("RectangleShape2D_4satd")
 
+[node name="Upper" type="StaticBody2D" parent="Table"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table/Upper"]
+position = Vector2(-0.5, -11)
+shape = SubResource("RectangleShape2D_svdcj")
+
+[node name="IceCubePool" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="IceTray" type="Area2D" parent="."]
+position = Vector2(113, 181)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("20_ymjlv")
+
+[node name="Sprite2D" type="Sprite2D" parent="IceTray"]
+texture_filter = 1
+texture = ExtResource("21_372i1")
+
+[node name="Shadow" parent="IceTray" instance=ExtResource("22_a1thx")]
+texture = ExtResource("23_u2o86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IceTray"]
+shape = SubResource("RectangleShape2D_rvvaf")
+
+[node name="AudioStreamPlayerIceTray" type="AudioStreamPlayer" parent="IceTray"]
+unique_name_in_owner = true
+stream = ExtResource("24_6bjsd")
+max_polyphony = 3
+
+[node name="Bell" type="Area2D" parent="."]
+position = Vector2(13, 180)
+script = ExtResource("25_bqjh5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bell"]
+texture_filter = 1
+texture = ExtResource("19_q1x2x")
+
+[node name="Shadow" parent="Bell" instance=ExtResource("22_a1thx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bell"]
+shape = SubResource("RectangleShape2D_pc2ky")
+
+[node name="AudioStreamPlayerBell" type="AudioStreamPlayer" parent="Bell"]
+unique_name_in_owner = true
+stream = ExtResource("27_b5e6g")
+
 [node name="Book" type="Area2D" parent="."]
 position = Vector2(37, 197)
 script = ExtResource("10_5juax")
+book_open_sound = ExtResource("14_bbt8l")
+book_close_sound = ExtResource("15_11nw7")
+book_next_page_sound = ExtResource("16_blm3e")
+book_prev_page_sound = ExtResource("17_h5aay")
 
 [node name="BookSpot" type="Sprite2D" parent="Book"]
 texture_filter = 1
@@ -223,6 +429,7 @@ texture = SubResource("CanvasTexture_or7gx")
 [node name="Sprite2DOverlay" type="Sprite2D" parent="Book"]
 unique_name_in_owner = true
 visible = false
+z_index = -3
 texture_filter = 1
 position = Vector2(86, -99)
 texture = ExtResource("16_aju8d")
@@ -231,13 +438,8 @@ texture = ExtResource("16_aju8d")
 position = Vector2(0, 1)
 polygon = PackedVector2Array(-4, -18, -28, 8, -28, 19, 23, 19, 49, -7, 49, -18)
 
-[node name="AudioStreamPlayerBookClose" type="AudioStreamPlayer" parent="Book"]
+[node name="AudioStreamPlayerBook" type="AudioStreamPlayer" parent="Book"]
 unique_name_in_owner = true
-stream = ExtResource("16_xenet")
-
-[node name="AudioStreamPlayerBookOpen" type="AudioStreamPlayer" parent="Book"]
-unique_name_in_owner = true
-stream = ExtResource("17_dwnyw")
 
 [node name="Bottle4" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
@@ -245,8 +447,8 @@ position = Vector2(359, 155)
 collision_layer = 8
 collision_mask = 3
 input_pickable = true
-script = ExtResource("11_fxfq5")
-hold_sound = ExtResource("22_1wlhp")
+script = ExtResource("39_5b7e4")
+hold_sound = ExtResource("20_lpjbb")
 hold_texture = ExtResource("12_fbpnl")
 
 [node name="CollisionShape2DCircle" type="CollisionShape2D" parent="Bottle4"]
@@ -258,14 +460,18 @@ y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("9_fpdu2")
 
+[node name="SpillPoint" parent="Bottle4" instance=ExtResource("32_12ovr")]
+position = Vector2(0, -19)
+spill_color = ExtResource("33_dw6kf")
+
 [node name="Bottle3" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
 position = Vector2(315, 176)
 collision_layer = 8
 collision_mask = 3
 input_pickable = true
-script = ExtResource("11_fxfq5")
-hold_sound = ExtResource("19_vhx3s")
+script = ExtResource("39_5b7e4")
+hold_sound = ExtResource("23_cuulw")
 hold_texture = ExtResource("13_fdd1i")
 
 [node name="CollisionShape2DCircle" type="CollisionShape2D" parent="Bottle3"]
@@ -273,7 +479,7 @@ position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_y21k3")
 
 [node name="CollisionShape2DCylinder" type="CollisionShape2D" parent="Bottle3"]
-position = Vector2(0, -17)
+position = Vector2(0, -19)
 shape = SubResource("RectangleShape2D_c07jn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bottle3"]
@@ -281,14 +487,18 @@ y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("8_o604l")
 
+[node name="SpillPoint" parent="Bottle3" instance=ExtResource("32_12ovr")]
+position = Vector2(0, -24)
+spill_color = ExtResource("37_ry5as")
+
 [node name="Bottle2" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
 position = Vector2(246, 177)
 collision_layer = 8
 collision_mask = 3
 input_pickable = true
-script = ExtResource("11_fxfq5")
-hold_sound = ExtResource("25_u8pld")
+script = ExtResource("39_5b7e4")
+hold_sound = ExtResource("26_8uq8g")
 hold_texture = ExtResource("14_bsjys")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Bottle2"]
@@ -299,14 +509,18 @@ y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("10_h022f")
 
+[node name="SpillPoint" parent="Bottle2" instance=ExtResource("32_12ovr")]
+position = Vector2(0, -22)
+spill_color = ExtResource("41_nqg1v")
+
 [node name="Bottle1" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
 position = Vector2(284, 136)
 collision_layer = 8
 collision_mask = 3
 input_pickable = true
-script = ExtResource("11_fxfq5")
-hold_sound = ExtResource("25_1qirx")
+script = ExtResource("39_5b7e4")
+hold_sound = ExtResource("29_xnahp")
 hold_texture = ExtResource("15_t8b5s")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Bottle1"]
@@ -317,59 +531,135 @@ y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("9_ftjdy")
 
+[node name="SpillPoint" parent="Bottle1" instance=ExtResource("32_12ovr")]
+position = Vector2(0, -31)
+spill_color = ExtResource("43_kauhe")
+
 [node name="CupSmall" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(202, 173)
+position = Vector2(384, 105)
 collision_layer = 8
 collision_mask = 5
 input_pickable = true
-script = ExtResource("11_fxfq5")
-hold_sound = ExtResource("32_v6p5g")
+script = ExtResource("53_k2nep")
+max_amount = 15
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="CupSmall"]
 polygon = PackedVector2Array(-6, 8, -9, -8, 9, -8, 6, 8)
+
+[node name="Area2DIce" type="Area2D" parent="CupSmall"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CupSmall/Area2DIce"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_bdipf")
+
+[node name="ParticleCollider" type="LightOccluder2D" parent="CupSmall"]
+position = Vector2(-2, 0)
+occluder = SubResource("OccluderPolygon2D_0ttnj")
 
 [node name="Sprite2D" type="Sprite2D" parent="CupSmall"]
 texture_filter = 1
 texture = ExtResource("15_83ufa")
 
+[node name="Sprite2DLiquid" parent="CupSmall" instance=ExtResource("54_qxaqu")]
+material = SubResource("ShaderMaterial_h5xlv")
+texture = ExtResource("42_u4m1m")
+
+[node name="SpillPoint" parent="CupSmall" instance=ExtResource("32_12ovr")]
+position = Vector2(-7, -6)
+use_alt_spill_point = true
+
+[node name="AltSpillPoint" type="Node2D" parent="CupSmall/SpillPoint"]
+position = Vector2(14, 0)
+
 [node name="CupMedium" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(211, 129)
+position = Vector2(364, 83)
 collision_layer = 8
 collision_mask = 5
 input_pickable = true
-script = ExtResource("11_fxfq5")
-hold_sound = ExtResource("32_v6p5g")
+script = ExtResource("53_k2nep")
+max_amount = 30
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="CupMedium"]
 polygon = PackedVector2Array(-11, 8, -12, -12, 12, -12, 11, 8, 5, 13, -5, 13)
+
+[node name="ParticleCollider" type="LightOccluder2D" parent="CupMedium"]
+position = Vector2(-1, 0)
+occluder = SubResource("OccluderPolygon2D_0ttnj")
+
+[node name="Area2DIce" type="Area2D" parent="CupMedium"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CupMedium/Area2DIce"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_bdipf")
 
 [node name="Sprite2D" type="Sprite2D" parent="CupMedium"]
 texture_filter = 1
 texture = ExtResource("34_c6xdm")
 
+[node name="Sprite2DLiquid" parent="CupMedium" instance=ExtResource("54_qxaqu")]
+material = SubResource("ShaderMaterial_53m4x")
+texture = ExtResource("48_lksko")
+
+[node name="SpillPoint" parent="CupMedium" instance=ExtResource("32_12ovr")]
+position = Vector2(-10, -10)
+use_alt_spill_point = true
+
+[node name="AltSpillPoint" type="Node2D" parent="CupMedium/SpillPoint"]
+position = Vector2(20, 0)
+
 [node name="CupLarge" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(167, 155)
+position = Vector2(318, 79)
 collision_layer = 8
 collision_mask = 5
 input_pickable = true
-script = ExtResource("11_fxfq5")
-hold_sound = ExtResource("32_v6p5g")
+script = ExtResource("53_k2nep")
+hold_sound = ExtResource("35_k0ply")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="CupLarge"]
 polygon = PackedVector2Array(-12, 17, 18, 17, 15, -18, -9, -18, -9, -9, -17, -9, -18, 7, -10, 8)
 
+[node name="Area2DIce" type="Area2D" parent="CupLarge"]
+position = Vector2(2, 0)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CupLarge/Area2DIce"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_j507e")
+
+[node name="ParticleCollider" type="LightOccluder2D" parent="CupLarge"]
+occluder = SubResource("OccluderPolygon2D_0ttnj")
+
 [node name="Sprite2D" type="Sprite2D" parent="CupLarge"]
 texture_filter = 1
+position = Vector2(-1, 0)
 texture = ExtResource("35_u16au")
 
+[node name="Sprite2DLiquid" parent="CupLarge" instance=ExtResource("54_qxaqu")]
+material = SubResource("ShaderMaterial_aumga")
+position = Vector2(2, 0)
+
+[node name="SpillPoint" parent="CupLarge" instance=ExtResource("32_12ovr")]
+position = Vector2(-9, -16)
+use_alt_spill_point = true
+
+[node name="AltSpillPoint" type="Node2D" parent="CupLarge/SpillPoint"]
+position = Vector2(22, 0)
+
 [node name="Frame" type="StaticBody2D" parent="."]
-collision_layer = 4
+position = Vector2(1, 0)
+collision_layer = 2
 
 [node name="Frame" type="Sprite2D" parent="Frame"]
-position = Vector2(200, 120)
+z_index = 10
+position = Vector2(201, 120)
 texture = SubResource("CanvasTexture_p4c3i")
 
 [node name="CollisionShape2DLeft" type="CollisionShape2D" parent="Frame"]
@@ -383,7 +673,7 @@ shape = SubResource("RectangleShape2D_4pb45")
 [node name="Area2DOutOfBounds" type="Area2D" parent="."]
 position = Vector2(213, 330)
 collision_layer = 0
-collision_mask = 8
+collision_mask = 24
 script = ExtResource("24_jmn7c")
 
 [node name="TeleportPoint" type="Node2D" parent="Area2DOutOfBounds"]
@@ -394,8 +684,11 @@ position = Vector2(-62, -395)
 visibility_layer = 16
 shape = SubResource("RectangleShape2D_0u3q2")
 
-[connection signal="mouse_entered" from="UI/Node2D" to="UI/Node2D" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Node2D" to="UI/Node2D" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="UI/IndicatorsContainer" to="UI/IndicatorsContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/IndicatorsContainer" to="UI/IndicatorsContainer" method="_on_mouse_exited"]
+[connection signal="body_entered" from="IceTray" to="IceTray" method="_on_body_entered"]
+[connection signal="input_event" from="IceTray" to="IceTray" method="_on_input_event"]
+[connection signal="input_event" from="Bell" to="Bell" method="_on_input_event"]
 [connection signal="input_event" from="Book" to="Book" method="_on_input_event"]
-[connection signal="body_entered" from="Area2DOutOfBounds" to="UI/Node2D" method="_on_area_2d_out_of_bounds_body_entered"]
+[connection signal="body_entered" from="Area2DOutOfBounds" to="UI/IndicatorsContainer" method="_on_area_2d_out_of_bounds_body_entered"]
 [connection signal="body_entered" from="Area2DOutOfBounds" to="Area2DOutOfBounds" method="_on_body_entered"]

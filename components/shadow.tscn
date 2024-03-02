@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dydrl2jcvr54u"]
+
+[ext_resource type="Texture2D" uid="uid://cmmlp8854j8tv" path="res://sprites/shadow_small.png" id="1_1s8wo"]
+
+[node name="Shadow" type="Sprite2D"]
+z_index = -2
+texture_filter = 1
+position = Vector2(0, 9)
+texture = ExtResource("1_1s8wo")

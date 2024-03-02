@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://basg1pxknis60"
-path="res://.godot/imported/book_open.wav-0f596041e8f7e3f4c25a041cfd03d546.sample"
+uid="uid://dvih7ii4m6nmn"
+path="res://.godot/imported/BookClose.wav-0eeca4b7d776667d579e376724ea085f.sample"
 
 [deps]
 
-source_file="res://sounds/book_open.wav"
-dest_files=["res://.godot/imported/book_open.wav-0f596041e8f7e3f4c25a041cfd03d546.sample"]
+source_file="res://sounds/BookClose.wav"
+dest_files=["res://.godot/imported/BookClose.wav-0eeca4b7d776667d579e376724ea085f.sample"]
 
 [params]
 

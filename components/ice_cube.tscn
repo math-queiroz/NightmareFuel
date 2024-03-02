@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfmjvf12vrt2t"]
+
+[ext_resource type="Script" path="res://scripts/IceCube.gd" id="1_hyr1f"]
+[ext_resource type="Texture2D" uid="uid://c8glfef1t120f" path="res://sprites/ice_cube_1.png" id="3_vy6gg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa8du"]
+size = Vector2(10, 10)
+
+[node name="IceCube" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 24
+collision_mask = 5
+input_pickable = true
+script = ExtResource("1_hyr1f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+texture = ExtResource("3_vy6gg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pa8du")
