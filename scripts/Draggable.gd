@@ -2,16 +2,17 @@ extends CharacterBody2D
 class_name Draggable
 
 const follow_force : float = 36
-const drop_dist_sqr : float = 100
+const drop_dist_sqr : float = 1
 const held_z_index : int = 10
 const tilt_dist : float = 40
 
 @export var hold_sound : AudioStream
 @export var hold_texture : Texture2D
 
+@onready var level_node : Level = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1) as Level
+@onready var default_z_index : int = z_index
 @onready var audio_player : AudioStreamPlayer
 @onready var default_texture : Texture2D = get_node("Sprite2D").get_texture()
-@onready var default_z_index : int = z_index
 
 var is_held : bool = false : set = set_is_held
 var is_held_echo : bool = false
@@ -20,11 +21,10 @@ var is_tilting : bool = false
 var last_press_pos : Vector2 = Vector2.ZERO
 var max_sqr_displace_while_tilting : float = 0.0
 
-@onready var level_node : Level = get_tree().get_root().get_child(0) as Level
 
 func set_is_held(value):
 	# Force single held object per Level
-	if level_node.held_object == null || level_node.held_object == self:
+	if level_node.held_object == null or level_node.held_object == self:
 		level_node.held_object = self if value else null
 	else:
 		return
@@ -42,7 +42,6 @@ func _ready():
 		audio_player = AudioStreamPlayer.new()
 		audio_player.set_stream(hold_sound)
 		add_child(audio_player)
-
 
 func _process(delta):
 	if is_tilting:

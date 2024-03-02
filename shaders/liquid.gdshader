@@ -4,6 +4,7 @@ uniform vec3 Color1 : source_color;
 uniform vec3 Color2 : source_color;
 uniform vec3 Color3 : source_color;
 uniform vec3 Color4 : source_color;
+
 uniform vec4 Weights;
 
 uniform float RimHeight = 0.1;
@@ -20,6 +21,6 @@ void vertex() {
 void fragment() {
 	float rotated_y = cos(-y_rotation) * (UV.y - 0.5) - sin(-y_rotation) * (UV.x - 0.5) + 0.5;
 	vec3 Color = (Color1*Weights.x + Color2*Weights.y + Color3*Weights.z + Color4*Weights.w) / (Weights.x+Weights.y+Weights.z+Weights.w);
-	COLOR.a -= step(rotated_y, 1.207 - Percentage * 1.207);
+	COLOR.a -= step(rotated_y, 1.0 - Percentage + 0.414 * float(step(Percentage, 0.05)));
 	COLOR.rgb = Color.rgb;
 }

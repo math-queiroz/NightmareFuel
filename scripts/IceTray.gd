@@ -1,5 +1,7 @@
 extends Area2D
 
+@onready var level_node : Level = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1) as Level
+
 const ice_cube_scene : PackedScene = preload("res://components/ice_cube.tscn")
 const ice_cube_grab_sounds : Array[AudioStream] = [
 	preload("res://sounds/glass3.wav"),
@@ -8,7 +10,8 @@ const ice_cube_grab_sounds : Array[AudioStream] = [
 ]
 
 func _on_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT \
+		and event.pressed and level_node.held_object == null:
 		# Melt previous existing cubes
 		for existing_cube in %IceCubePool.get_children():
 			existing_cube.melt()

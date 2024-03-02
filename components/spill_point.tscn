@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8va1d6q5rlfe"]
+[gd_scene load_steps=8 format=3 uid="uid://c8va1d6q5rlfe"]
 
 [ext_resource type="Script" path="res://scripts/SpillPoint.gd" id="1_necec"]
+[ext_resource type="VisualShaderNodeColorConstant" uid="uid://cgg08yray1rfv" path="res://resources/Bottle1Color.tres" id="2_8dx4w"]
 [ext_resource type="AudioStream" uid="uid://cckq2rjyo41qg" path="res://sounds/spill.wav" id="2_ga7ec"]
-
-[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_82b64"]
+[ext_resource type="VisualShaderNodeColorConstant" uid="uid://cvpajthcxnh50" path="res://resources/Bottle2Color.tres" id="3_06rjv"]
+[ext_resource type="VisualShaderNodeColorConstant" uid="uid://sffgflj2t5ui" path="res://resources/Bottle3Color.tres" id="4_og03d"]
+[ext_resource type="VisualShaderNodeColorConstant" uid="uid://bfvqremr83vc0" path="res://resources/Bottle4Color.tres" id="5_203bo"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xp6fe"]
 resource_local_to_scene = true
@@ -11,22 +13,28 @@ particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 0.0
 gravity = Vector3(0, 980, 0)
-initial_velocity_min = 45.0
-initial_velocity_max = 45.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_max = 3.0
+color = Color(0.945098, 0, 0.964706, 1)
 collision_mode = 2
 
 [node name="SpillPoint" type="Node2D"]
 script = ExtResource("1_necec")
-spill_color = SubResource("VisualShaderNodeColorConstant_82b64")
+c = Array[VisualShaderNodeColorConstant]([ExtResource("2_8dx4w"), ExtResource("3_06rjv"), ExtResource("4_og03d"), ExtResource("5_203bo")])
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ga7ec")
 
-[node name="CPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_as_relative = false
 texture_filter = 1
 emitting = false
+amount = 24
 process_material = SubResource("ParticleProcessMaterial_xp6fe")
+fixed_fps = 60
+interpolate = false
 trail_enabled = true

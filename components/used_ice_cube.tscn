@@ -14,7 +14,7 @@ input_pickable = true
 script = ExtResource("1_dfirw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
+z_index = 9
 texture_filter = 1
 texture = ExtResource("2_eyfs7")
 

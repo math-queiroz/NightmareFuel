@@ -16,6 +16,10 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="icon.png"
 
+[autoload]
+
+Autoload="*res://scripts/Common.gd"
+
 [display]
 
 window/size/viewport_width=400
@@ -41,4 +45,5 @@ mouse_press={
 2d_physics/layer_3="Table"
 2d_physics/layer_4="Draggable"
 2d_physics/layer_5="Ice"
+2d_physics/layer_6="Droplets"
 2d_physics/layer_8="IceUsed"
