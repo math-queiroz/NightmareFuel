@@ -1,7 +1,7 @@
 extends Node2D
 class_name SpillPoint
 
-const droplet_scene : PackedScene = preload("res://components/dropplet.tscn")
+const droplet_scene : PackedScene = preload("res://scenes/components/dropplet.tscn")
 const particle_speed : float = 50.0
 
 @export var use_alt_spill_point : bool
@@ -52,7 +52,7 @@ func _emit_droplet(contents, source_id):
 	for i in len(contents):
 		droplet.contents[i] = contents[i]
 	%DropletPool.add_child(droplet)
-	var particle_velocity = Vector2.UP.rotated(global_rotation) * particle_speed
+	var particle_velocity = Vector2.UP.rotated(global_rotation) * particle_speed * get_parent().scale
 	droplet.set_linear_velocity(particle_velocity)
 	particle_emitter.emit_particle(transform, Vector2.ZERO, Color.WHITE, Color.WHITE, 0)
 	

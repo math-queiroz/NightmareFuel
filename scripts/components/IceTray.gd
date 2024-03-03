@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var level_node : Level = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1) as Level
 
-const ice_cube_scene : PackedScene = preload("res://components/ice_cube.tscn")
+const ice_cube_scene : PackedScene = preload("res://scenes/components/ice_cube.tscn")
 const ice_cube_grab_sounds : Array[AudioStream] = [
 	preload("res://sounds/glass3.wav"),
 	preload("res://sounds/glass2.wav"),

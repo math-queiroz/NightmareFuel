@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkv74dp4h1o3a"]
 
-[ext_resource type="Script" path="res://scripts/Draggable.gd" id="1_dfirw"]
+[ext_resource type="Script" path="res://scripts/components/Draggable.gd" id="1_dfirw"]
 [ext_resource type="Texture2D" uid="uid://c8glfef1t120f" path="res://sprites/ice_cube_1.png" id="2_eyfs7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pa8du"]
@@ -8,6 +8,7 @@ size = Vector2(10, 10)
 
 [node name="IceCube" type="CharacterBody2D"]
 y_sort_enabled = true
+scale = Vector2(2, 2)
 collision_layer = 128
 collision_mask = 0
 input_pickable = true

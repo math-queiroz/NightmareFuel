@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c8va1d6q5rlfe"]
 
-[ext_resource type="Script" path="res://scripts/SpillPoint.gd" id="1_necec"]
+[ext_resource type="Script" path="res://scripts/components/SpillPoint.gd" id="1_necec"]
 [ext_resource type="VisualShaderNodeColorConstant" uid="uid://cgg08yray1rfv" path="res://resources/Bottle1Color.tres" id="2_8dx4w"]
 [ext_resource type="AudioStream" uid="uid://cckq2rjyo41qg" path="res://sounds/spill.wav" id="2_ga7ec"]
 [ext_resource type="VisualShaderNodeColorConstant" uid="uid://cvpajthcxnh50" path="res://resources/Bottle2Color.tres" id="3_06rjv"]
@@ -15,7 +15,8 @@ spread = 0.0
 gravity = Vector3(0, 980, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_max = 3.0
+scale_min = 3.0
+scale_max = 6.0
 color = Color(0.945098, 0, 0.964706, 1)
 collision_mode = 2
 
@@ -30,6 +31,7 @@ one_shot = true
 stream = ExtResource("2_ga7ec")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 5
 z_as_relative = false
 texture_filter = 1
 emitting = false

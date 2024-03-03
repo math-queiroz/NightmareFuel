@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bg4jjqmkvq134"]
+
+[ext_resource type="FontFile" uid="uid://b8vg5qui7og5h" path="res://resources/Geologica-Regular.ttf" id="1_3yfcn"]
+
+[resource]
+default_font = ExtResource("1_3yfcn")
+default_font_size = 9

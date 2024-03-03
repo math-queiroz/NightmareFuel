@@ -1,16 +1,16 @@
 [gd_scene load_steps=10 format=3 uid="uid://c3xx80ei5ycgw"]
 
-[ext_resource type="Script" path="res://Cup.gd" id="1_rkeq1"]
+[ext_resource type="Script" path="res://scripts/components/Cup.gd" id="1_rkeq1"]
 [ext_resource type="AudioStream" uid="uid://bslbvoirnlv0x" path="res://sounds/mug.wav" id="2_pthj0"]
 [ext_resource type="Texture2D" uid="uid://crb82o18qpi1o" path="res://sprites/cup_large.png" id="3_ooowr"]
-[ext_resource type="PackedScene" uid="uid://iroykxv0rbm2" path="res://components/liquid_sprite.tscn" id="4_qhpb8"]
-[ext_resource type="PackedScene" uid="uid://c8va1d6q5rlfe" path="res://components/spill_point.tscn" id="5_rqmf6"]
+[ext_resource type="PackedScene" uid="uid://iroykxv0rbm2" path="res://scenes/components/liquid_sprite.tscn" id="4_qhpb8"]
+[ext_resource type="PackedScene" uid="uid://c8va1d6q5rlfe" path="res://scenes/components/spill_point.tscn" id="5_rqmf6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j507e"]
 size = Vector2(18, 14)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0ttnj"]
-polygon = PackedVector2Array(-5, -8, -1, 6, 5, 6, 9, -8)
+polygon = PackedVector2Array(-7, -13, -7, 58, 11, 58, 11, -13)
 
 [sub_resource type="Shader" id="Shader_nb3gh"]
 resource_local_to_scene = true
@@ -41,7 +41,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h4ddl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ypcpy"]
 resource_local_to_scene = true
 shader = SubResource("Shader_nb3gh")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -83,7 +83,7 @@ position = Vector2(-1, 0)
 texture = ExtResource("3_ooowr")
 
 [node name="Sprite2DLiquid" parent="." instance=ExtResource("4_qhpb8")]
-material = SubResource("ShaderMaterial_h4ddl")
+material = SubResource("ShaderMaterial_ypcpy")
 position = Vector2(2, 0)
 
 [node name="SpillPoint" parent="." instance=ExtResource("5_rqmf6")]

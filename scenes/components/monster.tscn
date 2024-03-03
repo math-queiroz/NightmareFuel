@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmmu8g8vsvupm"]
+
+[ext_resource type="Script" path="res://scripts/components/Monster.gd" id="1_plwut"]
+[ext_resource type="Texture2D" uid="uid://b21acttpb0o12" path="res://sprites/speech_bubble.png" id="2_sjruk"]
+
+[node name="Monster" type="Node2D"]
+script = ExtResource("1_plwut")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Sprite2DSpeech" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(147, -10)
+texture = ExtResource("2_sjruk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2DSpeech"]
+offset_left = -66.0
+offset_top = -25.0
+offset_right = 74.0
+offset_bottom = 26.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -5
+texture_filter = 1

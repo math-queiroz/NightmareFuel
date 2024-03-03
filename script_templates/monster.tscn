@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1fimlu2tpt6k"]
+
+[ext_resource type="Script" path="res://scenes/monsters/sproutling.gd" id="1_dxf6l"]
+[ext_resource type="Texture2D" uid="uid://b21acttpb0o12" path="res://sprites/speech_bubble.png" id="2_t787i"]
+[ext_resource type="Texture2D" uid="uid://vgjtrcq8cn3t" path="res://sprites/monster_sproutling.png" id="3_ugy3a"]
+
+[sub_resource type="Animation" id="Animation_6pouf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("@SubViewport@9922/MonsterSproutling/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-220, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r23bp"]
+resource_name = "entrance"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("@SubViewport@9922/MonsterSproutling/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(0.2, 0.2, 0.2, 0.2, 0.2, 0.2),
+"update": 0,
+"values": [Vector2(-220, 0), Vector2(-180, 0), Vector2(-140, 0), Vector2(-100, 0), Vector2(-50, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f8flq"]
+resource_name = "fade"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_icat2"]
+_data = {
+"RESET": SubResource("Animation_6pouf"),
+"entrance": SubResource("Animation_r23bp"),
+"fade": SubResource("Animation_f8flq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eu0cn"]
+size = Vector2(120, 135)
+
+[node name="MonsterSproutling" type="Node2D"]
+script = ExtResource("1_dxf6l")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_icat2")
+}
+
+[node name="Area2DInteraction" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DInteraction"]
+position = Vector2(0, -18.5)
+shape = SubResource("RectangleShape2D_eu0cn")
+
+[node name="Sprite2DSpeech" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(147, -10)
+texture = ExtResource("2_t787i")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2DSpeech"]
+offset_left = -66.0
+offset_top = -25.0
+offset_right = 74.0
+offset_bottom = 26.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -5
+texture_filter = 1
+position = Vector2(-220, 0)
+texture = ExtResource("3_ugy3a")

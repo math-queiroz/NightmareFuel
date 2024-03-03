@@ -2,9 +2,9 @@ extends CharacterBody2D
 class_name Draggable
 
 const follow_force : float = 36
-const drop_dist_sqr : float = 1
+const drop_dist_sqr : float = 4
 const held_z_index : int = 10
-const tilt_dist : float = 40
+const tilt_dist : float = 75
 
 @export var hold_sound : AudioStream
 @export var hold_texture : Texture2D
@@ -14,6 +14,7 @@ const tilt_dist : float = 40
 @onready var audio_player : AudioStreamPlayer
 @onready var default_texture : Texture2D = get_node("Sprite2D").get_texture()
 
+var teleported : bool = false : set = set_teleported
 var is_held : bool = false : set = set_is_held
 var is_held_echo : bool = false
 var is_tilting : bool = false
@@ -21,6 +22,8 @@ var is_tilting : bool = false
 var last_press_pos : Vector2 = Vector2.ZERO
 var max_sqr_displace_while_tilting : float = 0.0
 
+func set_teleported(value):
+	teleported = value
 
 func set_is_held(value):
 	# Force single held object per Level
