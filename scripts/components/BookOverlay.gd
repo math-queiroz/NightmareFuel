@@ -9,7 +9,7 @@ extends Control
 
 var page : int = 0 : set = _set_page
 
-func _set_page(value):
+func _set_page(value) -> void:
 	if value < 0 or value >= last_index or value == page:
 		return
 	$PageLeft.set_text(book_pages.pages[value*2])
@@ -19,24 +19,24 @@ func _set_page(value):
 		audio_player.play()
 	page = value
 
-func _ready():
+func _ready() -> void:
 	$PageLeft.set_text(book_pages.pages[0])
 	$PageRight.set_text(book_pages.pages[1])
 
-func goto_page(idx):
+func goto_page(idx) -> void:
 	if not audio_player.playing:
 		audio_player.set_stream(book_page_next_audio_stream)
 	page = idx
 
-func next_page():
+func next_page() -> void:
 	if not audio_player.playing:
 		audio_player.set_stream(book_page_next_audio_stream)
 	page += 1
 
-func prev_page():
+func prev_page() -> void:
 	if not audio_player.playing:
 		audio_player.set_stream(book_page_prev_audio_stream)
 	page -= 1
 
-func goto_index():
+func goto_index() -> void:
 	page = 0

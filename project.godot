@@ -10,11 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Abarration"
+config/name="Nightmare Fuel"
 config/tags=PackedStringArray("2d")
-run/main_scene="res://Level.tscn"
+run/main_scene="res://scenes/Level.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="icon.png"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+config/icon="res://icon.png"
 
 [autoload]
 
@@ -24,7 +25,6 @@ Autoload="*res://scripts/Common.gd"
 
 window/size/viewport_width=800
 window/size/viewport_height=480
-window/size/initial_position_type=0
 window/stretch/mode="canvas_items"
 
 [dotnet]

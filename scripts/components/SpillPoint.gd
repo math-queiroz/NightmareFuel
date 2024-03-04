@@ -18,7 +18,7 @@ var spilling : bool = false : set = _set_spilling
 var last_contents : Array[int]
 var last_source_id : int
 
-func _set_spilling(value):
+func _set_spilling(value: bool) -> void:
 	if value:
 		if last_contents.is_empty():
 			push_warning("Tried to continuous spill null contents!")
@@ -35,17 +35,17 @@ func _set_spilling(value):
 	#particle_emitter.set_emitting(value)
 	spilling = value
 
-func _ready():
+func _ready() -> void:
 	particle_emitter.set_emitting(false)
 	particle_emitter.process_material.initial_velocity_min = particle_speed
 	spill_timer.set_wait_time(particle_emitter.lifetime / particle_emitter.amount)
 	spill_timer.connect("timeout", _start_timer if loop else stop_spilling)
-	
-func _start_timer():
+
+func _start_timer() -> void:
 	spill_timer.start()
 	_emit_droplet(last_contents, last_source_id)
-	
-func _emit_droplet(contents, source_id):
+
+func _emit_droplet(contents: Array[int], source_id: int) -> void:
 	var droplet = droplet_scene.instantiate()
 	droplet.global_transform = particle_emitter.global_transform
 	droplet.source_id = source_id
@@ -55,21 +55,21 @@ func _emit_droplet(contents, source_id):
 	var particle_velocity = Vector2.UP.rotated(global_rotation) * particle_speed * get_parent().scale
 	droplet.set_linear_velocity(particle_velocity)
 	particle_emitter.emit_particle(transform, Vector2.ZERO, Color.WHITE, Color.WHITE, 0)
-	
-func start_spilling(contents: Array[int], source_id = 0):
+
+func start_spilling(contents: Array[int], source_id: int = 0) -> void:
 	last_contents = contents
 	last_source_id = source_id
 	particle_emitter.process_material.set_color(_get_contents_color())
 	_set_spilling(true)
 
-func stop_spilling():
+func stop_spilling() -> void:
 	spill_timer.stop()
 	_set_spilling(false)
 
-func _get_contents_color():
+func _get_contents_color() -> Color:
 	return (colors[0]*last_contents[0] + colors[1]*last_contents[1] + \
 		colors[2]*last_contents[2] + colors[3]*last_contents[3]) / \
 		last_contents.reduce(func(a,v): return a+v)
 
-func _sum(a, v):
+func _sum(a: int, v: int) -> int:
 	return a+v

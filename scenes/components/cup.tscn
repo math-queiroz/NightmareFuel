@@ -10,7 +10,7 @@
 size = Vector2(18, 14)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0ttnj"]
-polygon = PackedVector2Array(-7, -13, -7, 58, 11, 58, 11, -13)
+polygon = PackedVector2Array(-7, -13, -7, 14, 11, 14, 11, -13)
 
 [sub_resource type="Shader" id="Shader_nb3gh"]
 resource_local_to_scene = true
@@ -41,7 +41,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ypcpy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_03qn5"]
 resource_local_to_scene = true
 shader = SubResource("Shader_nb3gh")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -83,7 +83,7 @@ position = Vector2(-1, 0)
 texture = ExtResource("3_ooowr")
 
 [node name="Sprite2DLiquid" parent="." instance=ExtResource("4_qhpb8")]
-material = SubResource("ShaderMaterial_ypcpy")
+material = SubResource("ShaderMaterial_03qn5")
 position = Vector2(2, 0)
 
 [node name="SpillPoint" parent="." instance=ExtResource("5_rqmf6")]

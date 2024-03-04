@@ -10,7 +10,7 @@ colors = PackedColorArray(1, 0, 0, 1)
 gradient = SubResource("Gradient_bsoiq")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omihh"]
-size = Vector2(6, 6)
+size = Vector2(4, 4)
 
 [node name="Dropplet" type="RigidBody2D"]
 collision_layer = 32

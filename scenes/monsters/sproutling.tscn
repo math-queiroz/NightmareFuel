@@ -1,34 +1,41 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwkpos0wby2sx"]
+[gd_scene load_steps=10 format=3 uid="uid://bwkpos0wby2sx"]
 
 [ext_resource type="Texture2D" uid="uid://vgjtrcq8cn3t" path="res://sprites/monster_sproutling.png" id="2_5cawl"]
 [ext_resource type="Texture2D" uid="uid://b21acttpb0o12" path="res://sprites/speech_bubble.png" id="2_ee7tn"]
+[ext_resource type="Theme" uid="uid://bg4jjqmkvq134" path="res://resources/theme.tres" id="2_fhs1d"]
 
 [sub_resource type="GDScript" id="GDScript_5iq02"]
 resource_name = "MonsterSproutling"
 script/source = "extends Monster
 
-func _ready():
+func _ready() -> void:
+	$Speech.hide()
 	arrive()
 
-func arrive():
+func arrive() -> void:
 	$AnimationPlayer.play(\"entrance\")
+	$AnimationPlayer.connect(\"animation_changed\", _on_animation_changed)
 	$AnimationPlayer.queue(\"idle\")
 
-func depart():
+func depart() -> void:
 	$AnimationPlayer.play(\"fade\")
 
-func say():
-	push_warning(\"Not implemented!\")
-		
-func on_correct_deliver():
+func say(text: String = request) -> void:
+	$Speech/RichTextLabel.set_text(text)
+	$Speech.show()
+
+func _on_animation_changed(_arg1, _arg2):
+	say(request)
+
+func on_correct_deliver() -> void:
 	print_debug(\"Sproutling is happy\")
 	depart()
 
-func on_wrong_deliver():
+func on_wrong_deliver() -> void:
 	print_debug(\"Sproutling hates you\")
 	depart()
 
-func _on_timeout():
+func _on_timeout() -> void:
 	depart()
 "
 
@@ -139,17 +146,33 @@ libraries = {
 "": SubResource("AnimationLibrary_rlnpc")
 }
 
-[node name="Sprite2DSpeech" type="Sprite2D" parent="."]
-visible = false
+[node name="Speech" type="Sprite2D" parent="."]
+z_index = -6
+z_as_relative = false
 texture_filter = 1
-position = Vector2(147, -10)
+position = Vector2(131, -50)
 texture = ExtResource("2_ee7tn")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2DSpeech"]
-offset_left = -66.0
-offset_top = -25.0
-offset_right = 74.0
-offset_bottom = 26.0
+[node name="RichTextLabel" type="RichTextLabel" parent="Speech"]
+texture_filter = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -32.5
+offset_right = 10.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+mouse_filter = 1
+theme = ExtResource("2_fhs1d")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet"
+fit_content = true
+scroll_active = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -5

@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var level_node : Level = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1) as Level
 
-func _on_body_entered(body: PhysicsBody2D):
+func _on_body_entered(body: PhysicsBody2D) -> void:
 	if body is Droplet:
 		level_node.set_sanity(level_node.sanity - Common.base_spill_sanity_drain)
 		return

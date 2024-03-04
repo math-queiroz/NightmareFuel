@@ -7,7 +7,7 @@ var melt_sprites = [
 	preload("res://sprites/ice_cube_3.png")
 ]
 
-func melt():
+func melt() -> void:
 	melt_state += 1
 	if (melt_state >= len(melt_sprites)):
 		queue_free()

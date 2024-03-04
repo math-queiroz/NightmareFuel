@@ -2,9 +2,9 @@ extends CharacterBody2D
 class_name Draggable
 
 const follow_force : float = 36
-const drop_dist_sqr : float = 4
+const drop_dist_sqr : float = 6
 const held_z_index : int = 10
-const tilt_dist : float = 75
+const tilt_dist : float = 120
 
 @export var hold_sound : AudioStream
 @export var hold_texture : Texture2D
@@ -22,10 +22,10 @@ var is_tilting : bool = false
 var last_press_pos : Vector2 = Vector2.ZERO
 var max_sqr_displace_while_tilting : float = 0.0
 
-func set_teleported(value):
+func set_teleported(value: bool) -> void:
 	teleported = value
 
-func set_is_held(value):
+func set_is_held(value: bool) -> void:
 	# Force single held object per Level
 	if level_node.held_object == null or level_node.held_object == self:
 		level_node.held_object = self if value else null
@@ -40,13 +40,13 @@ func set_is_held(value):
 	z_index = held_z_index if value else default_z_index
 	is_held = value
 
-func _ready():
+func _ready() -> void:
 	if hold_sound != null:
 		audio_player = AudioStreamPlayer.new()
 		audio_player.set_stream(hold_sound)
 		add_child(audio_player)
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if is_tilting:
 		rotation = PI * clamp(_get_hold_delta().x / tilt_dist, -1, 1)
 		max_sqr_displace_while_tilting = max(max_sqr_displace_while_tilting, _get_hold_delta().length_squared())
@@ -59,11 +59,11 @@ func _process(delta):
 			move_and_slide()
 
 
-func _unhandled_input(event):
+func _unhandled_input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 		is_tilting = false
 
-func _input_event(_viewport, event, _shape_idx):
+func _input_event(_viewport, event, _shape_idx) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			last_press_pos = get_global_mouse_position()
@@ -80,5 +80,5 @@ func _input_event(_viewport, event, _shape_idx):
 				if max_sqr_displace_while_tilting < drop_dist_sqr:
 						is_held = false
 
-func _get_hold_delta():
+func _get_hold_delta() -> Vector2:
 	return get_global_mouse_position() - last_press_pos

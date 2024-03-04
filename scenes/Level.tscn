@@ -4,13 +4,13 @@
 [ext_resource type="Theme" uid="uid://bg4jjqmkvq134" path="res://resources/theme.tres" id="2_fe8gt"]
 [ext_resource type="Shader" path="res://shaders/pixelated_background.gdshader" id="3_i87sa"]
 [ext_resource type="Script" path="res://scripts/components/AnimatedBG.gd" id="4_785ru"]
-[ext_resource type="Script" path="res://scripts/components/IndicatorContainer.gd" id="5_b7hnk"]
+[ext_resource type="Script" path="res://scripts/components/ShowOnHover.gd" id="5_o1y2e"]
 [ext_resource type="Texture2D" uid="uid://b6qw5x8p3dh0a" path="res://sprites/bar_frames.png" id="6_2r78u"]
 [ext_resource type="Script" path="res://scripts/components/Indicators.gd" id="7_epfbi"]
 [ext_resource type="Texture2D" uid="uid://dpxa1u5iljjnr" path="res://sprites/bar_labels.png" id="8_akk25"]
 [ext_resource type="Texture2D" uid="uid://dvrcs54d1ndg7" path="res://sprites/bar_time.png" id="9_nyadi"]
 [ext_resource type="Texture2D" uid="uid://bnqr4j3hgta8t" path="res://sprites/bar_sanity.png" id="10_11rv7"]
-[ext_resource type="Script" path="res://scripts/components/Client.gd" id="11_urmst"]
+[ext_resource type="Script" path="res://scripts/components/CustomerManager.gd" id="11_1ay8c"]
 [ext_resource type="Texture2D" uid="uid://cl6lk5tp00bov" path="res://sprites/table.png" id="12_ajjyd"]
 [ext_resource type="Script" path="res://scripts/components/IceTray.gd" id="13_bjs4r"]
 [ext_resource type="PackedScene" uid="uid://dydrl2jcvr54u" path="res://scenes/components/shadow.tscn" id="14_33tf5"]
@@ -88,7 +88,7 @@ diffuse_texture = ExtResource("12_ajjyd")
 texture_filter = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4satd"]
-size = Vector2(400, 26)
+size = Vector2(400, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svdcj"]
 size = Vector2(389, 12)
@@ -113,7 +113,7 @@ radius = 19.0
 size = Vector2(14, 26)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a8htp"]
-polygon = PackedVector2Array(-4, -1, -1.5, 21.5, 5, 21.5, 8, -1)
+polygon = PackedVector2Array(-5, -3.5, -2.5, 7, 7, 7, 9.5, -3.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bdipf"]
 size = Vector2(18, 14)
@@ -147,7 +147,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4ral"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5f473"]
 resource_local_to_scene = true
 shader = SubResource("Shader_f5rwj")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -160,7 +160,7 @@ shader_parameter/RimBightness = -0.2
 shader_parameter/Percentage = 0.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lr6c1"]
-polygon = PackedVector2Array(-7.5, 3, -4.5, 34, 5, 34, 10, 3)
+polygon = PackedVector2Array(-10, -5.5, -5, 10, 8.5, 10, 11.5, -5.5)
 
 [sub_resource type="Shader" id="Shader_k6wut"]
 code = "shader_type canvas_item;
@@ -191,7 +191,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_655xr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5l23u"]
 resource_local_to_scene = true
 shader = SubResource("Shader_k6wut")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -204,7 +204,7 @@ shader_parameter/RimBightness = -0.2
 shader_parameter/Percentage = 0.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_iytb4"]
-polygon = PackedVector2Array(-9, 5, -8.5, 38, 10.5, 38.5, 12, 5)
+polygon = PackedVector2Array(-8, -11, -11, 16.5, 15.5, 16.5, 12.5, -11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j507e"]
 size = Vector2(18, 14)
@@ -238,7 +238,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8e8bw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7j2q"]
 resource_local_to_scene = true
 shader = SubResource("Shader_w6bqu")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -255,10 +255,10 @@ diffuse_texture = ExtResource("55_41ku8")
 texture_filter = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fqae"]
-size = Vector2(6, 211)
+size = Vector2(4.5, 231)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pb45"]
-size = Vector2(5, 211)
+size = Vector2(5, 232)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0u3q2"]
 size = Vector2(648, 20)
@@ -268,7 +268,7 @@ script = ExtResource("1_pyr82")
 
 [node name="LevelTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 120.0
+wait_time = 240.0
 one_shot = true
 
 [node name="UI" type="Control" parent="."]
@@ -307,7 +307,7 @@ offset_right = 656.0
 offset_bottom = 56.0
 scale = Vector2(2, 2)
 mouse_filter = 1
-script = ExtResource("5_b7hnk")
+script = ExtResource("5_o1y2e")
 
 [node name="IndicatorFrame" type="Sprite2D" parent="UI/IndicatorsContainer"]
 unique_name_in_owner = true
@@ -358,10 +358,10 @@ texture_progress = SubResource("CanvasTexture_ohgur")
 unique_name_in_owner = true
 position = Vector2(358, 278)
 scale = Vector2(2, 2)
-script = ExtResource("11_urmst")
+script = ExtResource("11_1ay8c")
 
 [node name="Area2DCustomerInteraction" type="Area2D" parent="CustomerManager"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.718711, 0.718711)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerManager/Area2DCustomerInteraction"]
 position = Vector2(-2.5, -57)
@@ -376,7 +376,7 @@ collision_layer = 4
 texture = SubResource("CanvasTexture_dgkbj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
-position = Vector2(-1, 18)
+position = Vector2(-1, 23)
 shape = SubResource("RectangleShape2D_4satd")
 
 [node name="Upper" type="StaticBody2D" parent="Table"]
@@ -570,7 +570,7 @@ max_polyphony = 8
 
 [node name="Bottle4" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(711, 272)
+position = Vector2(733, 279)
 scale = Vector2(2, 2)
 collision_layer = 8
 collision_mask = 3
@@ -595,7 +595,7 @@ position = Vector2(0, -19)
 
 [node name="Bottle3" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(667, 293)
+position = Vector2(649, 269)
 scale = Vector2(2, 2)
 collision_layer = 8
 collision_mask = 3
@@ -624,7 +624,7 @@ position = Vector2(0, -24)
 
 [node name="Bottle2" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(632, 251)
+position = Vector2(595, 275)
 scale = Vector2(2, 2)
 collision_layer = 8
 collision_mask = 3
@@ -648,7 +648,7 @@ position = Vector2(0, -22)
 
 [node name="Bottle1" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(586, 257)
+position = Vector2(536, 257)
 scale = Vector2(2, 2)
 collision_layer = 8
 collision_mask = 3
@@ -661,7 +661,7 @@ hold_texture = ExtResource("43_t3ewn")
 polygon = PackedVector2Array(-20, 38, -8, -38, 9, -38, 20, 38)
 
 [node name="Sprite2D" type="Sprite2D" parent="Bottle1"]
-z_index = 2
+z_index = 1
 y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("44_cm3ww")
@@ -671,7 +671,7 @@ position = Vector2(0, -31)
 
 [node name="CupSmall" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(736, 222)
+position = Vector2(724, 406)
 scale = Vector2(2, 2)
 collision_layer = 8
 collision_mask = 5
@@ -704,7 +704,7 @@ texture = ExtResource("47_f1782")
 
 [node name="Sprite2DLiquid" parent="CupSmall" instance=ExtResource("48_v15ix")]
 z_index = 8
-material = SubResource("ShaderMaterial_o4ral")
+material = SubResource("ShaderMaterial_5f473")
 texture = ExtResource("49_ia11j")
 
 [node name="SpillPoint" parent="CupSmall" instance=ExtResource("35_3uqy7")]
@@ -717,7 +717,7 @@ position = Vector2(14, 0)
 
 [node name="CupMedium" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(716, 200)
+position = Vector2(560, 405)
 scale = Vector2(2, 2)
 collision_layer = 8
 collision_mask = 5
@@ -751,7 +751,7 @@ texture = ExtResource("51_cswak")
 
 [node name="Sprite2DLiquid" parent="CupMedium" instance=ExtResource("48_v15ix")]
 z_index = 7
-material = SubResource("ShaderMaterial_655xr")
+material = SubResource("ShaderMaterial_5l23u")
 texture = ExtResource("52_hgo2k")
 
 [node name="SpillPoint" parent="CupMedium" instance=ExtResource("35_3uqy7")]
@@ -764,7 +764,7 @@ position = Vector2(20, 0)
 
 [node name="CupLarge" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(670, 196)
+position = Vector2(645, 391)
 scale = Vector2(2, 2)
 collision_layer = 8
 collision_mask = 5
@@ -799,7 +799,7 @@ texture = ExtResource("54_8bst2")
 
 [node name="Sprite2DLiquid" parent="CupLarge" instance=ExtResource("48_v15ix")]
 z_index = 6
-material = SubResource("ShaderMaterial_8e8bw")
+material = SubResource("ShaderMaterial_w7j2q")
 position = Vector2(2, 0)
 
 [node name="SpillPoint" parent="CupLarge" instance=ExtResource("35_3uqy7")]
@@ -821,11 +821,11 @@ position = Vector2(200, 120)
 texture = SubResource("CanvasTexture_p4c3i")
 
 [node name="CollisionShape2DLeft" type="CollisionShape2D" parent="Frame"]
-position = Vector2(3, 108.5)
+position = Vector2(2.25, 118.5)
 shape = SubResource("RectangleShape2D_4fqae")
 
 [node name="CollisionShape2DRight" type="CollisionShape2D" parent="Frame"]
-position = Vector2(397.5, 108.5)
+position = Vector2(397.5, 119)
 shape = SubResource("RectangleShape2D_4pb45")
 
 [node name="Area2DOutOfBounds" type="Area2D" parent="."]

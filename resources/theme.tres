@@ -1,7 +1,31 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bg4jjqmkvq134"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bg4jjqmkvq134"]
 
 [ext_resource type="FontFile" uid="uid://b8vg5qui7og5h" path="res://resources/Geologica-Regular.ttf" id="1_3yfcn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8446"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxa0p"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h40ac"]
+bg_color = Color(1, 1, 1, 0.25098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ck72f"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xb3v"]
 
 [resource]
 default_font = ExtResource("1_3yfcn")
 default_font_size = 9
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_o8446")
+Button/styles/focus = SubResource("StyleBoxFlat_yxa0p")
+Button/styles/hover = SubResource("StyleBoxFlat_h40ac")
+Button/styles/normal = SubResource("StyleBoxFlat_ck72f")
+Button/styles/pressed = SubResource("StyleBoxFlat_6xb3v")

@@ -8,14 +8,14 @@ class_name Bottle
 
 var was_spilling : bool = false
 
-func _ready():
+func _ready() -> void:
 	super._ready()
 	contents[bottle_content_id] = 1
 
-func _process(delta):
+func _process(delta: float) -> void:
 	super._process(delta)
 	if is_held:
-		var should_spill = is_tilting and rotation_degrees < -100 or rotation_degrees > 100
+		var should_spill = is_tilting and rotation_degrees < -90 or rotation_degrees > 90
 		if should_spill and not was_spilling:
 			was_spilling = true
 			spill_point.start_spilling(contents)

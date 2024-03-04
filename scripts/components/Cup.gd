@@ -20,21 +20,21 @@ var has_teleported_ice : bool = false
 
 var lerp_percentage : float = 0.0
 
-func get_contents_sum():
+func get_contents_sum() -> int:
 	return contents.reduce(func(a,v): return a+v)
 
-func set_is_held(value):
+func set_is_held(value: bool) -> void:
 	super.set_is_held(value)
 	if value:
 		particle_collider.hide()
 	elif get_contents_sum() < cup_capacity:
-		particle_collider.show()		
+		particle_collider.show()
 
-func _ready():
+func _ready() -> void:
 	super._ready()
 	contents_area.connect("body_entered", _on_area_2d_contents_body_entered)
 
-func _process(delta):
+func _process(delta: float) -> void:
 	super._process(delta)
 	if is_tilting:
 		if rotation_degrees > ice_fall_angle || rotation_degrees < -ice_fall_angle:
@@ -57,25 +57,25 @@ func _process(delta):
 				spill_point.start_spilling(spill_contents, source_id)
 				on_value_updated()
 
-func _drain(drain_amount) -> Array[int]:
+func _drain(drain_amount: int) -> Array[int]:
 	var acc : Array[int] = [0,0,0,0]
 	for i in len(contents):
 		acc[i] = min(drain_amount, contents[i])
 		contents[i] = max(0, contents[i] - drain_amount)
 	return acc
 
-func on_deliver():
+func on_deliver() -> void:
 	contents = [0,0,0,0]
 	ice_cubes = 0
 	has_teleported_ice = false
 	on_value_updated()
 
-func on_value_updated():
+func on_value_updated() -> void:
 	liquid_sprite.get_material().set("shader_parameter/Percentage", float(get_contents_sum())/cup_capacity)
 	var weights = Plane(contents[0], contents[1], contents[2], contents[3])
 	liquid_sprite.get_material().set("shader_parameter/Weights", weights)
 
-func _on_area_2d_contents_body_entered(body):
+func _on_area_2d_contents_body_entered(body: Node2D) -> void:
 	if body is Droplet and body.source_id != source_id and get_contents_sum() < cup_capacity:
 		for i in len(contents):
 			contents[i] += body.contents[i]

@@ -9,7 +9,7 @@ const ice_cube_grab_sounds : Array[AudioStream] = [
 	preload("res://sounds/glass4.wav")
 ]
 
-func _on_input_event(_viewport, event, _shape_idx):
+func _on_input_event(_viewport, event, _shape_idx) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT \
 		and event.pressed and level_node.held_object == null:
 		# Melt previous existing cubes
@@ -23,12 +23,12 @@ func _on_input_event(_viewport, event, _shape_idx):
 		cube.is_held = true
 		_play_ice_sound()
 
-func _on_body_entered(body):
+func _on_body_entered(body) -> void:
 	if body is IceCube and not body.is_held:
 		body.queue_free()
 		_play_ice_sound(true)
 
-func _play_ice_sound(drop = false):
+func _play_ice_sound(drop: bool = false) -> void:
 		%AudioStreamPlayerIceTray.set_pitch_scale(randf_range(0.9,1.1))
 		%AudioStreamPlayerIceTray.set_stream(ice_cube_grab_sounds[0 if drop else randi_range(1,2)])
 		%AudioStreamPlayerIceTray.play()
