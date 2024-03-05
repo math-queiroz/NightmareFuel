@@ -10,16 +10,17 @@ config_version=5
 
 [application]
 
-config/name="Nightmare Fuel"
+config/name="NightmareFuel"
 config/tags=PackedStringArray("2d")
-run/main_scene="res://scenes/Level.tscn"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.png"
 
 [autoload]
 
-Autoload="*res://scripts/Common.gd"
+Autoload="*res://scripts/autoload/Common.gd"
+Settings="*res://scripts/autoload/Settings.gd"
 
 [display]
 

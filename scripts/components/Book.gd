@@ -6,20 +6,22 @@ extends Area2D
 @export var book_prev_page_sound : AudioStream
 
 @onready var level_node : Level = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1) as Level
+@onready var book_overlay : Control = %BookOverlay
+@onready var audio_player : AudioStreamPlayer = $AudioStreamPlayerBook
+
+func set_open(value: bool, silent: bool = false) -> void:
+	book_overlay.set_visible(value)
+	$Sprite2DBook.set_visible(!value)
+	if not silent:
+		_play_audio(book_open_sound if value else book_close_sound)
 
 func _on_input_event(_viewport, event, _shape_idx) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT \
 		and event.pressed and level_node.held_object == null:
-		if(%Sprite2DBook.visible):
-			%Sprite2DOverlay.set_visible(true)
-			%Sprite2DBook.set_visible(false)
-			_play_audio(book_open_sound)
-		else:
-			%Sprite2DOverlay.set_visible(false)
-			%Sprite2DBook.set_visible(true)
-			_play_audio(book_close_sound)
+		set_open($Sprite2DBook.visible)
 
 func _play_audio(stream) -> void:
-	%AudioStreamPlayerBook.set_stream(stream)
-	%AudioStreamPlayerBook.set_pitch_scale(randf_range(0.8,1.1))
-	%AudioStreamPlayerBook.play()
+	audio_player.set_stream(stream)
+	audio_player.set_pitch_scale(randf_range(0.8,1.1))
+	if audio_player.is_inside_tree():
+		audio_player.play()

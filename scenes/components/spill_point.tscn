@@ -29,6 +29,7 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ga7ec")
+bus = &"Sound"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = 5

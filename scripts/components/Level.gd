@@ -1,31 +1,31 @@
 extends Node
 class_name Level
 
-# 0.087 is enough to lose 21 sanity over 240 seconds (needs to serve at least 3 clients to win)
-const passive_sanity_drain_per_second : float = 0.087
-const correct_order_sanity_multiplier : float = 1.0
-const wrong_order_sanity_multiplier : float = 1.0
-const spill_sanity_multiplier : float = 1.0
-const monster_pool = [
-	preload("res://scenes/monsters/sproutling.tscn"),
-	preload("res://scenes/monsters/anglerslug.tscn"),
-]
+# Chaning this values has no effects on actual parameters
+# they are just labels to "magic number" used on sanity_drain
+const MAX_SANITY : int = 16
+const CYCLE_DURATION_SECONDS : int = 120
 
-const special_monster = preload("res://scenes/monsters/special_knight.tscn")
+@export_category("Level parameters")
+@export var cycle : int = 1
+@export var monster_pool : Array[PackedScene]
+@export var special_monster : PackedScene
+@export var next_level : PackedScene
 
-@onready var client_manager : CustomerManager = %CustomerManager
+@export_category("Level difficulty")
+@export var minimum_needed_sanity : int = 6
+@export var avaliable_cups : int = 1
+@export var avaliable_bottles : int = 2
+@export var is_ice_avaliable : bool = false
+@export var correct_order_sanity_gain: float = 2.0
+@export var wrong_order_sanity_drain : float = 2.0
+@export var spill_sanity_drain : float = 0.1
+
+@onready var passive_sanity_drain_per_second : float = float(MAX_SANITY + minimum_needed_sanity) / CYCLE_DURATION_SECONDS
 @onready var timer : Timer = %LevelTimer
-
-# Setting the cycle via export wasn't bringing correct parameters for some reason...
-# so now each level will inherit a base level class and change (along other things)
-# these values below
-var cycle : int = 5
-var avaliable_cups : int = Common.get_avaliable_cups(cycle)
-var avaliable_bottles : int = Common.get_avaliable_bottles(cycle)
-var is_ice_avaliable : bool = Common.get_is_ice_avaliable(cycle)
-
-var customers_served = 0
-var score_sum = 0
+@onready var client_manager : CustomerManager = $CustomerManager
+@onready var music : AnimationPlayer = $AnimationPlayerMusic
+@onready var level_ui : LevelUI = $LevelUI
 
 var sanity : float = 16 : set = set_sanity
 var held_object : Draggable
@@ -39,10 +39,9 @@ func set_sanity(value):
 	sanity = value
 
 func _ready():
-	DisplayServer.window_set_size(Vector2i(1200, 800))
+	%ScreenFader.play_backwards("fade")
 	if cycle == 1:
-		%Sprite2DOverlay.set_visible(true)
-		%Sprite2DBook.set_visible(false)
+		%Book.set_open(true, true)
 	timer.connect("timeout", _on_time_depleted)
 	%IndicatorFrame.set_cycle_number(cycle)
 	%AnimatedBG.material.set("shader_parameter/RandomSeed", randf())
@@ -54,14 +53,13 @@ func _process(delta):
 func start_cycle():
 	if not cycle_started:
 		%IndicatorFrame.on_cycle_start()
-		%Sprite2DOverlay.set_visible(false)
-		%Sprite2DBook.set_visible(true)
 		cycle_started = true
 		timer.start()
+		music.play("level_music")
 		client_manager.summon_random_customer()
 
 func finish_level():
-	pass
+	%Book.set_open(false)
 
 func _on_sanity_depleted():
 	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")

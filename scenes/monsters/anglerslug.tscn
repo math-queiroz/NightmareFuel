@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://du0l42wtsnop3"]
+[gd_scene load_steps=9 format=3 uid="uid://b5q8jstedl24m"]
 
-[ext_resource type="Texture2D" uid="uid://b21acttpb0o12" path="res://sprites/speech_bubble.png" id="1_ydftj"]
+[ext_resource type="PackedScene" uid="uid://bmmu8g8vsvupm" path="res://scenes/components/monster.tscn" id="1_h3m4u"]
 [ext_resource type="Texture2D" uid="uid://cj8dmveatjlu0" path="res://sprites/monster_mouth.png" id="2_ldyrv"]
-[ext_resource type="Theme" uid="uid://bg4jjqmkvq134" path="res://resources/theme.tres" id="3_mm51l"]
 
-[sub_resource type="GDScript" id="GDScript_5iq02"]
+[sub_resource type="GDScript" id="GDScript_s3rm2"]
 resource_name = "MonsterSproutling"
 script/source = "extends Monster
 
@@ -160,44 +159,15 @@ _data = {
 "idle": SubResource("Animation_40g68")
 }
 
-[node name="MonsterAnglerslug" type="Node2D"]
-script = SubResource("GDScript_5iq02")
+[node name="Monster" instance=ExtResource("1_h3m4u")]
+script = SubResource("GDScript_s3rm2")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_rlnpc")
 }
 
-[node name="Speech" type="Sprite2D" parent="."]
-z_index = -6
-texture_filter = 1
-position = Vector2(131, -50)
-texture = ExtResource("1_ydftj")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Speech"]
-texture_filter = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -32.5
-offset_right = 10.0
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-mouse_filter = 1
-theme = ExtResource("3_mm51l")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-bbcode_enabled = true
-text = "Lorem ipsum dolor sit amet"
-fit_content = true
-scroll_active = false
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
 z_index = -5
 texture_filter = 1
 position = Vector2(-220, 0)

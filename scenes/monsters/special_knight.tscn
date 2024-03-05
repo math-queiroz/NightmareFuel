@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl16pdommv1lk"]
+[gd_scene load_steps=9 format=3 uid="uid://c8v3nakymi7jg"]
 
-[ext_resource type="Texture2D" uid="uid://b21acttpb0o12" path="res://sprites/speech_bubble.png" id="1_yjdlb"]
-[ext_resource type="Texture2D" uid="uid://b572qpldjnwqa" path="res://sprites/monster_knight.png" id="2_3f7e8"]
+[ext_resource type="PackedScene" uid="uid://bmmu8g8vsvupm" path="res://scenes/components/monster.tscn" id="1_cd1xx"]
+[ext_resource type="Texture2D" uid="uid://b572qpldjnwqa" path="res://sprites/monster_knight.png" id="2_2ni6v"]
 
-[sub_resource type="GDScript" id="GDScript_5iq02"]
+[sub_resource type="GDScript" id="GDScript_2rebg"]
 resource_name = "MonsterSproutling"
 script/source = "extends Monster
 
@@ -17,7 +17,7 @@ func arrive() -> void:
 func depart() -> void:
 	$AnimationPlayer.play(\"fade\")
 
-func say(text: String) -> void:
+func say(_text: String) -> void:
 	push_warning(\"Not implemented!\")
 
 func on_correct_deliver() -> void:
@@ -129,30 +129,19 @@ _data = {
 "idle": SubResource("Animation_mw6i0")
 }
 
-[node name="MonsterSproutling" type="Node2D"]
-script = SubResource("GDScript_5iq02")
+[node name="Monster" instance=ExtResource("1_cd1xx")]
+script = SubResource("GDScript_2rebg")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="RichTextLabel" parent="Speech" index="0"]
+text = "..."
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_rlnpc")
 }
 
-[node name="Sprite2DSpeech" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(147, -10)
-texture = ExtResource("1_yjdlb")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2DSpeech"]
-offset_left = -66.0
-offset_top = -25.0
-offset_right = 74.0
-offset_bottom = 26.0
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
 z_index = -5
 texture_filter = 1
 position = Vector2(-220, 0)
-texture = ExtResource("2_3f7e8")
+texture = ExtResource("2_2ni6v")

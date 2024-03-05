@@ -1,0 +1,146 @@
+[gd_resource type="Resource" script_class="BookPages" load_steps=2 format=3 uid="uid://bmytwcp1n235c"]
+
+[ext_resource type="Script" path="res://scripts/custom_resources/BookPages.gd" id="1_tv2on"]
+
+[resource]
+script = ExtResource("1_tv2on")
+pages = Array[String](["[center][u]Index
+
+
+0. Welcome
+
+1. The Basics
+
+2. Know your Bottles
+
+3. Know your Clients
+[/u][i]but not too much[/i][u]
+
+4. Progression
+
+5. Good Luck!", "[center][u]Welcome[/u]
+
+
+You now work at  [i]A Bar Ration[/i],
+a bar for... unusual customeers
+
+Your job is to serve drinks
+according to thier orders
+
+If you just arrived, this book is your [s]only[/s] best friend, so make sure to give it a read
+
+
+[i](Tap the page sides to navigate)[/i]
+", "[center][u]The Basics - Interaction[/u]
+
+
+Tap on interactable objects to grab them, no need to hold
+
+Tap, hold and move left and right while holding something to tilt
+
+Try not to spill liquids, customeers may become angry
+and you may become quite uneasy
+
+There are different kinds of drinks you can mix up
+", "[center][u]The Basics - Cycles[/u]
+
+
+The time orb at top right shows the cycle your're on
+
+There are 5 cycles in total
+
+Upper bar shows time
+Lower bar shows sanity
+
+
+
+
+[i](Better not to reach zero)[/i]", "[center][u]Know your Bottles[/u]
+
+
+[u]Rock Bottom[/u]
+A tasteless yellow drink
+[i]I mean, at least it's cheap, right?[/i]
+
+
+
+[u]Starburst[/u]
+Just like sparkling purple stars
+[i]It's even better than Pan Galactic Gargle Blaster[/i]
+", "[center][u]Know your Bottles[/u]
+
+
+[u]Life Elixir[/u]
+Red as blood, strong as death
+[i]Not the best for the undead...[/i]
+
+
+
+[u]Moonshine[/u]
+Blue, light and volatile
+[i]Wait, you're not a cop, are you?[/i]
+", "[center][u]Know your Containers[/u]
+
+
+[u]Shot Glass[/u]
+Holds 20 units
+[i]And only 1 ice cube[/i]
+
+
+
+[u]Medium Glass[/u]
+Holds 35 units
+[i]And up to 2 ice cubes[/i]", "[center][u]Know your Containers[/u]
+
+
+[u]Large Mug[/u]
+Holds 50 units
+[i]And up to 3 ice cubes[/i]
+", "[center]Know your Clients
+[u]Swamp[/u]
+
+
+Swamp creatues only groans
+
+They know no numbers, so they only ask fo exclusive or 50/50 mix drinks
+
+\"Alhgr\", \"Jhrgr\" and \"Urrgr\" means small, medium and large cups respectively
+
+Msghh followed by _, __ or ___
+Where _ is the letter/ice count", "[center]Know your Clients
+[u]Swamp[/u]
+
+
+[table=3]
+[cell]Arhg[/cell]		[cell] ..................  [/cell]	[cell]Yellow[/cell]
+[cell]Aahhrgh[/cell]	[cell] ..................  [/cell]	[cell]Purple[/cell]
+[cell]Arhrr[/cell]	[cell] ..................  [/cell]	[cell]Red[/cell]
+[cell]Ahrggru[/cell]	[cell] ..................  [/cell]	[cell]Blue[/cell]
+[cell] [/cell][cell] [/cell][cell] [/cell]
+[cell]Hrhar[/cell]	[cell] ..................  [/cell]	[cell]Tasteless[/cell]
+[cell]Hrurg[/cell]	[cell] ..................  [/cell]	[cell]Sparkly[/cell]
+[cell]Rrrrh[/cell]	[cell] ..................  [/cell]	[cell]Strong[/cell]
+[cell]Rhhgj[/cell]	[cell] ..................  [/cell]	[cell]Light[/cell]
+[/table]
+
+[i]\"Words\" other than these are gibberish[/i]", "[center][u]Progression[/u]
+
+
+As you progress through the cycles, you will unlock features
+Make sure to come back to the entire book
+
+Feel free to explore and get used to the interactions,
+just try not to make a mess
+and maybe stay sane
+
+When you're ready to begin
+just ring the bell", "
+
+
+
+[center][u]Good Luck![/u]
+
+
+Oh, and remember
+Teleported ice tastes awful
+[i](at least for most of us)[/i]"])

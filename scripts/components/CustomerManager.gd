@@ -48,11 +48,13 @@ func _on_area_2d_customer_interaction_input_event(_viewport, event, _shape_idx) 
 			var deliver_score = evaluate_order_deliver(delivered)
 
 			if deliver_score >= deliver_score_treshold:
-				var s = Common.base_correct_order_sanity_gain * level_node.correct_order_sanity_multiplier
+				$AnimationPlayerScore.play("score_up")
+				var s = level_node.correct_order_sanity_gain
 				monster.on_correct_deliver()
 				level_node.set_sanity(level_node.sanity + s)
 			else:
-				var s = Common.base_wrong_order_sanity_drain * level_node.wrong_order_sanity_multiplier
+				$AnimationPlayerScore.play("score_down")
+				var s = level_node.wrong_order_sanity_drain
 				monster.on_wrong_deliver()
 				level_node.set_sanity(level_node.sanity - s)
 		else:
@@ -94,9 +96,11 @@ func summon_random_customer() -> void:
 	summon_customer(level_node.monster_pool[randi_range(0, len(level_node.monster_pool)-1)])
 
 func summon_customer(customer: PackedScene):
+	# Hide book to show sprite
+	%Book.set_open(false)
 	monster = customer.instantiate()
 	monster.connect("tree_exited", _on_monster_departed)
-	add_child(monster)
+	add_child.call_deferred(monster)
 	place_order(monster.realm)
 	var request = generate_order_request(monster.realm)
 	print_debug(request)
@@ -151,4 +155,5 @@ func swamp_order_to_text(o: Common.Order) -> String:
 	for i in randi_range(swamp_min_max_agregators.x, swamp_min_max_agregators.y):
 		tokens.append(swapm_agregators.pick_random())
 
+	tokens.shuffle()
 	return " ".join(tokens)

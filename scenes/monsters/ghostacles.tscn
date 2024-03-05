@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b65cosr8j2db2"]
+[gd_scene load_steps=9 format=3 uid="uid://g76sxr7ne7c3"]
 
-[ext_resource type="Texture2D" uid="uid://b21acttpb0o12" path="res://sprites/speech_bubble.png" id="1_wr0sv"]
+[ext_resource type="PackedScene" uid="uid://bmmu8g8vsvupm" path="res://scenes/components/monster.tscn" id="1_xjvrv"]
 [ext_resource type="Texture2D" uid="uid://k074qw48kf0u" path="res://sprites/monster_eye.png" id="2_glg80"]
-[ext_resource type="Theme" uid="uid://bg4jjqmkvq134" path="res://resources/theme.tres" id="2_tko3j"]
 
-[sub_resource type="GDScript" id="GDScript_5iq02"]
+[sub_resource type="GDScript" id="GDScript_ggk1u"]
 resource_name = "MonsterSproutling"
 script/source = "extends Monster
 
@@ -154,45 +153,15 @@ _data = {
 "idle": SubResource("Animation_40g68")
 }
 
-[node name="MonsterGhostacles" type="Node2D"]
-script = SubResource("GDScript_5iq02")
-realm = 1
+[node name="Monster" instance=ExtResource("1_xjvrv")]
+script = SubResource("GDScript_ggk1u")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_rlnpc")
 }
 
-[node name="Speech" type="Sprite2D" parent="."]
-z_index = -6
-texture_filter = 1
-position = Vector2(131, -50)
-texture = ExtResource("1_wr0sv")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Speech"]
-texture_filter = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -32.5
-offset_right = 10.0
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-mouse_filter = 1
-theme = ExtResource("2_tko3j")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-bbcode_enabled = true
-text = "Lorem ipsum dolor sit amet"
-fit_content = true
-scroll_active = false
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
 z_index = -5
 texture_filter = 1
 position = Vector2(-220, 0)

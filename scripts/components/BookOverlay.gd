@@ -39,4 +39,6 @@ func prev_page() -> void:
 	page -= 1
 
 func goto_index() -> void:
+	if not audio_player.playing:
+		audio_player.set_stream(book_page_prev_audio_stream)
 	page = 0

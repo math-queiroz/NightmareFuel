@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Draggable
 
 const follow_force : float = 36
-const drop_dist_sqr : float = 6
+const drop_dist_sqr : float = 225
 const held_z_index : int = 10
 const tilt_dist : float = 120
 
@@ -44,6 +44,7 @@ func _ready() -> void:
 	if hold_sound != null:
 		audio_player = AudioStreamPlayer.new()
 		audio_player.set_stream(hold_sound)
+		audio_player.set_bus("Sound")
 		add_child(audio_player)
 
 func _process(delta: float) -> void:

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtjg6em0w452o"]
+
+[ext_resource type="Theme" uid="uid://bg4jjqmkvq134" path="res://resources/theme.tres" id="1_yyaaj"]
+
+[sub_resource type="GDScript" id="GDScript_m425c"]
+script/source = "extends Button
+
+func _on_pressed():
+	get_tree().change_scene_to_file(\"res://scenes/Level.tscn\")
+
+
+func _on_return_pressed():
+	pass # Replace with function body.
+"
+
+[node name="Start" type="Button"]
+theme = ExtResource("1_yyaaj")
+theme_override_font_sizes/font_size = 12
+text = "Start"
+script = SubResource("GDScript_m425c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Sound"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

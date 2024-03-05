@@ -1,0 +1,254 @@
+[gd_scene load_steps=29 format=3 uid="uid://m3vdfrx2ftpi"]
+
+[ext_resource type="PackedScene" uid="uid://dqaxloj2f6ui0" path="res://scenes/Level.tscn" id="1_lnbma"]
+[ext_resource type="Script" path="res://scripts/components/IceTray.gd" id="2_aroug"]
+[ext_resource type="PackedScene" uid="uid://dydrl2jcvr54u" path="res://scenes/components/shadow.tscn" id="3_36tte"]
+[ext_resource type="Texture2D" uid="uid://ckg6ht3g4xkj7" path="res://sprites/shadow_medium.png" id="4_710ln"]
+[ext_resource type="Texture2D" uid="uid://ck4n334pm4h5g" path="res://sprites/Ice.png" id="5_rqmib"]
+[ext_resource type="AudioStream" uid="uid://bpumixqjera2h" path="res://sounds/glass2.wav" id="6_0ha16"]
+[ext_resource type="Script" path="res://scripts/components/Bottle.gd" id="7_okute"]
+[ext_resource type="AudioStream" uid="uid://cqf33l51ineik" path="res://sounds/BottleOpen4.wav" id="8_dm2bs"]
+[ext_resource type="AudioStream" uid="uid://d4m3p3s3uj6ow" path="res://sounds/BottleOpen3.wav" id="8_hmn3b"]
+[ext_resource type="Texture2D" uid="uid://bcwcda62yn3md" path="res://sprites/bottle3 open.png" id="9_aa4rm"]
+[ext_resource type="Texture2D" uid="uid://sh2xldp6p1cr" path="res://sprites/bottle4 open.png" id="9_g235q"]
+[ext_resource type="Texture2D" uid="uid://dqry0da64ct8u" path="res://sprites/bottle4.png" id="10_d4po6"]
+[ext_resource type="Texture2D" uid="uid://c6u7bmv1qgo57" path="res://sprites/bottle3.png" id="10_vccmi"]
+[ext_resource type="PackedScene" uid="uid://c8va1d6q5rlfe" path="res://scenes/components/spill_point.tscn" id="11_0o5ui"]
+[ext_resource type="Script" path="res://scripts/components/Cup.gd" id="12_u2jwn"]
+[ext_resource type="AudioStream" uid="uid://bslbvoirnlv0x" path="res://sounds/mug.wav" id="13_54mr0"]
+[ext_resource type="Texture2D" uid="uid://crb82o18qpi1o" path="res://sprites/cup_large.png" id="14_1a3ty"]
+[ext_resource type="PackedScene" uid="uid://iroykxv0rbm2" path="res://scenes/components/liquid_sprite.tscn" id="15_217sr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_467wh"]
+size = Vector2(44, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fo6f"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r1fei"]
+radius = 19.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ngxi"]
+size = Vector2(14, 26)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kterh"]
+polygon = PackedVector2Array(-8, -11, -11, 16.5, 15.5, 16.5, 12.5, -11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nifk0"]
+size = Vector2(18, 14)
+
+[sub_resource type="Shader" id="Shader_bugmt"]
+code = "shader_type canvas_item;
+
+uniform vec3 Color1 : source_color;
+uniform vec3 Color2 : source_color;
+uniform vec3 Color3 : source_color;
+uniform vec3 Color4 : source_color;
+
+uniform vec4 Weights;
+
+uniform float RimHeight = 0.1;
+uniform float RimBightness = 0.25;
+
+uniform float Percentage = 0.0;
+
+varying float y_rotation;
+
+void vertex() {
+	y_rotation = atan(MODEL_MATRIX[0][1], MODEL_MATRIX[0][0]);
+}
+
+void fragment() {
+	float rotated_y = cos(-y_rotation) * (UV.y - 0.5) - sin(-y_rotation) * (UV.x - 0.5) + 0.5;
+	vec3 Color = (Color1*Weights.x + Color2*Weights.y + Color3*Weights.z + Color4*Weights.w) / (Weights.x+Weights.y+Weights.z+Weights.w);
+	COLOR.a -= step(rotated_y, 1.0 - Percentage + 0.414 * float(step(Percentage, 0.01)));
+	COLOR.rgb = Color.rgb;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0kdt"]
+resource_local_to_scene = true
+shader = SubResource("Shader_bugmt")
+shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
+shader_parameter/Color2 = Color(0.8, 0.6, 1, 1)
+shader_parameter/Color3 = Color(1, 0.6, 0.607843, 1)
+shader_parameter/Color4 = Color(0.6, 0.760784, 1, 1)
+shader_parameter/Weights = Vector4(0, 0, 0, 0)
+shader_parameter/RimHeight = 0.035
+shader_parameter/RimBightness = -0.2
+shader_parameter/Percentage = 0.0
+
+[sub_resource type="Shader" id="Shader_k6wut"]
+code = "shader_type canvas_item;
+
+uniform vec3 Color1 : source_color;
+uniform vec3 Color2 : source_color;
+uniform vec3 Color3 : source_color;
+uniform vec3 Color4 : source_color;
+
+uniform vec4 Weights;
+
+uniform float RimHeight = 0.1;
+uniform float RimBightness = 0.25;
+
+uniform float Percentage = 0.0;
+
+varying float y_rotation;
+
+void vertex() {
+	y_rotation = atan(MODEL_MATRIX[0][1], MODEL_MATRIX[0][0]);
+}
+
+void fragment() {
+	float rotated_y = cos(-y_rotation) * (UV.y - 0.5) - sin(-y_rotation) * (UV.x - 0.5) + 0.5;
+	vec3 Color = (Color1*Weights.x + Color2*Weights.y + Color3*Weights.z + Color4*Weights.w) / (Weights.x+Weights.y+Weights.z+Weights.w);
+	COLOR.a -= step(rotated_y, 1.0 - Percentage + 0.207 * float(step(Percentage, 0.01)));
+	COLOR.rgb = Color.rgb;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nt7yu"]
+resource_local_to_scene = true
+shader = SubResource("Shader_k6wut")
+shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
+shader_parameter/Color2 = Color(0.8, 0.6, 1, 1)
+shader_parameter/Color3 = Color(1, 0.6, 0.607843, 1)
+shader_parameter/Color4 = Color(0.6, 0.760784, 1, 1)
+shader_parameter/Weights = Vector4(1, 0, 0, 0)
+shader_parameter/RimHeight = 0.035
+shader_parameter/RimBightness = -0.2
+shader_parameter/Percentage = 0.0
+
+[node name="Level" instance=ExtResource("1_lnbma")]
+
+[node name="IceTray" type="Area2D" parent="." index="9"]
+position = Vector2(230, 367)
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_aroug")
+
+[node name="Shadow" parent="IceTray" index="0" instance=ExtResource("3_36tte")]
+z_index = 1
+texture = ExtResource("4_710ln")
+
+[node name="Sprite2D" type="Sprite2D" parent="IceTray" index="1"]
+z_index = 1
+texture_filter = 1
+texture = ExtResource("5_rqmib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IceTray" index="2"]
+shape = SubResource("RectangleShape2D_467wh")
+
+[node name="AudioStreamPlayerIceTray" type="AudioStreamPlayer" parent="IceTray" index="3"]
+unique_name_in_owner = true
+stream = ExtResource("6_0ha16")
+max_polyphony = 3
+
+[node name="Bottle4" type="CharacterBody2D" parent="." index="10"]
+y_sort_enabled = true
+position = Vector2(725, 293)
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 3
+input_pickable = true
+script = ExtResource("7_okute")
+bottle_content_id = 3
+hold_sound = ExtResource("8_hmn3b")
+hold_texture = ExtResource("9_g235q")
+
+[node name="CollisionShape2DCircle" type="CollisionShape2D" parent="Bottle4" index="0"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_6fo6f")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottle4" index="1"]
+z_index = 4
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("10_d4po6")
+
+[node name="SpillPoint" parent="Bottle4" index="2" instance=ExtResource("11_0o5ui")]
+position = Vector2(0, -19)
+
+[node name="Bottle3" type="CharacterBody2D" parent="." index="11"]
+y_sort_enabled = true
+position = Vector2(649, 279)
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 3
+input_pickable = true
+script = ExtResource("7_okute")
+bottle_content_id = 2
+hold_sound = ExtResource("8_dm2bs")
+hold_texture = ExtResource("9_aa4rm")
+
+[node name="CollisionShape2DCircle" type="CollisionShape2D" parent="Bottle3" index="0"]
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_r1fei")
+
+[node name="CollisionShape2DCylinder" type="CollisionShape2D" parent="Bottle3" index="1"]
+position = Vector2(0, -19)
+shape = SubResource("RectangleShape2D_2ngxi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottle3" index="2"]
+z_index = 3
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("10_vccmi")
+
+[node name="SpillPoint" parent="Bottle3" index="3" instance=ExtResource("11_0o5ui")]
+position = Vector2(0, -24)
+
+[node name="CupLarge" type="CharacterBody2D" parent="." index="14"]
+y_sort_enabled = true
+position = Vector2(665, 403)
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 5
+input_pickable = true
+script = ExtResource("12_u2jwn")
+cup_capacity = 50
+max_ice_cubes = 3
+source_id = 3
+hold_sound = ExtResource("13_54mr0")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="CupLarge" index="0"]
+polygon = PackedVector2Array(-12, 17, 18, 17, 15, -18, -9, -18, -9, -9, -17, -9, -18, 7, -10, 8)
+
+[node name="ParticleCollider" type="LightOccluder2D" parent="CupLarge" index="1"]
+occluder = SubResource("OccluderPolygon2D_kterh")
+
+[node name="Area2DContents" type="Area2D" parent="CupLarge" index="2"]
+position = Vector2(2, 0)
+scale = Vector2(1.13708, 1.13708)
+collision_layer = 0
+collision_mask = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CupLarge/Area2DContents" index="0"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_nifk0")
+
+[node name="Sprite2D" type="Sprite2D" parent="CupLarge" index="3"]
+z_index = 6
+texture_filter = 1
+position = Vector2(-1, 0)
+texture = ExtResource("14_1a3ty")
+
+[node name="Sprite2DLiquid" parent="CupLarge" index="4" instance=ExtResource("15_217sr")]
+z_index = 6
+material = SubResource("ShaderMaterial_a0kdt")
+position = Vector2(2, 0)
+
+[node name="SpillPoint" parent="CupLarge" index="5" instance=ExtResource("11_0o5ui")]
+position = Vector2(-9, -16)
+use_alt_spill_point = true
+loop = false
+
+[node name="AltSpillPoint" type="Node2D" parent="CupLarge/SpillPoint" index="3"]
+position = Vector2(22, 0)
+
+[node name="Sprite2DLiquid" parent="CupMedium" index="4"]
+material = SubResource("ShaderMaterial_nt7yu")
+
+[connection signal="body_entered" from="IceTray" to="IceTray" method="_on_body_entered"]
+[connection signal="input_event" from="IceTray" to="IceTray" method="_on_input_event"]
