@@ -5,7 +5,7 @@ extends Area2D
 @export var book_next_page_sound : AudioStream
 @export var book_prev_page_sound : AudioStream
 
-@onready var level_node : Level = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1) as Level
+@onready var level_node : Level = get_tree().get_current_scene() as Level
 @onready var book_overlay : Control = %BookOverlay
 @onready var audio_player : AudioStreamPlayer = $AudioStreamPlayerBook
 

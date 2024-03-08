@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bpy564r10si6n"]
+
+[node name="PixelPerfectScaledScene" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -240.0
+offset_right = 400.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2

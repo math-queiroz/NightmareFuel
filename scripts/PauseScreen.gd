@@ -1,6 +1,6 @@
 extends Control
 
-const main_menu_scene : String = "res://scenes/MainMenu.tscn"
+@onready var main_menu_scene : PackedScene = load("res://scenes/main_menu.tscn")
 
 func _unhandled_input(event):
 	if event.is_action("ui_cancel") and event.pressed:
@@ -22,7 +22,7 @@ func restart():
 	get_tree().paused = false
 
 func main_menu():
-	get_tree().change_scene_to_file(main_menu_scene)
+	get_tree().change_scene_to_packed(main_menu_scene)
 	get_tree().paused = false
 
 func quit_game():

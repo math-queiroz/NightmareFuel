@@ -12,7 +12,7 @@ config_version=5
 
 config/name="NightmareFuel"
 config/tags=PackedStringArray("2d")
-run/main_scene="res://scenes/MainMenu.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.png"
@@ -20,17 +20,29 @@ config/icon="res://icon.png"
 [autoload]
 
 Autoload="*res://scripts/autoload/Common.gd"
+Global="*res://scripts/autoload/Global.gd"
 Settings="*res://scripts/autoload/Settings.gd"
+UIAudioPlayer="*res://scripts/autoload/UIAudioPlayer.gd"
 
 [display]
 
 window/size/viewport_width=800
 window/size/viewport_height=480
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [dotnet]
 
 project/assembly_name="Abarration"
+
+[filesystem]
+
+import/blender/enabled=false
+
+[gui]
+
+theme/custom="res://resources/theme.tres"
+theme/custom_font="res://resources/fonts/04B_03__.TTF"
+theme/default_font_antialiasing=0
 
 [input]
 
@@ -48,3 +60,7 @@ mouse_press={
 2d_physics/layer_5="Ice"
 2d_physics/layer_6="Droplets"
 2d_physics/layer_8="IceUsed"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

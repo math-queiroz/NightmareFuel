@@ -1,12 +1,20 @@
-[gd_scene load_steps=36 format=3 uid="uid://bgqx03x2fiilr"]
+[gd_scene load_steps=44 format=3 uid="uid://bgqx03x2fiilr"]
 
-[ext_resource type="PackedScene" uid="uid://dqaxloj2f6ui0" path="res://scenes/Level.tscn" id="1_0ekga"]
+[ext_resource type="PackedScene" uid="uid://dqaxloj2f6ui0" path="res://scenes/level.tscn" id="1_gpnrd"]
+[ext_resource type="PackedScene" uid="uid://xcoqe71rlo0u" path="res://scenes/monsters/monster_spacestein.tscn" id="2_gerxt"]
 [ext_resource type="Script" path="res://scripts/components/IceTray.gd" id="2_l4ord"]
+[ext_resource type="PackedScene" uid="uid://b4dlr6plhmyj8" path="res://scenes/credits.tscn" id="2_l7d68"]
 [ext_resource type="PackedScene" uid="uid://dydrl2jcvr54u" path="res://scenes/components/shadow.tscn" id="3_obnu1"]
+[ext_resource type="PackedScene" uid="uid://0fjsjuhlwmi3" path="res://scenes/monsters/monster_planethead.tscn" id="3_wgv0j"]
 [ext_resource type="Texture2D" uid="uid://ckg6ht3g4xkj7" path="res://sprites/shadow_medium.png" id="4_guddp"]
+[ext_resource type="PackedScene" uid="uid://nbel6w8u7gqs" path="res://scenes/monsters/monster_sproutling.tscn" id="4_ntph3"]
 [ext_resource type="Texture2D" uid="uid://ck4n334pm4h5g" path="res://sprites/Ice.png" id="5_3m63l"]
+[ext_resource type="PackedScene" uid="uid://b5q8jstedl24m" path="res://scenes/monsters/monster_anglerslug.tscn" id="5_wvrqu"]
+[ext_resource type="PackedScene" uid="uid://g76sxr7ne7c3" path="res://scenes/monsters/monster_ghostacles.tscn" id="6_3knik"]
 [ext_resource type="AudioStream" uid="uid://bpumixqjera2h" path="res://sounds/glass2.wav" id="6_f1jd1"]
+[ext_resource type="PackedScene" uid="uid://b8og63hdseoj2" path="res://scenes/monsters/monster_flyingtopus.tscn" id="7_2k1rk"]
 [ext_resource type="Script" path="res://scripts/components/Bottle.gd" id="7_36wb1"]
+[ext_resource type="PackedScene" uid="uid://br4a75n3ityd7" path="res://scenes/monsters/special_monster_reaper.tscn" id="8_3nblu"]
 [ext_resource type="AudioStream" uid="uid://d4m3p3s3uj6ow" path="res://sounds/BottleOpen3.wav" id="8_g8j14"]
 [ext_resource type="Texture2D" uid="uid://sh2xldp6p1cr" path="res://sprites/bottle4 open.png" id="9_8yjub"]
 [ext_resource type="Texture2D" uid="uid://dqry0da64ct8u" path="res://sprites/bottle4.png" id="10_csbhm"]
@@ -69,7 +77,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qa4go"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhhg1"]
 resource_local_to_scene = true
 shader = SubResource("Shader_w6bqu")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -116,7 +124,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_71wsw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cf02p"]
 resource_local_to_scene = true
 shader = SubResource("Shader_f5rwj")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -169,7 +177,53 @@ shader_parameter/RimHeight = 0.035
 shader_parameter/RimBightness = -0.2
 shader_parameter/Percentage = 0.0
 
-[node name="Level" instance=ExtResource("1_0ekga")]
+[node name="Level" instance=ExtResource("1_gpnrd")]
+cycle = 5
+monster_pool = Array[PackedScene]([ExtResource("4_ntph3"), ExtResource("5_wvrqu"), ExtResource("3_wgv0j"), ExtResource("2_gerxt"), ExtResource("6_3knik"), ExtResource("7_2k1rk")])
+special_monster = ExtResource("8_3nblu")
+next_level = ExtResource("2_l7d68")
+avaliable_cups = 3
+avaliable_bottles = 4
+is_ice_avaliable = true
+
+[node name="BookOverlay" parent="LevelUI" index="3"]
+page = 0
+
+[node name="PageLeft" parent="LevelUI/BookOverlay" index="1"]
+text = "[center][u]Index
+
+
+
+0. Welcome
+
+1. The Basics
+
+2. Know your Bottles
+
+3. Know your Clients
+[/u][i]*bookmarked for quick access![/i][u]
+
+4. Progression
+
+5. Good Luck!"
+
+[node name="PageRight" parent="LevelUI/BookOverlay" index="2"]
+text = "[center][u]The Last Cycle[/u]
+
+
+
+There's no unlocks this cycle
+
+But this work of your's is getting some attention out there
+
+- Customeers will be less patient
+- Serve them quick and accurately
+
+
+
+
+[u]Have you ever felt
+like you're being watched?[/u]"
 
 [node name="IceTray" type="Area2D" parent="." index="9"]
 position = Vector2(230, 367)
@@ -194,6 +248,7 @@ shape = SubResource("RectangleShape2D_b24te")
 unique_name_in_owner = true
 stream = ExtResource("6_f1jd1")
 max_polyphony = 3
+bus = &"Sound"
 
 [node name="Bottle4" type="CharacterBody2D" parent="." index="10"]
 y_sort_enabled = true
@@ -286,7 +341,7 @@ texture = ExtResource("17_mlhbn")
 
 [node name="Sprite2DLiquid" parent="CupLarge" index="4" instance=ExtResource("18_8778f")]
 z_index = 6
-material = SubResource("ShaderMaterial_qa4go")
+material = SubResource("ShaderMaterial_dhhg1")
 position = Vector2(2, 0)
 
 [node name="SpillPoint" parent="CupLarge" index="5" instance=ExtResource("11_1ewvc")]
@@ -332,7 +387,7 @@ texture = ExtResource("20_0vrlh")
 
 [node name="Sprite2DLiquid" parent="CupSmall" index="4" instance=ExtResource("18_8778f")]
 z_index = 8
-material = SubResource("ShaderMaterial_71wsw")
+material = SubResource("ShaderMaterial_cf02p")
 texture = ExtResource("21_pgxs1")
 
 [node name="SpillPoint" parent="CupSmall" index="5" instance=ExtResource("11_1ewvc")]

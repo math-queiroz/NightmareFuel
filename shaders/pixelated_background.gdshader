@@ -1,12 +1,9 @@
 // imported from https://godotshaders.com/shader/pixelated-animated-water/
 shader_type canvas_item;
 
-uniform float transparency : hint_range(0, 1) = 1.0;
-
-uniform vec4 color0 : source_color = vec4(0.01, 0.0, 1.0, 1.0);
-uniform vec4 color1 : source_color = vec4(0.32, 0.2, 1.0, 1.0);
-uniform vec4 color2 : source_color = vec4(0.34, 0.41, 1.0, 1.0);
-uniform vec4 color3 : source_color = vec4(0.39, 0.52, 1.0, 1.0);
+uniform bool low_value_colors = false;
+uniform float hue = 244;
+uniform float brightness = 1;
 
 uniform vec2 Direction = vec2(1, 1);
 uniform float Speed = 1.00;
@@ -17,6 +14,13 @@ uniform float thresholds[3];
 uniform int OCTAVE = 6;
 uniform int pixel_size;
 uniform float dithering = 2.5;
+
+vec3 hsv2rgb(vec3 c)
+{
+    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
 
 vec2 random(vec2 uv){
     uv = vec2( dot(vec3(uv, RandomSeed), vec3(127.1,311.7,149.2) ),
@@ -59,24 +63,25 @@ float get_pixelated_moving_colors(vec2 uv, vec2 direction, float speed) {
 	return pixelated_color;
 }
 
-vec4 smooth_extreme_colors(float color) {
-	// Dark to light
+vec3 smooth_extreme_colors(float color) {
+	float scaled_hue = hue/360.0;
+	vec3 shade1 = hsv2rgb(vec3(scaled_hue, low_value_colors ? 0.1 : 0.80, 0.4));
+	vec3 shade2 = hsv2rgb(vec3(scaled_hue, low_value_colors ? 0.2 : 0.68, 0.6));
+	vec3 shade3 = hsv2rgb(vec3(scaled_hue, low_value_colors ? 0.3 : 0.52, 0.8));
+	vec3 shade4 = hsv2rgb(vec3(scaled_hue, low_value_colors ? 0.4 : 0.40, 1.0));
+	
 	if (color<=thresholds[0]) {
-        return color0;
+        return shade1;
     } else if (thresholds[0]<color && color<=thresholds[1]) {
-        return color1;
+        return shade2;
     } else if (thresholds[1]<color && color<=thresholds[2]) {
-        return color2;
+        return shade3;
     } else if (thresholds[2]<=color) {
-        return color3;
+        return shade4;
 	}
 }
 
 void fragment(){
-	if (COLOR.a > 0.0001){
 	float pixelated_color = get_pixelated_moving_colors(UV, Direction, Speed);
-	vec4 smoothed_color = smooth_extreme_colors(pixelated_color);
-
-	COLOR = smoothed_color * transparency;
-	}
+	COLOR.rgb = smooth_extreme_colors(pixelated_color) * brightness;
 }

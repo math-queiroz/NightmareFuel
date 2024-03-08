@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var audio_player = %AudioStreamPlayerBell
-@onready var level_node : Level = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1) as Level
+@onready var level_node : Level = get_tree().get_current_scene() as Level
 
 func _on_input_event(_viewport, event, _shape_idx) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

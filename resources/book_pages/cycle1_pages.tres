@@ -1,0 +1,127 @@
+[gd_resource type="Resource" script_class="BookPages" load_steps=2 format=3 uid="uid://kbwegtvwcoq3"]
+
+[ext_resource type="Script" path="res://scripts/custom_resources/BookPages.gd" id="1_1u74t"]
+
+[resource]
+script = ExtResource("1_1u74t")
+pages = Array[String](["[center][u]Index
+
+
+
+0. Welcome
+
+1. The Basics
+
+2. Know your Bottles
+
+3. Know your Clients
+[/u][i]*bookmarked for quick access![/i][u]
+
+4. Progression
+
+5. Good Luck!", "[center][u]Getting Started[/u]
+
+
+
+[i]- Start by tapping the page sides
+ to navigate between them[/i]", "[center][u]Welcome[/u]
+
+
+
+You now work at  [i]A Bar Ration[/i],
+a bar for... unusual customeers
+
+Your job is to serve drinks
+according to thier orders
+
+If you just arrived, this book is your [s]only[/s] best friend, so make sure to give it a read", "[center][u]The Basics - Interaction[/u]
+
+
+
+Tap on interactable objects to grab them, no need to hold
+
+Tap, hold and move left and right while holding something to tilt
+
+Try not to spill liquids, customeers may become angry and you may become quite uneasy
+
+To deliver orders, just tap the client while holding the drink", "[center][u]The Basics - Orders[/u]
+
+
+
+Each... ahem, customeer... comes from it's own Realm
+
+You'll get to know them all in time
+
+Your sanity will drain over time
+heal it by getting orders right
+
+Keep in mind that clients usually asks for a drink full to the brim unless you're clearly told otherwise
+
+Some special clients may want something other than a drink 
+", "[center][u]The Basics - Cycles[/u]
+
+
+
+The time orb at top right shows the cycle your're on
+
+There are 5 cycles in total
+
+
+
+Upper bar shows time
+[i](Cycle ends upon reaching zero)[/i]
+
+Lower bar shows sanity
+[i](Better not to reach zero)[/i]
+", "[center][u]Know your Bottles[/u]
+
+
+
+[u]Rock Bottom [i](rb.)[/i][/u]
+A tasteless yellow drink
+[i]I mean, at least it's cheap, right?[/i]
+
+
+
+[u]Starburst [i](sb.)[/i][/u]
+Just like sparkling purple stars
+[i]It's even better than Pan Galactic Gargle Blaster[/i]
+", "[center][u]Know your Bottles[/u]", "[center][u]Know your Containers[/u]
+
+
+
+[u]Medium Glass[/u]
+Holds 35 units
+[i]And up to 2 ice cubes[/i]
+", "[center][u]Know your Containers[/u]", "[center]Know your Clients
+[u]Swamp[/u]
+
+Swamp creatues only groans
+
+They know no numbers, so they only ask fo exclusive or 50/50 mix drinks
+", "[center]Know your Clients
+[u]Swamp[/u]
+
+[table=3]
+[cell][u]Order[/u][/cell][cell][/cell][cell][u]Deliver[/u][/cell]
+[cell]Arhg[/cell]		[cell] ..................  [/cell]	[cell]Yellow[/cell]
+[cell]Aahhrgh[/cell]	[cell] ..................  [/cell]	[cell]Purple[/cell]
+[cell] [/cell][cell] [/cell][cell] [/cell]
+[cell]Hrhar[/cell]	[cell] ..................  [/cell]	[cell]Tasteless[/cell]
+[cell]Hrurg[/cell]	[cell] ..................  [/cell]	[cell]Sparkly[/cell]
+[/table]
+
+[i]\"words\" other than these are gibberish[/i]
+", "[center][u]Progression[/u]
+
+
+
+You will unlock features as you progress, make sure to come back to the entire book
+
+Feel free to explore and interact,
+just try not to make a mess with spills and maybe stay sane
+
+When you're ready to begin
+just ring the bell
+", "[center][u]Good Luck![/u]
+"])

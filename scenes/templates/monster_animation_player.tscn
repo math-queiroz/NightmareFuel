@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnrhsxsebrc2b"]
+
+[sub_resource type="Animation" id="Animation_f42ag"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_nxseq"]
+resource_name = "entrance"
+
+[sub_resource type="Animation" id="Animation_g2a31"]
+resource_name = "fade"
+
+[sub_resource type="Animation" id="Animation_40g68"]
+resource_name = "idle"
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rlnpc"]
+_data = {
+"RESET": SubResource("Animation_f42ag"),
+"entrance": SubResource("Animation_nxseq"),
+"fade": SubResource("Animation_g2a31"),
+"idle": SubResource("Animation_40g68")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_rlnpc")
+}

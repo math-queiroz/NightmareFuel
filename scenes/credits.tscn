@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4dlr6plhmyj8"]
+
+[ext_resource type="PackedScene" uid="uid://bhpbkyb44blvd" path="res://scenes/components/screen_fader.tscn" id="1_w3o0q"]
+[ext_resource type="Theme" uid="uid://bg4jjqmkvq134" path="res://resources/theme.tres" id="2_lkusm"]
+
+[sub_resource type="GDScript" id="GDScript_7ptdq"]
+script/source = "extends Control
+
+const main_menu_file : String = \"res://scenes/main_menu.tscn\"
+
+func return_to_menu():
+	get_tree().change_scene_to_file(main_menu_file)
+"
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_7ptdq")
+
+[node name="ScreenFader" parent="." instance=ExtResource("1_w3o0q")]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -30.0
+offset_right = 73.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Thanks for Playing!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 15.0
+offset_right = 60.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lkusm")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "Return to Menu"
+
+[connection signal="pressed" from="Button" to="." method="return_to_menu"]

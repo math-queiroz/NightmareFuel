@@ -1,9 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://dlfulb3wrq1ew"]
+[gd_scene load_steps=29 format=3 uid="uid://dlfulb3wrq1ew"]
 
-[ext_resource type="PackedScene" uid="uid://dqaxloj2f6ui0" path="res://scenes/Level.tscn" id="1_opuok"]
+[ext_resource type="PackedScene" uid="uid://dqaxloj2f6ui0" path="res://scenes/level.tscn" id="1_kqpyd"]
 [ext_resource type="Script" path="res://scripts/components/IceTray.gd" id="2_8l8b8"]
+[ext_resource type="PackedScene" uid="uid://m3vdfrx2ftpi" path="res://scenes/levels/level3.tscn" id="2_j5die"]
+[ext_resource type="PackedScene" uid="uid://0fjsjuhlwmi3" path="res://scenes/monsters/monster_planethead.tscn" id="2_xoak5"]
 [ext_resource type="PackedScene" uid="uid://dydrl2jcvr54u" path="res://scenes/components/shadow.tscn" id="3_110mf"]
+[ext_resource type="PackedScene" uid="uid://xcoqe71rlo0u" path="res://scenes/monsters/monster_spacestein.tscn" id="3_g66fa"]
 [ext_resource type="Texture2D" uid="uid://ckg6ht3g4xkj7" path="res://sprites/shadow_medium.png" id="4_t5bh1"]
+[ext_resource type="Resource" uid="uid://bhgww6m2s1rsn" path="res://resources/book_pages/cycle2_pages.tres" id="5_jr7nj"]
 [ext_resource type="Texture2D" uid="uid://ck4n334pm4h5g" path="res://sprites/Ice.png" id="5_wcwlu"]
 [ext_resource type="AudioStream" uid="uid://bpumixqjera2h" path="res://sounds/glass2.wav" id="6_qo1oj"]
 [ext_resource type="Script" path="res://scripts/components/Bottle.gd" id="7_yax4i"]
@@ -60,7 +64,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qman3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j38du"]
 resource_local_to_scene = true
 shader = SubResource("Shader_rip6k")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -113,7 +117,58 @@ shader_parameter/RimHeight = 0.035
 shader_parameter/RimBightness = -0.2
 shader_parameter/Percentage = 0.0
 
-[node name="Level" instance=ExtResource("1_opuok")]
+[node name="Level" instance=ExtResource("1_kqpyd")]
+cycle = 2
+monster_pool = Array[PackedScene]([ExtResource("2_xoak5"), ExtResource("3_g66fa")])
+next_level = ExtResource("2_j5die")
+avaliable_cups = 2
+avaliable_bottles = 3
+is_ice_avaliable = true
+correct_order_sanity_gain = 3.0
+
+[node name="BookOverlay" parent="LevelUI" index="3"]
+page = 0
+book_pages = ExtResource("5_jr7nj")
+
+[node name="AudioStreamPlayer" parent="LevelUI/BookOverlay" index="0"]
+pitch_scale = 0.950622
+
+[node name="PageLeft" parent="LevelUI/BookOverlay" index="1"]
+text = "[center][u]Index
+
+
+
+0. Welcome
+
+1. The Basics
+
+2. Know your Bottles
+
+3. Know your Clients
+[/u][i]*bookmarked for quick access![/i][u]
+
+4. Progression
+
+5. Good Luck!"
+
+[node name="PageRight" parent="LevelUI/BookOverlay" index="2"]
+text = "[center][u]Cycle 2 Unlocks[/u]
+
+
+
+- Ice is now avaliable!
+
+- You now have a new bottle:
+It's called Life Elixir
+
+- Your now have a new cup:
+It's a Large Mug
+
+
+[u]There will be no swamp 
+creatures on this cycle! 
+
+Revisit the latter pages![/u]"
 
 [node name="IceTray" type="Area2D" parent="." index="9"]
 position = Vector2(230, 367)
@@ -138,6 +193,7 @@ shape = SubResource("RectangleShape2D_rjqk1")
 unique_name_in_owner = true
 stream = ExtResource("6_qo1oj")
 max_polyphony = 3
+bus = &"Sound"
 
 [node name="Bottle3" type="CharacterBody2D" parent="." index="10"]
 y_sort_enabled = true
@@ -205,7 +261,7 @@ texture = ExtResource("14_5fx8n")
 
 [node name="Sprite2DLiquid" parent="CupLarge" index="4" instance=ExtResource("15_g7g3d")]
 z_index = 6
-material = SubResource("ShaderMaterial_qman3")
+material = SubResource("ShaderMaterial_j38du")
 position = Vector2(2, 0)
 
 [node name="SpillPoint" parent="CupLarge" index="5" instance=ExtResource("11_tglhf")]

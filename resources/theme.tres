@@ -1,6 +1,9 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bg4jjqmkvq134"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://bg4jjqmkvq134"]
 
-[ext_resource type="FontFile" uid="uid://b8vg5qui7og5h" path="res://resources/fonts/Geologica-Regular.ttf" id="1_3yfcn"]
+[ext_resource type="Texture2D" uid="uid://dtpsri8o42fnh" path="res://sprites/ui_checkbox_ticked.png" id="1_8k6aj"]
+[ext_resource type="Texture2D" uid="uid://cx0k2y4uikcyu" path="res://sprites/ui_sprite_circle.png" id="1_qlvqc"]
+[ext_resource type="Texture2D" uid="uid://cp426n6r37yuw" path="res://sprites/ui_checkbox.png" id="2_b0m04"]
+[ext_resource type="FontFile" uid="uid://bk06t583g3nib" path="res://resources/fonts/04B_03__.TTF" id="4_yhfsr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8446"]
 
@@ -21,17 +24,36 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xb3v"]
 
-[sub_resource type="Image" id="Image_xktgb"]
-data = {
-"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 49, 255, 255, 255, 77, 255, 255, 255, 90, 255, 255, 255, 90, 255, 255, 255, 77, 255, 255, 255, 49, 255, 255, 255, 9, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 32, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 90, 255, 255, 255, 31, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 32, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 31, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 49, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 48, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 77, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 77, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 90, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 77, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 76, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 49, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 48, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 31, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 30, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 31, 255, 255, 255, 89, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 30, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 8, 255, 255, 255, 48, 255, 255, 255, 77, 255, 255, 255, 90, 255, 255, 255, 89, 255, 255, 255, 76, 255, 255, 255, 48, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
+[sub_resource type="CanvasTexture" id="CanvasTexture_fcckq"]
+diffuse_texture = ExtResource("1_8k6aj")
+texture_filter = 1
 
-[sub_resource type="ImageTexture" id="ImageTexture_oq36k"]
-image = SubResource("Image_xktgb")
+[sub_resource type="CanvasTexture" id="CanvasTexture_v47kl"]
+diffuse_texture = ExtResource("2_b0m04")
+texture_filter = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jh1y4"]
+diffuse_texture = ExtResource("2_b0m04")
+texture_filter = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_roi88"]
+diffuse_texture = ExtResource("2_b0m04")
+texture_filter = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7ofi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ht2f5"]
+diffuse_texture = ExtResource("1_qlvqc")
+texture_filter = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_d2al2"]
+diffuse_texture = ExtResource("1_qlvqc")
+texture_filter = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2o7xb"]
+diffuse_texture = ExtResource("1_qlvqc")
+texture_filter = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lovtu"]
 bg_color = Color(1, 1, 1, 1)
@@ -41,7 +63,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5w1uq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0g5x"]
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 1
 border_width_top = 1
@@ -55,24 +77,32 @@ border_width_bottom = 6
 border_color = Color(0, 0, 0, 1)
 
 [resource]
-default_font = ExtResource("1_3yfcn")
+default_font = ExtResource("4_yhfsr")
 default_font_size = 16
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 12
 Button/styles/disabled = SubResource("StyleBoxFlat_o8446")
 Button/styles/focus = SubResource("StyleBoxFlat_yxa0p")
 Button/styles/hover = SubResource("StyleBoxFlat_h40ac")
 Button/styles/normal = SubResource("StyleBoxFlat_ck72f")
 Button/styles/pressed = SubResource("StyleBoxFlat_6xb3v")
-HSlider/icons/grabber_highlight = SubResource("ImageTexture_oq36k")
+CheckBox/icons/checked = SubResource("CanvasTexture_fcckq")
+CheckBox/icons/checked_disabled = SubResource("CanvasTexture_v47kl")
+CheckBox/icons/unchecked = SubResource("CanvasTexture_jh1y4")
+CheckBox/icons/unchecked_disabled = SubResource("CanvasTexture_roi88")
+CheckBox/styles/normal = SubResource("StyleBoxFlat_w7ofi")
+HSlider/icons/grabber = SubResource("CanvasTexture_ht2f5")
+HSlider/icons/grabber_disabled = SubResource("CanvasTexture_d2al2")
+HSlider/icons/grabber_highlight = SubResource("CanvasTexture_2o7xb")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_lovtu")
-HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_5w1uq")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_d0g5x")
 HSlider/styles/slider = SubResource("StyleBoxFlat_6hty8")
 Label/colors/font_color = Color(0, 0, 0, 1)
-Label/font_sizes/font_size = 10
+Label/font_sizes/font_size = 12
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
-RichTextLabel/font_sizes/bold_font_size = 16
-RichTextLabel/font_sizes/italics_font_size = 13
-RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/font_sizes/italics_font_size = 8
+RichTextLabel/font_sizes/normal_font_size = 8
+RichTextLabel/fonts/italics_font = ExtResource("4_yhfsr")

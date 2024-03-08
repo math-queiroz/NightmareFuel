@@ -130,11 +130,9 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fw7h2"]
 shader = ExtResource("3_i87sa")
-shader_parameter/transparency = 1.0
-shader_parameter/color0 = Color(0.105882, 0.0823529, 0.419608, 1)
-shader_parameter/color1 = Color(0.239216, 0.160784, 0.733333, 1)
-shader_parameter/color2 = Color(0.329412, 0.392157, 0.819608, 1)
-shader_parameter/color3 = Color(0.39, 0.52, 1, 1)
+shader_parameter/low_value_colors = false
+shader_parameter/hue = 244.0
+shader_parameter/brightness = 1.0
 shader_parameter/Direction = Vector2(1, 1)
 shader_parameter/Speed = 10.0
 shader_parameter/RandomSeed = 1.0
@@ -349,7 +347,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u75t2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lcrn"]
 resource_local_to_scene = true
 shader = SubResource("Shader_k6wut")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -521,33 +519,37 @@ book_page_prev_audio_stream = ExtResource("25_qhf7o")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LevelUI/BookOverlay"]
 stream = ExtResource("24_ikrsm")
+pitch_scale = 0.989491
 bus = &"Sound"
 
 [node name="PageLeft" type="RichTextLabel" parent="LevelUI/BookOverlay"]
 z_index = 11
 texture_filter = 1
 layout_mode = 0
-offset_left = 40.0
-offset_top = 37.0
-offset_right = 300.0
-offset_bottom = 384.0
-scale = Vector2(0.5, 0.5)
+offset_left = 37.0
+offset_top = 43.0
+offset_right = 172.0
+offset_bottom = 223.0
 mouse_filter = 1
 theme = ExtResource("2_fe8gt")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "[center]Know your Clients
-[u]Swamp[/u]
+text = "[center][u]Index
 
 
-Swamp creatues only groans
 
-They know no numbers, so they only ask fo exclusive or 50/50 mix drinks
+0. Welcome
 
-\"Alhgr\", \"Jhrgr\" and \"Urrgr\" means small, medium and large cups respectively
+1. The Basics
 
-Msghh followed by _, __ or ___
-Where _ is the letter/ice count"
+2. Know your Bottles
+
+3. Know your Clients
+[/u][i]*bookmarked for quick access![/i][u]
+
+4. Progression
+
+5. Good Luck!"
 scroll_active = false
 
 [node name="PageRight" type="RichTextLabel" parent="LevelUI/BookOverlay"]
@@ -556,31 +558,28 @@ texture_filter = 1
 layout_mode = 0
 offset_left = 202.0
 offset_top = 37.0
-offset_right = 464.0
-offset_bottom = 386.0
-scale = Vector2(0.5, 0.5)
+offset_right = 337.0
+offset_bottom = 217.0
 mouse_filter = 1
 theme = ExtResource("2_fe8gt")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[center]Know your Clients
-[u]Swamp[/u]
+text = "[center][u]The Last Cycle[/u]
 
 
-[table=3]
-[cell]Arhg[/cell]		[cell] ..................  [/cell]	[cell]Yellow[/cell]
-[cell]Aahhrgh[/cell]	[cell] ..................  [/cell]	[cell]Purple[/cell]
-[cell]Arhrr[/cell]	[cell] ..................  [/cell]	[cell]Red[/cell]
-[cell]Ahrggru[/cell]	[cell] ..................  [/cell]	[cell]Blue[/cell]
-[cell] [/cell][cell] [/cell][cell] [/cell]
-[cell]Hrhar[/cell]	[cell] ..................  [/cell]	[cell]Tasteless[/cell]
-[cell]Hrurg[/cell]	[cell] ..................  [/cell]	[cell]Sparkly[/cell]
-[cell]Rrrrh[/cell]	[cell] ..................  [/cell]	[cell]Strong[/cell]
-[cell]Rhhgj[/cell]	[cell] ..................  [/cell]	[cell]Light[/cell]
-[/table]
 
-[i]\"Words\" other than these are gibberish[/i]"
+There's no unlocks this cycle
+
+But this work of your's is getting some attention out there
+
+- Customeers will be less patient
+- Serve them quick and accurately
+
+
+
+
+[u]Have you ever felt
+like you're being watched?[/u]"
 scroll_active = false
 
 [node name="ButtonIndex" type="Button" parent="LevelUI/BookOverlay"]
@@ -617,8 +616,9 @@ position = Vector2(186, 131)
 scale = Vector2(2, 2)
 texture = ExtResource("28_15ncf")
 
-[node name="Stats" type="Control" parent="LevelUI"]
+[node name="CycleStats" type="Control" parent="LevelUI"]
 unique_name_in_owner = true
+visible = false
 z_as_relative = false
 layout_mode = 1
 anchors_preset = 15
@@ -630,9 +630,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("20_cwe1n")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelUI/Stats"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelUI/CycleStats"]
 
-[node name="ColorRect" type="ColorRect" parent="LevelUI/Stats"]
+[node name="ColorRect" type="ColorRect" parent="LevelUI/CycleStats"]
 z_index = 14
 layout_mode = 1
 anchors_preset = 15
@@ -643,7 +643,7 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
-[node name="Container" type="Control" parent="LevelUI/Stats"]
+[node name="Container" type="Control" parent="LevelUI/CycleStats"]
 layout_mode = 1
 anchor_left = 0.2675
 anchor_top = 0.204167
@@ -654,14 +654,14 @@ grow_vertical = 2
 pivot_offset = Vector2(178, 128)
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="LevelUI/Stats/Container"]
+[node name="Sprite2D" type="Sprite2D" parent="LevelUI/CycleStats/Container"]
 z_index = 15
 texture_filter = 1
 position = Vector2(178, 128)
 scale = Vector2(2, 2)
 texture = ExtResource("16_aoxwr")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LevelUI/Stats/Container"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUI/CycleStats/Container"]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 84.0
@@ -669,7 +669,7 @@ offset_right = 531.0
 offset_bottom = 300.0
 scale = Vector2(0.5, 0.5)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="LevelUI/Stats/Container/HBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="LevelUI/CycleStats/Container/HBoxContainer"]
 z_index = 15
 layout_mode = 2
 size_flags_horizontal = 3
@@ -685,7 +685,7 @@ Sanity Lost to Spills:
 
 Fulfilled Special Order:"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="LevelUI/Stats/Container/HBoxContainer"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="LevelUI/CycleStats/Container/HBoxContainer"]
 z_index = 15
 layout_mode = 2
 size_flags_horizontal = 3
@@ -702,7 +702,7 @@ text = "3
 
 Yes"
 
-[node name="Continue" type="Button" parent="LevelUI/Stats/Container"]
+[node name="Continue" type="Button" parent="LevelUI/CycleStats/Container"]
 z_index = 15
 layout_mode = 2
 offset_left = 240.5
@@ -1018,6 +1018,7 @@ texture = ExtResource("44_cm3ww")
 position = Vector2(0, -31)
 
 [node name="CupMedium" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
 y_sort_enabled = true
 position = Vector2(581, 413)
 scale = Vector2(2, 2)
@@ -1053,7 +1054,7 @@ texture = ExtResource("51_cswak")
 
 [node name="Sprite2DLiquid" parent="CupMedium" instance=ExtResource("48_v15ix")]
 z_index = 7
-material = SubResource("ShaderMaterial_u75t2")
+material = SubResource("ShaderMaterial_8lcrn")
 texture = ExtResource("52_hgo2k")
 
 [node name="SpillPoint" parent="CupMedium" instance=ExtResource("35_3uqy7")]

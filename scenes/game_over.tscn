@@ -1,0 +1,354 @@
+[gd_scene load_steps=17 format=3 uid="uid://cr8bk2cqwc2hf"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_of2wm"]
+[ext_resource type="Theme" uid="uid://bg4jjqmkvq134" path="res://resources/theme.tres" id="1_semet"]
+[ext_resource type="AudioStream" uid="uid://bbtxwyc33yjir" path="res://sounds/back.wav" id="2_1eph6"]
+[ext_resource type="AudioStream" uid="uid://byr2mu0x18ro7" path="res://sounds/glass0.wav" id="2_qm4td"]
+[ext_resource type="AudioStream" uid="uid://sif5n80ukoo8" path="res://sounds/beep.wav" id="4_aswol"]
+[ext_resource type="AudioStream" uid="uid://ci2u5fv58m4e7" path="res://sounds/ding.wav" id="5_n1jjf"]
+[ext_resource type="AudioStream" uid="uid://chy8ryls28pxh" path="res://music/GameOver.wav" id="6_rxe3b"]
+[ext_resource type="Texture2D" uid="uid://cqiiupfvbawjl" path="res://sprites/game_over.png" id="7_jm6qq"]
+[ext_resource type="Texture2D" uid="uid://cj5d27md4vjji" path="res://sprites/broken_cup_medium.png" id="10_x548s"]
+[ext_resource type="Texture2D" uid="uid://3hdb886o726w" path="res://sprites/broken_cup_shard.png" id="11_4wa6y"]
+
+[sub_resource type="Animation" id="Animation_h03ow"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Retry:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Header:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fsj5i"]
+resource_name = "game_over"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Retry:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/GPUParticles2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_1eph6")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_qm4td")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_aswol")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_aswol")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_aswol")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_aswol")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_aswol")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_aswol")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_aswol")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_aswol")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_aswol")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_aswol")
+}, {
+"end_offset": 0.13,
+"start_offset": 0.0,
+"stream": ExtResource("5_n1jjf")
+}],
+"times": PackedFloat32Array(0, 1, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 7.4)
+}
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Header:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MusicStreamPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_rxe3b")
+}],
+"times": PackedFloat32Array(1.8)
+}
+tracks/7/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2wkk3"]
+_data = {
+"RESET": SubResource("Animation_h03ow"),
+"game_over": SubResource("Animation_fsj5i")
+}
+
+[sub_resource type="SystemFont" id="SystemFont_ctwtf"]
+font_names = PackedStringArray("Roboto")
+font_italic = true
+font_weight = 500
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_25off"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 100.0
+gravity = Vector3(0, 490, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = 360.0
+angular_velocity_max = 720.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ibrpj"]
+diffuse_texture = ExtResource("11_4wa6y")
+texture_filter = 1
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_of2wm")
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "game_over"
+libraries = {
+"": SubResource("AnimationLibrary_2wkk3")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Header" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(402, 144)
+scale = Vector2(2, 2)
+texture = ExtResource("7_jm6qq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -367.0
+offset_top = 26.0
+offset_right = 367.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_semet")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_ctwtf")
+theme_override_font_sizes/font_size = 14
+text = "You need to keep your determination. Don't lose the focus..."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Retry" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = 80.0
+offset_right = 47.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_semet")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "Try Again"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(402, 384)
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+texture_filter = 1
+position = Vector2(-1.5, 0)
+texture = ExtResource("10_x548s")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_25off")
+texture = SubResource("CanvasTexture_ibrpj")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+
+[connection signal="pressed" from="Retry" to="." method="retry"]

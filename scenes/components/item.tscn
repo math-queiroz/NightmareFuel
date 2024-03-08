@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf40opglqf4bn"]
+
+[ext_resource type="Script" path="res://scripts/Item.gd" id="1_rwcyl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yijqu"]
+size = Vector2(10, 10)
+
+[node name="Item" type="CharacterBody2D"]
+script = ExtResource("1_rwcyl")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yijqu")

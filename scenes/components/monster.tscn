@@ -13,7 +13,7 @@ bus = &"Sound"
 [node name="Speech" type="Sprite2D" parent="."]
 z_index = -6
 texture_filter = 1
-position = Vector2(144, -54)
+position = Vector2(148, -54)
 texture = ExtResource("2_sjruk")
 
 [node name="RichTextLabel" type="Label" parent="Speech"]
@@ -24,9 +24,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -151.5
-offset_top = -51.5
+offset_top = -50.5
 offset_right = 122.5
-offset_bottom = 62.5
+offset_bottom = 63.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
@@ -34,8 +34,8 @@ size_flags_horizontal = 4
 mouse_filter = 1
 theme = ExtResource("3_067ov")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway, because bees don't care what humans think is impossible."
+theme_override_font_sizes/font_size = 0
+text = "According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

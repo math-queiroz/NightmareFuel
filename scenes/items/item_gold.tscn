@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://g8ss7kvslcg3"]
+
+[ext_resource type="PackedScene" uid="uid://cf40opglqf4bn" path="res://scenes/components/item.tscn" id="1_0n67r"]
+[ext_resource type="Texture2D" uid="uid://bqelegkj0ehpx" path="res://sprites/item_gold.png" id="2_x0alb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4tqu"]
+size = Vector2(44, 16)
+
+[node name="Item" instance=ExtResource("1_0n67r")]
+
+[node name="Sprite2D2" parent="." index="0"]
+texture = ExtResource("2_x0alb")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_r4tqu")

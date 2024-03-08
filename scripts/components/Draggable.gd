@@ -1,10 +1,10 @@
 extends CharacterBody2D
 class_name Draggable
 
-const follow_force : float = 36
+#const follow_force : float = 36
 const drop_dist_sqr : float = 225
 const held_z_index : int = 10
-const tilt_dist : float = 120
+const tilt_dist : float = 169
 
 @export var hold_sound : AudioStream
 @export var hold_texture : Texture2D
@@ -54,7 +54,9 @@ func _process(delta: float) -> void:
 	else:
 		rotation = lerp(rotation, 0.0, 3 * delta)
 		if is_held:
-			global_position = lerp(global_position, get_global_mouse_position(), follow_force * delta)
+			#global_position = lerp(global_position, get_global_mouse_position(), follow_force * delta)
+			global_position = get_global_mouse_position()
+			velocity = Vector2.ZERO
 		else:
 			velocity += Vector2.DOWN * ProjectSettings.get_setting("physics/2d/default_gravity") * delta
 			move_and_slide()

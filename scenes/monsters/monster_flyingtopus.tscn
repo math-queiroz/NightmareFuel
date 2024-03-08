@@ -1,0 +1,127 @@
+[gd_scene load_steps=9 format=3 uid="uid://b8og63hdseoj2"]
+
+[ext_resource type="PackedScene" uid="uid://bmmu8g8vsvupm" path="res://scenes/components/monster.tscn" id="1_dpkj8"]
+[ext_resource type="Texture2D" uid="uid://du5lr6npfffxm" path="res://sprites/monster_flyingtopus.png" id="2_i10q4"]
+[ext_resource type="Texture2D" uid="uid://0aafjjivc6ht" path="res://sprites/think_bubble.png" id="3_veu0x"]
+
+[sub_resource type="Animation" id="Animation_f42ag"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-240, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nxseq"]
+resource_name = "entrance"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-240, 0), Vector2(24, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.523599, -0.165806, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g2a31"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_40g68"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.1, 1.9, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 0), Vector2(5, 3), Vector2(-3, -5), Vector2(-4, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rlnpc"]
+_data = {
+"RESET": SubResource("Animation_f42ag"),
+"entrance": SubResource("Animation_nxseq"),
+"fade": SubResource("Animation_g2a31"),
+"idle": SubResource("Animation_40g68")
+}
+
+[node name="Monster" instance=ExtResource("1_dpkj8")]
+realm = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_rlnpc")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+texture_filter = 1
+position = Vector2(-240, 0)
+texture = ExtResource("2_i10q4")
+
+[node name="Speech" parent="." index="3"]
+texture = ExtResource("3_veu0x")

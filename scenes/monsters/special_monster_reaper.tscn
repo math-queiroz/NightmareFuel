@@ -1,0 +1,248 @@
+[gd_scene load_steps=13 format=3 uid="uid://br4a75n3ityd7"]
+
+[ext_resource type="PackedScene" uid="uid://bmmu8g8vsvupm" path="res://scenes/components/monster.tscn" id="1_vc4p7"]
+[ext_resource type="Texture2D" uid="uid://blkwit1d7hi30" path="res://sprites/monster_special_reapper.png" id="2_c0mdp"]
+[ext_resource type="AudioStream" uid="uid://bt3qnr0d753tu" path="res://sounds/churchbell.wav" id="2_rimn6"]
+[ext_resource type="AudioStream" uid="uid://sif5n80ukoo8" path="res://sounds/beep.wav" id="3_1bn4v"]
+[ext_resource type="Texture2D" uid="uid://dyf0xecx8erjh" path="res://sprites/speech_bubble_reaper.png" id="3_gyvlb"]
+[ext_resource type="Theme" uid="uid://bg4jjqmkvq134" path="res://resources/theme.tres" id="6_k7k2c"]
+
+[sub_resource type="GDScript" id="GDScript_pqht1"]
+resource_name = "MonsterReaper"
+script/source = "extends Monster
+
+func set_order_request(value: String) -> void:
+	request = value
+
+func _ready() -> void:
+	if get_tree().get_current_scene().has_method(\"turn_bg_red\"):
+		get_tree().get_current_scene().turn_bg_red()
+	$Speech.hide()
+	arrive()
+
+func arrive() -> void:
+	animation_player.play(\"entrance\")
+	animation_player.queue(\"speech\")
+	animation_player.connect(\"animation_finished\", func(_name): depart(), CONNECT_ONE_SHOT)
+
+func depart() -> void:
+	animation_player.play(\"fade\")
+	animation_player.connect(\"animation_finished\", func(_name): departed.emit())
+
+func say(_text: String) -> void:
+	pass
+
+func on_correct_deliver() -> void:
+	pass
+
+func on_wrong_deliver() -> void:
+	pass
+
+func _on_timeout() -> void:
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_f42ag"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-250, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Speech/RichTextLabel2:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Speech/RichTextLabel2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Speech:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_nxseq"]
+resource_name = "entrance"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-250, 0), Vector2(0, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_rimn6")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_g2a31"]
+resource_name = "fade"
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_40g68"]
+resource_name = "speech"
+length = 20.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_1bn4v")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_1bn4v")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_1bn4v")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_1bn4v")
+}],
+"times": PackedFloat32Array(0, 5, 10, 14.5)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Speech/RichTextLabel2:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 10, 14.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["[shake rate=20.0 level=5 connected=1][center]
+I've been watching you for some time now
+[/center][/shake]", "[shake rate=20.0 level=5 connected=1][center]
+You seem to be quite the barista, right?
+[/center][/shake]", "[shake rate=20.0 level=5 connected=1][center]
+I might have a deal for you...
+[/center][/shake]", "[shake rate=20.0 level=5 connected=1][center]
+Let's say it's an offer you just can't deny...
+[/center][/shake]"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Speech/RichTextLabel2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 4.78007, 5, 5.2, 9.78007, 10, 10.2, 14.3, 14.5, 14.7),
+"transitions": PackedFloat32Array(1, 1, 1e-05, 1, 1, 1e-05, 1, 1, 1e-05, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Speech:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rlnpc"]
+_data = {
+"RESET": SubResource("Animation_f42ag"),
+"entrance": SubResource("Animation_nxseq"),
+"fade": SubResource("Animation_g2a31"),
+"speech": SubResource("Animation_40g68")
+}
+
+[node name="Monster" instance=ExtResource("1_vc4p7")]
+script = SubResource("GDScript_pqht1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_rlnpc")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+texture_filter = 1
+position = Vector2(-250, 0)
+texture = ExtResource("2_c0mdp")
+
+[node name="Speech" parent="." index="3"]
+position = Vector2(148, -41)
+texture = ExtResource("3_gyvlb")
+
+[node name="RichTextLabel" parent="Speech" index="0"]
+visible = false
+offset_top = -78.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "You seem to be quite the barista, right?"
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Speech" index="1"]
+offset_left = -66.0
+offset_top = -25.0
+offset_right = 206.0
+offset_bottom = 27.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("6_k7k2c")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true

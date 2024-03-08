@@ -10,3 +10,14 @@ func _process(_delta: float) -> void:
 	percent_pos = Vector2(clamp(percent_pos.x, 0, 1), clamp(percent_pos.y, 0, 1))
 	var target_pos = default_pos + (Vector2(.5, -.5) - percent_pos) * paralax_displacement
 	global_position = lerp(global_position, target_pos, _delta * paralax_speed)
+
+func turn_red():
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_shader_brightness, 1.0, 0.5, 0.2)
+	tween.tween_method(set_shader_hue, 244, 360, 1)
+
+func set_shader_hue(value: float):
+	material.set("shader_parameter/hue", value);
+
+func set_shader_brightness(value: float):
+	material.set("shader_parameter/brightness", value);
