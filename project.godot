@@ -59,8 +59,5 @@ mouse_press={
 2d_physics/layer_4="Draggable"
 2d_physics/layer_5="Ice"
 2d_physics/layer_6="Droplets"
+2d_physics/layer_7="Items"
 2d_physics/layer_8="IceUsed"
-
-[rendering]
-
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)

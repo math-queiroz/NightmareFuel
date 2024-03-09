@@ -23,8 +23,13 @@ pages = Array[String](["[center][u]Index
 
 
 
-• You now have a new bottle:
+- You now have a new bottle:
 It's called Moonshine
+
+
+
+
+
 
 
 
@@ -39,7 +44,7 @@ Revisit the latter pages![/u]", "[center][u]Welcome[/u]
 
 
 
-You now work at  [i]A Bar Ration[/i],
+You now work at [i]Abarration[/i],
 a bar for... unusual customeers
 
 Your job is to serve drinks
@@ -95,7 +100,7 @@ A tasteless yellow drink
 
 
 [u]Starburst [i](sb.)[/i][/u]
-Just like sparkling purple stars
+It's like sparkling purple stars
 [i]It's even better than Pan Galactic Gargle Blaster[/i]
 ", "[center][u]Know your Bottles[/u]
 
@@ -125,57 +130,70 @@ Holds 50 units
 [i]And up to 3 ice cubes[/i]", "[center]Know your Clients
 [u]Swamp[/u]
 
+
 Swamp creatues only groans
+
+
 
 They know no numbers, so they only ask fo exclusive or 50/50 mix drinks
 
 \"Jhrgr\" and \"Urrgr\" means Glass and Mug respectively
 
-Msghh followed by _, __ or ___
-Where _ is the letter/ice count
-", "[center]Know your Clients
+Msghh followed by 1, 2 or 3
+characters, means they want 
+1, 2 or 3 ice cubes", "[center]Know your Clients
 [u]Swamp[/u]
+
 
 [table=3]
 [cell][u]Order[/u][/cell][cell][/cell][cell][u]Deliver[/u][/cell]
-[cell]Arhg[/cell]		[cell] ..................  [/cell]	[cell]Yellow[/cell]
-[cell]Aahhrgh[/cell]	[cell] ..................  [/cell]	[cell]Purple[/cell]
-[cell]Arhrr[/cell]	[cell] ..................  [/cell]	[cell]Red[/cell]
-[cell]Ahrggru[/cell]	[cell] ..................  [/cell]	[cell]Blue[/cell]
+[cell]Arhg[/cell]		[cell] ..... [/cell]	[cell]Yellow[/cell]
+[cell]Aahhrgh[/cell]	[cell] ..... [/cell]	[cell]Purple[/cell]
+[cell]Arhrr[/cell]	[cell] ..... [/cell]	[cell]Red[/cell]
+[cell]Ahrggru[/cell]	[cell] ..... [/cell]	[cell]Blue[/cell]
 [cell] [/cell][cell] [/cell][cell] [/cell]
-[cell]Hrhar[/cell]	[cell] ..................  [/cell]	[cell]Tasteless[/cell]
-[cell]Hrurg[/cell]	[cell] ..................  [/cell]	[cell]Sparkly[/cell]
-[cell]Rrrrh[/cell]	[cell] ..................  [/cell]	[cell]Strong[/cell]
-[cell]Rhhgj[/cell]	[cell] ..................  [/cell]	[cell]Light[/cell]
+[cell]Hrhar[/cell]	[cell] ..... [/cell]	[cell]Tasteless[/cell]
+[cell]Hrurg[/cell]	[cell] ..... [/cell]	[cell]Sparkly[/cell]
+[cell]Rrrrh[/cell]	[cell] ..... [/cell]	[cell]Strong[/cell]
+[cell]Rhhgj[/cell]	[cell] ..... [/cell]	[cell]Light[/cell]
 [/table]
 
-[i]\"words\" other than these are gibberish[/i]
-", "[center]Know your Clients
+
+[i]\"words\" other than these are gibberish[/i]", "[center]Know your Clients
 [u]Space[/u]
+
 
 Space beigns are always with the head on the stars
 
-They're always pretty smart and equipped with translators. Unfortunately earthlings are rare these days, and human language is a dead one...
 
-Expect meaning to be shuiffled: colors will be correct but properties always reversed
+They're always pretty smart and equipped with translators. 
 
-[i]Cup sizes are correctly ordered[/i]", "[center]Know your Clients
+Unfortunately earthlings are rare these days, and human language is a dead one...
+
+Expect meaning to be mixed:
+- colors are always correct
+- properties are always reversed
+
+[i]And cup sizes are always correctly ordered too[/i]", "[center]Know your Clients
 [u]Space[/u]
+
 
 [table=3]
 [cell][u]Order[/u][/cell][cell][/cell][cell][u]Deliver[/u][/cell]
-[cell]Yellow[/cell]		[cell] ..................  [/cell]	[cell]Yellow[/cell]
-[cell]Purple[/cell]		[cell] ..................  [/cell]	[cell]Purple[/cell]
-[cell]Red[/cell]	[cell] ..................  [/cell]	[cell]Red[/cell]
-[cell]Blue[/cell]	[cell] ..................  [/cell]	[cell]Blue[/cell]
+[cell]Yellow[/cell]	[cell] ..... [/cell]	[cell]Yellow[/cell]
+[cell]Purple[/cell]	[cell] ..... [/cell]	[cell]Purple[/cell]
+[cell]Red[/cell]		[cell] ..... [/cell]	[cell]Red[/cell]
+[cell]Blue[/cell]		[cell] ..... [/cell]	[cell]Blue[/cell]
 [cell] [/cell][cell] [/cell][cell] [/cell]
-[cell]Strong[/cell]	[cell] ..................  [/cell]	[cell]Tasteless[/cell]
-[cell]Light[/cell]	[cell] ..................  [/cell]	[cell]Sparkly[/cell]
-[cell]Tasteless[/cell]	[cell] ..................  [/cell]	[cell]Strong[/cell]
-[cell]Sparkly[/cell]	[cell] ..................  [/cell]	[cell]Light[/cell]
+[cell]Strong[/cell]	[cell] ..... [/cell]	[cell]Tasteless[/cell]
+[cell]Light[/cell]	[cell] ..... [/cell]	[cell]Sparkly[/cell]
+[cell]Tasteless[/cell]	[cell] ..... [/cell]	[cell]Strong[/cell]
+[cell]Sparkly[/cell]	[cell] ..... [/cell]	[cell]Light[/cell]
 [/table]
 
-When asked for ice, the count is inverted [i](so 3=0, 2=1, 1=2 and 0=3)[/i]
+When asked for ice, 
+the count will be inverted 
+[i](So 3=0, 2=1, 1=2 and 0=3)[/i]
 ", "[center]Know your Clients
 [u]Eldritch[/u]
 
@@ -191,21 +209,19 @@ At least they ask for ice normally
 ", "[center]Know your Clients
 [u]Eldritch[/u]
 
+
 [table=3]
-[cell][u]Name[/u][/cell][cell][/cell][cell][u]Drink (Abreviations)[/u][/cell]
-[cell]Aiuzaalpir[/cell]	[cell]: [/cell] [cell]rb. glass[/cell]
-[cell]Cnujh'dre[/cell]	[cell]: [/cell] [cell]¼ rb. ¾ sb. glass[/cell]
-[cell]Ghriodrrus[/cell]	[cell]: [/cell] [cell]sb. glass [/cell]
+[cell][u]Name[/u][/cell][cell][/cell][cell][u]Drink (quarters)[/u][/cell]
+[cell]Aiuzaalpir[/cell]	[cell]:[/cell] [cell]4 rb. glass[/cell]
+[cell]Cnujh'dre[/cell]	[cell]:[/cell] [cell]1 rb. 3 sb. glass[/cell]
+[cell]Ghriodrrus[/cell]	[cell]:[/cell] [cell]4 sb. glass [/cell]
 [cell] [/cell][cell] [/cell][cell] [/cell]
-[cell]Itril'xo[/cell]	[cell]: [/cell] [cell]½ le. mug[/cell]
-[cell]Mlullusz[/cell]	[cell]: [/cell] [cell]½ le. ½ sb. glass[/cell]
-[cell]Neghast[/cell]	[cell]: [/cell] [cell]¼ le. ¾ rb. mug[/cell]
-[cell] [/cell][cell] [/cell][cell] [/cell]
-[cell]Uz'yxha[/cell]	[cell]: [/cell] [cell]ms. shot[/cell]
-[cell]Yanaavhi[/cell]	[cell]: [/cell] [cell]¼ ms. ¾ le. glass[/cell]
-[cell]Zoggdeg[/cell]	[cell]: [/cell] [cell]½ ms. ½ rb. mug[/cell]
-[/table]
-", "[center][u]Progression[/u]
+[cell]Itril'xo[/cell]	[cell]:[/cell] [cell]2 le. mug[/cell]
+[cell]Mlullusz[/cell]	[cell]:[/cell] [cell]2 le. 2 sb. glass[/cell]
+[cell]Neghast[/cell]	[cell]:[/cell] [cell]1 le. 3 rb. mug[/cell]
+[/table]", "[center][u]Progression[/u]
+
+
 
 You will unlock features as you progress, make sure to come back to the entire book
 
@@ -215,6 +231,8 @@ just try not to make a mess with spills and maybe stay sane
 When you're ready to begin
 just ring the bell
 ", "[center][u]Good Luck![/u]
+
+
 
 Oh, and remember
 Teleported ice tastes awful

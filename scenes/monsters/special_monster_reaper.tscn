@@ -213,6 +213,7 @@ _data = {
 
 [node name="Monster" instance=ExtResource("1_vc4p7")]
 script = SubResource("GDScript_pqht1")
+has_an_order = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {

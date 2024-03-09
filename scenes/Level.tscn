@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://dqaxloj2f6ui0"]
+[gd_scene load_steps=87 format=3 uid="uid://dqaxloj2f6ui0"]
 
 [ext_resource type="Script" path="res://scripts/components/Level.gd" id="1_pyr82"]
 [ext_resource type="Theme" uid="uid://bg4jjqmkvq134" path="res://resources/theme.tres" id="2_fe8gt"]
@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://ds0bgxpimps5r" path="res://music/BoogeyWoogieMan.wav" id="3_b4fpo"]
 [ext_resource type="Shader" path="res://shaders/pixelated_background.gdshader" id="3_i87sa"]
 [ext_resource type="Script" path="res://scripts/components/AnimatedBG.gd" id="4_785ru"]
-[ext_resource type="Script" path="res://scripts/LevelUI.gd" id="5_m8ugp"]
 [ext_resource type="Script" path="res://scripts/components/ShowOnHover.gd" id="5_o1y2e"]
 [ext_resource type="Texture2D" uid="uid://b6qw5x8p3dh0a" path="res://sprites/bar_frames.png" id="6_2r78u"]
 [ext_resource type="Script" path="res://scripts/PauseScreen.gd" id="7_6eojd"]
@@ -27,12 +26,15 @@
 [ext_resource type="Texture2D" uid="uid://dwe5gmdje0otg" path="res://sprites/cycle_stats_overlay.png" id="16_aoxwr"]
 [ext_resource type="Script" path="res://scripts/components/Bell.gd" id="18_6ifha"]
 [ext_resource type="Texture2D" uid="uid://cbvggcrr045v2" path="res://sprites/bell.png" id="19_8sbu1"]
-[ext_resource type="Resource" uid="uid://bmytwcp1n235c" path="res://resources/book_pages/cycle5_pages.tres" id="19_lolmg"]
 [ext_resource type="Script" path="res://scripts/Stats.gd" id="20_cwe1n"]
+[ext_resource type="AudioStream" uid="uid://sif5n80ukoo8" path="res://sounds/beep.wav" id="20_hx2ex"]
 [ext_resource type="AudioStream" uid="uid://fil8mx0ujvce" path="res://sounds/double_ding.wav" id="20_ml5cu"]
+[ext_resource type="AudioStream" uid="uid://ckbqe35ejw8ev" path="res://sounds/confirm.wav" id="21_nyy74"]
 [ext_resource type="Script" path="res://scripts/components/Book.gd" id="21_v62h1"]
 [ext_resource type="AudioStream" uid="uid://dyurahqpmf4sd" path="res://sounds/BookOpen.wav" id="22_026a6"]
+[ext_resource type="Script" path="res://scripts/components/SoundButton.gd" id="23_u0tfv"]
 [ext_resource type="AudioStream" uid="uid://dvih7ii4m6nmn" path="res://sounds/BookClose.wav" id="23_voh7d"]
+[ext_resource type="Script" path="res://scripts/settings_toggle_checkbox.gd" id="24_ervko"]
 [ext_resource type="AudioStream" uid="uid://5dp8wosrxl5l" path="res://sounds/BookPageNext.wav" id="24_ikrsm"]
 [ext_resource type="AudioStream" uid="uid://bw30hmnvujdwm" path="res://sounds/BookPagePrev.wav" id="25_qhf7o"]
 [ext_resource type="Texture2D" uid="uid://ctdg0edjta8k0" path="res://sprites/book_spot.png" id="26_enoih"]
@@ -148,6 +150,162 @@ texture_filter = 1
 [sub_resource type="CanvasTexture" id="CanvasTexture_ohgur"]
 diffuse_texture = ExtResource("10_11rv7")
 texture_filter = 1
+
+[sub_resource type="Animation" id="Animation_poxkh"]
+resource_name = "show"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Container/HBoxContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Container/Continue:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("20_hx2ex")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("20_hx2ex")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("21_nyy74")
+}],
+"times": PackedFloat32Array(0.9, 1.4, 1.9)
+}
+tracks/5/use_blend = true
+
+[sub_resource type="Animation" id="Animation_raboo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Container/HBoxContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Container/Continue:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cuafn"]
+_data = {
+"RESET": SubResource("Animation_raboo"),
+"show": SubResource("Animation_poxkh")
+}
 
 [sub_resource type="Animation" id="Animation_cc5ke"]
 length = 0.001
@@ -347,7 +505,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lcrn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6arf2"]
 resource_local_to_scene = true
 shader = SubResource("Shader_k6wut")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -370,10 +528,19 @@ size = Vector2(4.5, 231)
 size = Vector2(5, 232)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0u3q2"]
-size = Vector2(648, 20)
+size = Vector2(4000, 20)
 
 [node name="Level" type="Node"]
 script = ExtResource("1_pyr82")
+cycle = null
+monster_pool = null
+minimum_needed_sanity = null
+avaliable_cups = null
+avaliable_bottles = null
+is_ice_avaliable = null
+correct_order_sanity_gain = null
+wrong_order_sanity_drain = null
+spill_sanity_drain = null
 
 [node name="ScreenFader" parent="." instance=ExtResource("2_gmgck")]
 unique_name_in_owner = true
@@ -417,7 +584,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 theme = ExtResource("2_fe8gt")
-script = ExtResource("5_m8ugp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LevelUI"]
 libraries = {
@@ -513,7 +679,6 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_fe8gt")
 script = ExtResource("29_u2l1q")
-book_pages = ExtResource("19_lolmg")
 book_page_next_audio_stream = ExtResource("24_ikrsm")
 book_page_prev_audio_stream = ExtResource("25_qhf7o")
 
@@ -527,9 +692,9 @@ z_index = 11
 texture_filter = 1
 layout_mode = 0
 offset_left = 37.0
-offset_top = 43.0
+offset_top = 35.0
 offset_right = 172.0
-offset_bottom = 223.0
+offset_bottom = 215.0
 mouse_filter = 1
 theme = ExtResource("2_fe8gt")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -557,9 +722,9 @@ z_index = 11
 texture_filter = 1
 layout_mode = 0
 offset_left = 202.0
-offset_top = 37.0
+offset_top = 35.0
 offset_right = 337.0
-offset_bottom = 217.0
+offset_bottom = 215.0
 mouse_filter = 1
 theme = ExtResource("2_fe8gt")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -631,6 +796,11 @@ grow_vertical = 2
 script = ExtResource("20_cwe1n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LevelUI/CycleStats"]
+libraries = {
+"": SubResource("AnimationLibrary_cuafn")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LevelUI/CycleStats"]
 
 [node name="ColorRect" type="ColorRect" parent="LevelUI/CycleStats"]
 z_index = 14
@@ -641,9 +811,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
 [node name="Container" type="Control" parent="LevelUI/CycleStats"]
+visible = false
 layout_mode = 1
 anchor_left = 0.2675
 anchor_top = 0.204167
@@ -662,57 +833,57 @@ scale = Vector2(2, 2)
 texture = ExtResource("16_aoxwr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="LevelUI/CycleStats/Container"]
+visible = false
+texture_filter = 1
 layout_mode = 0
 offset_left = 56.0
-offset_top = 84.0
-offset_right = 531.0
-offset_bottom = 300.0
-scale = Vector2(0.5, 0.5)
+offset_top = 56.0
+offset_right = 291.0
+offset_bottom = 208.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="LevelUI/CycleStats/Container/HBoxContainer"]
+[node name="RichTextLabel" type="Label" parent="LevelUI/CycleStats/Container/HBoxContainer"]
 z_index = 15
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_fe8gt")
-bbcode_enabled = true
-text = "[right][u]Clients Served:
+text = "Clients Served:
 
 Correct Orders:
 Wrong Orders:
-
 Sanity Replenished:
 Sanity Lost to Spills:
-
 Fulfilled Special Order:"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="LevelUI/CycleStats/Container/HBoxContainer"]
+[node name="RichTextLabel2" type="Label" parent="LevelUI/CycleStats/Container/HBoxContainer"]
 z_index = 15
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.61
+size_flags_stretch_ratio = 0.17
 theme = ExtResource("2_fe8gt")
-bbcode_enabled = true
-text = "3
+text = "1
 
 2
-1
-
-1
-0
-
-Yes"
+3
+4
+5
+6"
+horizontal_alignment = 2
 
 [node name="Continue" type="Button" parent="LevelUI/CycleStats/Container"]
+visible = false
 z_index = 15
+texture_filter = 1
 layout_mode = 2
-offset_left = 240.5
-offset_top = 190.5
-offset_right = 340.5
-offset_bottom = 212.5
+offset_left = 226.0
+offset_top = 200.0
+offset_right = 361.0
+offset_bottom = 224.0
 scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 3
 theme = ExtResource("2_fe8gt")
+theme_override_font_sizes/font_size = 24
 text = "Continue"
+script = ExtResource("23_u0tfv")
 
 [node name="PauseScreen" type="Control" parent="LevelUI"]
 unique_name_in_owner = true
@@ -762,25 +933,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -60.0
-offset_right = 75.0
-offset_bottom = 61.0
+offset_left = -121.0
+offset_top = -119.0
+offset_right = 121.0
+offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_fe8gt")
 
 [node name="SettingsLabel" type="Label" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
 text = "Settings"
 horizontal_alignment = 1
+
+[node name="Separator" type="Control" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
 [node name="HBoxContainer1" type="HBoxContainer" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
 layout_mode = 2
 
 [node name="GeneralLabel" type="Label" parent="LevelUI/PauseScreen/Controls/VBoxContainer/HBoxContainer1"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 theme = ExtResource("2_fe8gt")
 text = "General Volume"
@@ -799,7 +973,7 @@ bus_id = 0
 layout_mode = 2
 
 [node name="SoundLabel" type="Label" parent="LevelUI/PauseScreen/Controls/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("2_fe8gt")
@@ -819,7 +993,7 @@ bus_id = 1
 layout_mode = 2
 
 [node name="MusicLabel" type="Label" parent="LevelUI/PauseScreen/Controls/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 theme = ExtResource("2_fe8gt")
 text = "Music Volume"
@@ -834,37 +1008,51 @@ value = 0.5
 script = ExtResource("9_4mmn3")
 bus_id = 1
 
-[node name="Separator" type="Control" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelUI/PauseScreen/Controls/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Close book on new order"
+
+[node name="CheckBox" type="CheckBox" parent="LevelUI/PauseScreen/Controls/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+script = ExtResource("24_ervko")
+setting_name = "hide_book_on_new_customeer"
+
+[node name="Separator2" type="Control" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="Resume" type="Button" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_fe8gt")
-theme_override_font_sizes/font_size = 12
 text = "Resume"
+script = ExtResource("23_u0tfv")
 
-[node name="Separator2" type="Control" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
+[node name="Separator3" type="Control" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="Restart" type="Button" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_fe8gt")
-theme_override_font_sizes/font_size = 12
 text = "Restart"
+script = ExtResource("23_u0tfv")
 
 [node name="MainMenu" type="Button" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_fe8gt")
-theme_override_font_sizes/font_size = 12
 text = "Return to Menu"
+script = ExtResource("23_u0tfv")
 
 [node name="Quit" type="Button" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_fe8gt")
-theme_override_font_sizes/font_size = 12
 text = "Exit Game"
+script = ExtResource("23_u0tfv")
 
 [node name="CustomerManager" type="Node2D" parent="."]
 position = Vector2(308, 279)
@@ -1054,7 +1242,7 @@ texture = ExtResource("51_cswak")
 
 [node name="Sprite2DLiquid" parent="CupMedium" instance=ExtResource("48_v15ix")]
 z_index = 7
-material = SubResource("ShaderMaterial_8lcrn")
+material = SubResource("ShaderMaterial_6arf2")
 texture = ExtResource("52_hgo2k")
 
 [node name="SpillPoint" parent="CupMedium" instance=ExtResource("35_3uqy7")]
@@ -1087,7 +1275,7 @@ shape = SubResource("RectangleShape2D_4pb45")
 position = Vector2(229, 262)
 scale = Vector2(2, 2)
 collision_layer = 0
-collision_mask = 56
+collision_mask = 120
 script = ExtResource("56_rcjlm")
 
 [node name="TeleportPoint" type="Node2D" parent="Area2DOutOfBounds"]
@@ -1101,9 +1289,10 @@ shape = SubResource("RectangleShape2D_0u3q2")
 
 [connection signal="mouse_entered" from="LevelUI/IndicatorsContainer" to="LevelUI/IndicatorsContainer" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="LevelUI/IndicatorsContainer" to="LevelUI/IndicatorsContainer" method="_on_mouse_exited"]
-[connection signal="pressed" from="LevelUI/BookOverlay/ButtonIndex" to="LevelUI/BookOverlay" method="goto_index"]
+[connection signal="pressed" from="LevelUI/BookOverlay/ButtonIndex" to="LevelUI/BookOverlay" method="goto_bookmark"]
 [connection signal="pressed" from="LevelUI/BookOverlay/ButtonBookPrevPage" to="LevelUI/BookOverlay" method="prev_page"]
 [connection signal="pressed" from="LevelUI/BookOverlay/ButtonBookNextPage" to="LevelUI/BookOverlay" method="next_page"]
+[connection signal="pressed" from="LevelUI/CycleStats/Container/Continue" to="." method="load_next_level"]
 [connection signal="pressed" from="LevelUI/PauseScreen/Controls/VBoxContainer/Resume" to="LevelUI/PauseScreen" method="unpause"]
 [connection signal="pressed" from="LevelUI/PauseScreen/Controls/VBoxContainer/Restart" to="LevelUI/PauseScreen" method="restart"]
 [connection signal="pressed" from="LevelUI/PauseScreen/Controls/VBoxContainer/MainMenu" to="LevelUI/PauseScreen" method="main_menu"]

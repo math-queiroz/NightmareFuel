@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=21 format=3 uid="uid://bg4jjqmkvq134"]
+[gd_resource type="Theme" load_steps=24 format=3 uid="uid://bg4jjqmkvq134"]
 
 [ext_resource type="Texture2D" uid="uid://dtpsri8o42fnh" path="res://sprites/ui_checkbox_ticked.png" id="1_8k6aj"]
 [ext_resource type="Texture2D" uid="uid://cx0k2y4uikcyu" path="res://sprites/ui_sprite_circle.png" id="1_qlvqc"]
@@ -24,10 +24,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xb3v"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_fcckq"]
-diffuse_texture = ExtResource("1_8k6aj")
-texture_filter = 1
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_v47kl"]
 diffuse_texture = ExtResource("2_b0m04")
 texture_filter = 1
@@ -40,8 +36,21 @@ texture_filter = 1
 diffuse_texture = ExtResource("2_b0m04")
 texture_filter = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhf7d"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4rn0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36irn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7ofi"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lh5ry"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+shadow_color = Color(0, 0, 0, 0)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ht2f5"]
 diffuse_texture = ExtResource("1_qlvqc")
@@ -83,17 +92,22 @@ Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
-Button/font_sizes/font_size = 12
+Button/font_sizes/font_size = 16
 Button/styles/disabled = SubResource("StyleBoxFlat_o8446")
 Button/styles/focus = SubResource("StyleBoxFlat_yxa0p")
 Button/styles/hover = SubResource("StyleBoxFlat_h40ac")
 Button/styles/normal = SubResource("StyleBoxFlat_ck72f")
 Button/styles/pressed = SubResource("StyleBoxFlat_6xb3v")
-CheckBox/icons/checked = SubResource("CanvasTexture_fcckq")
+CheckBox/colors/font_focus_color = Color(0.94902, 0.94902, 0.94902, 0)
+CheckBox/icons/checked = ExtResource("1_8k6aj")
 CheckBox/icons/checked_disabled = SubResource("CanvasTexture_v47kl")
 CheckBox/icons/unchecked = SubResource("CanvasTexture_jh1y4")
 CheckBox/icons/unchecked_disabled = SubResource("CanvasTexture_roi88")
+CheckBox/styles/focus = SubResource("StyleBoxFlat_bhf7d")
+CheckBox/styles/hover = SubResource("StyleBoxFlat_h4rn0")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_36irn")
 CheckBox/styles/normal = SubResource("StyleBoxFlat_w7ofi")
+CheckBox/styles/pressed = SubResource("StyleBoxFlat_lh5ry")
 HSlider/icons/grabber = SubResource("CanvasTexture_ht2f5")
 HSlider/icons/grabber_disabled = SubResource("CanvasTexture_d2al2")
 HSlider/icons/grabber_highlight = SubResource("CanvasTexture_2o7xb")
@@ -101,7 +115,7 @@ HSlider/styles/grabber_area = SubResource("StyleBoxFlat_lovtu")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_d0g5x")
 HSlider/styles/slider = SubResource("StyleBoxFlat_6hty8")
 Label/colors/font_color = Color(0, 0, 0, 1)
-Label/font_sizes/font_size = 12
+Label/font_sizes/font_size = 16
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 RichTextLabel/font_sizes/italics_font_size = 8
 RichTextLabel/font_sizes/normal_font_size = 8

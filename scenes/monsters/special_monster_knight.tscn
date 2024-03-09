@@ -1,36 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8v3nakymi7jg"]
+[gd_scene load_steps=8 format=3 uid="uid://c8v3nakymi7jg"]
 
 [ext_resource type="PackedScene" uid="uid://bmmu8g8vsvupm" path="res://scenes/components/monster.tscn" id="1_cd1xx"]
 [ext_resource type="Texture2D" uid="uid://dt4ngoympv2an" path="res://sprites/monster_special_knight.png" id="2_dpybu"]
-
-[sub_resource type="GDScript" id="GDScript_2rebg"]
-resource_name = "MonsterSproutling"
-script/source = "extends Monster
-
-func _ready() -> void:
-	arrive()
-
-func arrive() -> void:
-	$AnimationPlayer.play(\"entrance\")
-	$AnimationPlayer.queue(\"idle\")
-
-func depart() -> void:
-	$AnimationPlayer.play(\"fade\")
-
-func say(_text: String) -> void:
-	push_warning(\"Not implemented!\")
-
-func on_correct_deliver() -> void:
-	print_debug(\"Sproutling is happy\")
-	depart()
-
-func on_wrong_deliver() -> void:
-	print_debug(\"Sproutling hates you\")
-	depart()
-
-func _on_timeout():
-	depart()
-"
 
 [sub_resource type="Animation" id="Animation_f42ag"]
 length = 0.001
@@ -116,7 +87,7 @@ _data = {
 }
 
 [node name="Monster" instance=ExtResource("1_cd1xx")]
-script = SubResource("GDScript_2rebg")
+ignore_order_text = true
 
 [node name="RichTextLabel" parent="Speech" index="0"]
 text = "..."

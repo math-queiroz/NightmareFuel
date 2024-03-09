@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cf40opglqf4bn" path="res://scenes/components/item.tscn" id="1_gwh1t"]
 [ext_resource type="Texture2D" uid="uid://twnga83wg4mi" path="res://sprites/item_paleore.png" id="2_4tnp7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig6ah"]
-size = Vector2(22, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dgur"]
+size = Vector2(50, 50)
 
 [node name="Item" instance=ExtResource("1_gwh1t")]
 
-[node name="Sprite2D2" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_4tnp7")
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_ig6ah")
+shape = SubResource("RectangleShape2D_6dgur")

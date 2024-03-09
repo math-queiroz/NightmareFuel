@@ -5,7 +5,7 @@ extends Control
 const bookmaked_page = 5
 
 @export var page : int = 0 : set = _set_page
-@export var book_pages : BookPages
+@export var book_pages : BookPages : set = _set_book_pages
 @export var book_page_next_audio_stream : AudioStream
 @export var book_page_prev_audio_stream : AudioStream
 
@@ -13,15 +13,18 @@ const bookmaked_page = 5
 @onready var audio_player : AudioStreamPlayer = $AudioStreamPlayer
 
 func _set_page(value) -> void:
-	print_debug("Called!")
-	if value < 0 or value >= last_index or value == page:
+	if value < 0 or value >= last_index:
 		return
 	$PageLeft.set_text(book_pages.pages[value*2])
 	$PageRight.set_text(book_pages.pages[value*2+1] if value*2+1 < len(book_pages.pages) else "")
 	audio_player.set_pitch_scale(randf_range(0.8, 1.2))
-	if not audio_player.playing:
+	if not audio_player.playing and not value == page:
 		audio_player.play()
 	page = value
+
+func _set_book_pages(value) -> void:
+	book_pages = value
+	_set_page(page)
 
 func _ready() -> void:
 	$PageLeft.set_text(book_pages.pages[0])

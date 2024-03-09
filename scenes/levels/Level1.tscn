@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckmlxmc87um6a"]
+[gd_scene load_steps=10 format=3 uid="uid://ckmlxmc87um6a"]
 
 [ext_resource type="PackedScene" uid="uid://dqaxloj2f6ui0" path="res://scenes/level.tscn" id="1_yybb1"]
 [ext_resource type="PackedScene" uid="uid://nbel6w8u7gqs" path="res://scenes/monsters/monster_sproutling.tscn" id="2_h7th7"]
 [ext_resource type="PackedScene" uid="uid://b5q8jstedl24m" path="res://scenes/monsters/monster_anglerslug.tscn" id="3_tt104"]
+[ext_resource type="PackedScene" uid="uid://b5kglu1o2uaix" path="res://scenes/monsters/special_monster_wazowski.tscn" id="4_d2hrm"]
 [ext_resource type="Resource" uid="uid://kbwegtvwcoq3" path="res://resources/book_pages/cycle1_pages.tres" id="5_04ks0"]
+[ext_resource type="PackedScene" uid="uid://7k5mu8cb86ry" path="res://scenes/items/item_wazowski_horn.tscn" id="5_v540o"]
 [ext_resource type="PackedScene" uid="uid://dlfulb3wrq1ew" path="res://scenes/levels/level2.tscn" id="6_b4lwg"]
 
 [sub_resource type="Shader" id="Shader_k6wut"]
@@ -49,40 +51,23 @@ shader_parameter/Percentage = 0.0
 
 [node name="Level" instance=ExtResource("1_yybb1")]
 monster_pool = Array[PackedScene]([ExtResource("2_h7th7"), ExtResource("3_tt104")])
+special_monster = ExtResource("4_d2hrm")
+special_monster_item = ExtResource("5_v540o")
 next_level = ExtResource("6_b4lwg")
 correct_order_sanity_gain = 3.0
 
 [node name="BookOverlay" parent="LevelUI" index="3"]
-page = 0
 book_pages = ExtResource("5_04ks0")
 
 [node name="AudioStreamPlayer" parent="LevelUI/BookOverlay" index="0"]
-pitch_scale = 1.13378
-
-[node name="PageLeft" parent="LevelUI/BookOverlay" index="1"]
-text = "[center][u]Index
-
-
-
-0. Welcome
-
-1. The Basics
-
-2. Know your Bottles
-
-3. Know your Clients
-[/u][i]*bookmarked for quick access![/i][u]
-
-4. Progression
-
-5. Good Luck!"
+pitch_scale = 0.869749
 
 [node name="PageRight" parent="LevelUI/BookOverlay" index="2"]
 text = "[center][u]Getting Started[/u]
 
 
 
-[i]- Start by tapping the page sides
+[i]- Tap the page sides
  to navigate between them[/i]"
 
 [node name="Sprite2DLiquid" parent="CupMedium" index="4"]

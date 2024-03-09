@@ -12,7 +12,7 @@ const CYCLE_DURATION_SECONDS : int = 120
 @export var monster_pool : Array[PackedScene] = []
 @export var special_monster : PackedScene
 @export var special_monster_item : PackedScene
-@export var special_monster_threshold : int = 5
+@export var special_item_order_count : int = 5
 @export var next_level : PackedScene
 
 @export_category("Level difficulty")
@@ -20,7 +20,7 @@ const CYCLE_DURATION_SECONDS : int = 120
 @export var avaliable_cups : int = 1
 @export var avaliable_bottles : int = 2
 @export var is_ice_avaliable : bool = false
-@export var correct_order_sanity_gain: float = 2.0
+@export var correct_order_sanity_gain : float = 2.0
 @export var wrong_order_sanity_drain : float = 1.0
 @export var spill_sanity_drain : float = 0.1
 

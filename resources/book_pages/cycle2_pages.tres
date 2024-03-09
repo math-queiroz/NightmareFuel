@@ -32,6 +32,10 @@ It's called Life Elixir
 It's a Large Mug
 
 
+
+
+
+
 [u]There will be no swamp 
 creatures on this cycle! 
 
@@ -95,15 +99,20 @@ A tasteless yellow drink
 
 
 [u]Starburst [i](sb.)[/i][/u]
-Just like sparkling purple stars
-[i]It's even better than Pan Galactic Gargle Blaster[/i]
-", "[center][u]Know your Bottles[/u]
+It's like sparkling purple stars
+[i]It's even better than Pan Galactic Gargle Blaster[/i]", "[center][u]Know your Bottles[/u]
 
 
 
-[u]Life Elixir [i](le.)[/i][/u]
-Red as blood, strong as death
-[i]Not the best for the undead...[/i]", "[center][u]Know your Containers[/u]
+[u]Rock Bottom [i](rb.)[/i][/u]
+A tasteless yellow drink
+[i]I mean, at least it's cheap, right?[/i]
+
+
+
+[u]Starburst [i](sb.)[/i][/u]
+It's like sparkling purple stars
+[i]It's even better than Pan Galactic Gargle Blaster[/i]", "[center][u]Know your Containers[/u]
 
 
 
@@ -119,53 +128,69 @@ Holds 50 units
 [i]And up to 3 ice cubes[/i]", "[center]Know your Clients
 [u]Swamp[/u]
 
+
 Swamp creatues only groans
+
+
 
 They know no numbers, so they only ask fo exclusive or 50/50 mix drinks
 
 \"Jhrgr\" and \"Urrgr\" means Glass and Mug respectively
 
-Msghh followed by _, __ or ___
-Where _ is the letter/ice count", "[center]Know your Clients
+Msghh followed by 1, 2 or 3
+characters, means they want 
+1, 2 or 3 ice cubes", "[center]Know your Clients
 [u]Swamp[/u]
+
 
 [table=3]
 [cell][u]Order[/u][/cell][cell][/cell][cell][u]Deliver[/u][/cell]
-[cell]Arhg[/cell]		[cell] ..................  [/cell]	[cell]Yellow[/cell]
-[cell]Aahhrgh[/cell]	[cell] ..................  [/cell]	[cell]Purple[/cell]
-[cell]Arhrr[/cell]	[cell] ..................  [/cell]	[cell]Red[/cell]
+[cell]Arhg[/cell]		[cell] ..... [/cell]	[cell]Yellow[/cell]
+[cell]Aahhrgh[/cell]	[cell] ..... [/cell]	[cell]Purple[/cell]
+[cell]Arhrr[/cell]	[cell] ..... [/cell]	[cell]Red[/cell]
 [cell] [/cell][cell] [/cell][cell] [/cell]
-[cell]Hrhar[/cell]	[cell] ..................  [/cell]	[cell]Tasteless[/cell]
-[cell]Hrurg[/cell]	[cell] ..................  [/cell]	[cell]Sparkly[/cell]
-[cell]Rrrrh[/cell]	[cell] ..................  [/cell]	[cell]Strong[/cell]
+[cell]Hrhar[/cell]	[cell] ..... [/cell]	[cell]Tasteless[/cell]
+[cell]Hrurg[/cell]	[cell] ..... [/cell]	[cell]Sparkly[/cell]
+[cell]Rrrrh[/cell]	[cell] ..... [/cell]	[cell]Strong[/cell]
 [/table]
 
-[i]\"words\" other than these are gibberish[/i]
-", "[center]Know your Clients
+
+
+[i]\"words\" other than these are gibberish[/i]", "[center]Know your Clients
 [u]Space[/u]
+
 
 Space beigns are always with the head on the stars
 
 
-They're always pretty smart and equipped with translators. Unfortunately earthlings are rare these days, and human language is a dead one...
+They're always pretty smart and equipped with translators. 
 
-Expect meaning to be shuiffled: colors will be correct but properties always reversed
+Unfortunately earthlings are rare these days, and human language is a dead one...
 
-[i]Cup sizes are correctly ordered[/i]", "[center]Know your Clients
+Expect meaning to be mixed:
+- colors are always correct
+- properties are always reversed
+
+[i]And cup sizes are always correctly ordered too[/i]", "[center]Know your Clients
 [u]Space[/u]
+
 
 [table=3]
 [cell][u]Order[/u][/cell][cell][/cell][cell][u]Deliver[/u][/cell]
-[cell]Yellow[/cell]		[cell] ..................  [/cell]	[cell]Yellow[/cell]
-[cell]Purple[/cell]		[cell] ..................  [/cell]	[cell]Purple[/cell]
-[cell]Red[/cell]	[cell] ..................  [/cell]	[cell]Red[/cell]
+[cell]Yellow[/cell]	[cell] ..... [/cell]	[cell]Yellow[/cell]
+[cell]Purple[/cell]	[cell] ..... [/cell]	[cell]Purple[/cell]
+[cell]Red[/cell]		[cell] ..... [/cell]	[cell]Red[/cell]
 [cell] [/cell][cell] [/cell][cell] [/cell]
-[cell]Strong[/cell]	[cell] ..................  [/cell]	[cell]Tasteless[/cell]
-[cell]Light[/cell]	[cell] ..................  [/cell]	[cell]Sparkly[/cell]
-[cell]Tasteless[/cell]	[cell] ..................  [/cell]	[cell]Strong[/cell]
+[cell]Strong[/cell]	[cell] ..... [/cell]	[cell]Tasteless[/cell]
+[cell]Light[/cell]	[cell] ..... [/cell]	[cell]Sparkly[/cell]
+[cell]Tasteless[/cell]	[cell] ..... [/cell]	[cell]Strong[/cell]
 [/table]
 
-When asked for ice, the count is inverted [i](so 3=0, 2=1, 1=2 and 0=3)[/i]", "[center][u]Progression[/u]
+When asked for ice, 
+the count will be inverted 
+[i](So 3=0, 2=1, 1=2 and 0=3)[/i]", "[center][u]Progression[/u]
+
+
 
 You will unlock features as you progress, make sure to come back to the entire book
 

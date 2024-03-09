@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://b7ljsv1pj25la" path="res://sprites/item_horn.png" id="2_s67mg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v3a7b"]
-size = Vector2(10, 10)
+size = Vector2(24, 22)
 
 [node name="Item" instance=ExtResource("1_4v3sg")]
 
-[node name="Sprite2D2" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_s67mg")
 
 [node name="CollisionShape2D" parent="." index="1"]

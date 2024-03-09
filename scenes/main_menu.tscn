@@ -1,6 +1,5 @@
-[gd_scene load_steps=21 format=3 uid="uid://co362w66hxapv"]
+[gd_scene load_steps=20 format=3 uid="uid://co362w66hxapv"]
 
-[ext_resource type="PackedScene" uid="uid://bpy564r10si6n" path="res://scenes/components/pixel_perfect_scaled_scene.tscn" id="1_cfsei"]
 [ext_resource type="PackedScene" uid="uid://bhpbkyb44blvd" path="res://scenes/components/screen_fader.tscn" id="1_xkr8x"]
 [ext_resource type="AudioStream" uid="uid://b0ns5eih4rx5i" path="res://music/TheBeyond.wav" id="1_xy8lj"]
 [ext_resource type="Shader" path="res://shaders/pixelated_background.gdshader" id="2_8m5s5"]
@@ -11,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c6u7bmv1qgo57" path="res://sprites/bottle3.png" id="7_fy2xf"]
 [ext_resource type="Texture2D" uid="uid://dqry0da64ct8u" path="res://sprites/bottle4.png" id="8_beq6h"]
 [ext_resource type="Theme" uid="uid://bg4jjqmkvq134" path="res://resources/theme.tres" id="9_4iejn"]
-[ext_resource type="PackedScene" uid="uid://bgqx03x2fiilr" path="res://scenes/levels/level5.tscn" id="10_sfmis"]
+[ext_resource type="PackedScene" uid="uid://ckmlxmc87um6a" path="res://scenes/levels/level1.tscn" id="10_cijv5"]
 [ext_resource type="Texture2D" uid="uid://djce3vnahjwk7" path="res://sprites/logo.png" id="10_xqmqv"]
 [ext_resource type="Script" path="res://scripts/components/BusVolumeController.gd" id="11_na315"]
 [ext_resource type="Script" path="res://scripts/components/SoundButton.gd" id="13_g3rpc"]
@@ -88,7 +87,8 @@ func exit():
 	get_tree().quit()
 "
 
-[node name="WindowSizedCanvas" type="Control"]
+[node name="Control" type="Control"]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,27 +96,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PixelPerfectScaledScene" parent="." instance=ExtResource("1_cfsei")]
-layout_mode = 1
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
-[node name="ScreenFader" parent="PixelPerfectScaledScene" instance=ExtResource("1_xkr8x")]
+[node name="ScreenFader" parent="." instance=ExtResource("1_xkr8x")]
 unique_name_in_owner = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PixelPerfectScaledScene"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_xy8lj")
 autoplay = true
 bus = &"Music"
 
-[node name="ColorRect" type="ColorRect" parent="PixelPerfectScaledScene"]
+[node name="ColorRect" type="ColorRect" parent="."]
 z_index = -10
 material = SubResource("ShaderMaterial_00t57")
 layout_mode = 1
@@ -128,19 +116,19 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="PixelPerfectScaledScene"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(400, 240)
 scale = Vector2(2, 2)
 texture = ExtResource("3_ji72u")
 
-[node name="Frame" type="Sprite2D" parent="PixelPerfectScaledScene"]
+[node name="Frame" type="Sprite2D" parent="."]
 z_index = 101
 position = Vector2(402, 240)
 scale = Vector2(2, 2)
 texture = SubResource("CanvasTexture_dtswa")
 
-[node name="ParticleEmitters" type="Control" parent="PixelPerfectScaledScene"]
+[node name="ParticleEmitters" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,7 +136,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="PixelPerfectScaledScene/ParticleEmitters"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ParticleEmitters"]
 z_index = -1
 position = Vector2(119, -67)
 scale = Vector2(1.13324, 0.952922)
@@ -159,7 +147,7 @@ lifetime = 3.5
 preprocess = 3.5
 randomness = 1.0
 
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="PixelPerfectScaledScene/ParticleEmitters"]
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ParticleEmitters"]
 z_index = -1
 position = Vector2(119, -67)
 scale = Vector2(1.13324, 0.952922)
@@ -170,7 +158,7 @@ lifetime = 3.5
 preprocess = 3.5
 randomness = 1.0
 
-[node name="GPUParticles2D5" type="GPUParticles2D" parent="PixelPerfectScaledScene/ParticleEmitters"]
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="ParticleEmitters"]
 z_index = -1
 position = Vector2(671, -67)
 scale = Vector2(1.13324, 0.952922)
@@ -181,7 +169,7 @@ lifetime = 3.5
 preprocess = 3.5
 randomness = 1.0
 
-[node name="GPUParticles2D6" type="GPUParticles2D" parent="PixelPerfectScaledScene/ParticleEmitters"]
+[node name="GPUParticles2D6" type="GPUParticles2D" parent="ParticleEmitters"]
 z_index = -1
 position = Vector2(671, -67)
 scale = Vector2(1.13324, 0.952922)
@@ -192,7 +180,7 @@ lifetime = 3.5
 preprocess = 3.5
 randomness = 1.0
 
-[node name="Slider" type="Control" parent="PixelPerfectScaledScene"]
+[node name="Slider" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -200,9 +188,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_bqerq")
-start_game_level = ExtResource("10_sfmis")
+start_game_level = ExtResource("10_cijv5")
 
-[node name="Main" type="Control" parent="PixelPerfectScaledScene/Slider"]
+[node name="Main" type="Control" parent="Slider"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -210,14 +198,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2DLogo" type="Sprite2D" parent="PixelPerfectScaledScene/Slider/Main"]
+[node name="Sprite2DLogo" type="Sprite2D" parent="Slider/Main"]
 z_index = 10
 texture_filter = 1
 position = Vector2(400, 154)
 scale = Vector2(2, 2)
 texture = ExtResource("10_xqmqv")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PixelPerfectScaledScene/Slider/Main"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Slider/Main"]
 z_index = 10
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 1
@@ -233,40 +221,34 @@ offset_bottom = -89.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Start" type="Button" parent="PixelPerfectScaledScene/Slider/Main/VBoxContainer"]
+[node name="Start" type="Button" parent="Slider/Main/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_4iejn")
 text = "Start Game"
 script = ExtResource("13_g3rpc")
 press_sound_variant = "Confirm"
 
-[node name="Endless" type="Button" parent="PixelPerfectScaledScene/Slider/Main/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("9_4iejn")
-text = "Endless Mode"
-script = ExtResource("13_g3rpc")
-
-[node name="Settings" type="Button" parent="PixelPerfectScaledScene/Slider/Main/VBoxContainer"]
+[node name="Settings" type="Button" parent="Slider/Main/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_4iejn")
 text = "Settings"
 script = ExtResource("13_g3rpc")
 
-[node name="About" type="Button" parent="PixelPerfectScaledScene/Slider/Main/VBoxContainer"]
+[node name="About" type="Button" parent="Slider/Main/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_4iejn")
 text = "About
 "
 script = ExtResource("13_g3rpc")
 
-[node name="Exit" type="Button" parent="PixelPerfectScaledScene/Slider/Main/VBoxContainer"]
+[node name="Exit" type="Button" parent="Slider/Main/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_4iejn")
 text = "Exit
 "
 script = ExtResource("13_g3rpc")
 
-[node name="Settings" type="Control" parent="PixelPerfectScaledScene/Slider"]
+[node name="Settings" type="Control" parent="Slider"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -275,7 +257,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PixelPerfectScaledScene/Slider/Settings"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Slider/Settings"]
 z_index = 10
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 1
@@ -284,33 +266,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -60.0
-offset_right = 75.0
-offset_bottom = 61.0
+offset_left = -121.0
+offset_top = -101.0
+offset_right = 121.0
+offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SettingsLabel" type="Label" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer"]
+[node name="SettingsLabel" type="Label" parent="Slider/Settings/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="Separator" type="Control" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer"]
+[node name="Separator" type="Control" parent="Slider/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Slider/Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="GeneralLabel" type="Label" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+[node name="GeneralLabel" type="Label" parent="Slider/Settings/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 theme = ExtResource("9_4iejn")
 text = "General Volume"
 
-[node name="GeneralSlider" type="HSlider" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer/HBoxContainer"]
+[node name="GeneralSlider" type="HSlider" parent="Slider/Settings/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_4iejn")
@@ -320,17 +301,17 @@ value = 0.5
 script = ExtResource("11_na315")
 bus_id = 0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Slider/Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="SoundLabel" type="Label" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(80, 0)
+[node name="SoundLabel" type="Label" parent="Slider/Settings/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("9_4iejn")
 text = "Sound Volume"
 
-[node name="SoundSlider" type="HSlider" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer/HBoxContainer2"]
+[node name="SoundSlider" type="HSlider" parent="Slider/Settings/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_4iejn")
@@ -340,16 +321,16 @@ value = 0.5
 script = ExtResource("11_na315")
 bus_id = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Slider/Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="MusicLabel" type="Label" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
+[node name="MusicLabel" type="Label" parent="Slider/Settings/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 theme = ExtResource("9_4iejn")
 text = "Music Volume"
 
-[node name="MusicSlider" type="HSlider" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer/HBoxContainer3"]
+[node name="MusicSlider" type="HSlider" parent="Slider/Settings/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_4iejn")
@@ -359,36 +340,34 @@ value = 0.5
 script = ExtResource("11_na315")
 bus_id = 2
 
-[node name="Separator2" type="Control" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer"]
+[node name="Separator2" type="Control" parent="Slider/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Slider/Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer/HBoxContainer4"]
+[node name="Label" type="Label" parent="Slider/Settings/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Close book on new monster"
+text = "Close book on new order"
 
-[node name="CheckBox" type="CheckBox" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer/HBoxContainer4"]
+[node name="CheckBox" type="CheckBox" parent="Slider/Settings/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
-button_pressed = true
 script = ExtResource("15_1utun")
 setting_name = "hide_book_on_new_customeer"
 
-[node name="Separator3" type="Control" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer"]
+[node name="Separator3" type="Control" parent="Slider/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Return" type="Button" parent="PixelPerfectScaledScene/Slider/Settings/VBoxContainer"]
+[node name="Return" type="Button" parent="Slider/Settings/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
 text = "Return"
 script = ExtResource("13_g3rpc")
 
-[node name="About" type="Control" parent="PixelPerfectScaledScene/Slider"]
+[node name="About" type="Control" parent="Slider"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -397,13 +376,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2DLogo" type="Sprite2D" parent="PixelPerfectScaledScene/Slider/About"]
+[node name="Sprite2DLogo" type="Sprite2D" parent="Slider/About"]
 texture_filter = 1
 position = Vector2(400, 122)
 scale = Vector2(2, 2)
 texture = ExtResource("10_xqmqv")
 
-[node name="Label" type="Label" parent="PixelPerfectScaledScene/Slider/About"]
+[node name="Label" type="Label" parent="Slider/About"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -418,20 +397,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_4iejn")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "A short game by math-queiroz
-about serving drinks for monsters. Made as my
- submition for the first AcerolaJam (2024)
+theme_override_font_sizes/font_size = 8
+text = "A short game by about serving drinks for monsters. 
+Made as my submition for the first AcerolaJam (2024)
+
+Main mechanic inspired by The Red Strings Club 
+and motivated by the many other games I like
+(some of which I even left references to)
 
 Big thanks for my friends for testing and giving feedback!
 
 
 
-Source code avaliable at:
+
+Made by math-queiroz. Source code avaliable at:
 https://github.com/math-queiroz/NightmareFuel"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Return" type="Button" parent="PixelPerfectScaledScene/Slider/About"]
+[node name="Return" type="Button" parent="Slider/About"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -450,12 +434,9 @@ theme_override_font_sizes/font_size = 12
 text = "Return"
 script = ExtResource("13_g3rpc")
 
-[connection signal="pressed" from="PixelPerfectScaledScene/Slider/Main/VBoxContainer/Start" to="PixelPerfectScaledScene/Slider" method="start_game"]
-[connection signal="pressed" from="PixelPerfectScaledScene/Slider/Main/VBoxContainer/Endless" to="PixelPerfectScaledScene/Slider" method="start_endless"]
-[connection signal="pressed" from="PixelPerfectScaledScene/Slider/Main/VBoxContainer/Settings" to="PixelPerfectScaledScene/Slider" method="show_settings"]
-[connection signal="pressed" from="PixelPerfectScaledScene/Slider/Main/VBoxContainer/About" to="PixelPerfectScaledScene/Slider" method="show_about"]
-[connection signal="pressed" from="PixelPerfectScaledScene/Slider/Main/VBoxContainer/Exit" to="PixelPerfectScaledScene/Slider" method="exit"]
-[connection signal="pressed" from="PixelPerfectScaledScene/Slider/Settings/VBoxContainer/Return" to="PixelPerfectScaledScene/Slider" method="show_main"]
-[connection signal="pressed" from="PixelPerfectScaledScene/Slider/About/Return" to="PixelPerfectScaledScene/Slider" method="show_main"]
-
-[editable path="PixelPerfectScaledScene"]
+[connection signal="pressed" from="Slider/Main/VBoxContainer/Start" to="Slider" method="start_game"]
+[connection signal="pressed" from="Slider/Main/VBoxContainer/Settings" to="Slider" method="show_settings"]
+[connection signal="pressed" from="Slider/Main/VBoxContainer/About" to="Slider" method="show_about"]
+[connection signal="pressed" from="Slider/Main/VBoxContainer/Exit" to="Slider" method="exit"]
+[connection signal="pressed" from="Slider/Settings/VBoxContainer/Return" to="Slider" method="show_main"]
+[connection signal="pressed" from="Slider/About/Return" to="Slider" method="show_main"]

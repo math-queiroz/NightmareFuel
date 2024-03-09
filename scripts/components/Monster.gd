@@ -4,6 +4,8 @@ class_name Monster
 signal departed()
 
 @export var realm : Common.Realm
+@export var ignore_order_text : bool = false
+@export var has_an_order : bool = true
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
@@ -29,7 +31,7 @@ func depart() -> void:
 	)
 
 func say(text: String) -> void:
-	$Speech/RichTextLabel.set_text(text)
+	if not ignore_order_text: $Speech/RichTextLabel.set_text(text)
 	$Speech.show()
 
 func on_correct_deliver() -> void:

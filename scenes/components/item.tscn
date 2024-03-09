@@ -6,11 +6,15 @@
 size = Vector2(10, 10)
 
 [node name="Item" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 4
+input_pickable = true
 script = ExtResource("1_rwcyl")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
+scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yijqu")

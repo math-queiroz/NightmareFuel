@@ -12,7 +12,7 @@ const tilt_dist : float = 169
 @onready var level_node : Level = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1) as Level
 @onready var default_z_index : int = z_index
 @onready var audio_player : AudioStreamPlayer
-@onready var default_texture : Texture2D = get_node("Sprite2D").get_texture()
+@onready var default_texture : Texture2D = $Sprite2D.get_texture()
 
 var teleported : bool = false : set = set_teleported
 var is_held : bool = false : set = set_is_held

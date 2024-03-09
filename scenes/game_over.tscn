@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cr8bk2cqwc2hf"]
+[gd_scene load_steps=16 format=3 uid="uid://cr8bk2cqwc2hf"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_of2wm"]
 [ext_resource type="Theme" uid="uid://bg4jjqmkvq134" path="res://resources/theme.tres" id="1_semet"]
@@ -236,11 +236,6 @@ _data = {
 "game_over": SubResource("Animation_fsj5i")
 }
 
-[sub_resource type="SystemFont" id="SystemFont_ctwtf"]
-font_names = PackedStringArray("Roboto")
-font_italic = true
-font_weight = 500
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_25off"]
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
@@ -267,8 +262,10 @@ grow_vertical = 2
 script = ExtResource("1_of2wm")
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "game_over"
@@ -300,14 +297,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -367.0
 offset_top = 26.0
-offset_right = 367.0
-offset_bottom = 48.0
+offset_right = 344.0
+offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_semet")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = SubResource("SystemFont_ctwtf")
-theme_override_font_sizes/font_size = 14
 text = "You need to keep your determination. Don't lose the focus..."
 horizontal_alignment = 1
 visible_characters = 0
@@ -321,17 +316,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.0
+offset_left = -56.0
 offset_top = 80.0
-offset_right = 47.0
-offset_bottom = 95.0
+offset_right = 56.0
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_semet")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 12
 text = "Try Again"
 
 [node name="Node2D" type="Node2D" parent="."]

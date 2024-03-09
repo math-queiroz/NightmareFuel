@@ -23,12 +23,12 @@ pages = Array[String](["[center][u]Index
 
 
 
-[i]- Start by tapping the page sides
+[i]- Tap the page sides
  to navigate between them[/i]", "[center][u]Welcome[/u]
 
 
 
-You now work at  [i]A Bar Ration[/i],
+You now work at [i]Abarration[/i],
 a bar for... unusual customeers
 
 Your job is to serve drinks
@@ -84,7 +84,7 @@ A tasteless yellow drink
 
 
 [u]Starburst [i](sb.)[/i][/u]
-Just like sparkling purple stars
+It's like sparkling purple stars
 [i]It's even better than Pan Galactic Gargle Blaster[/i]
 ", "[center][u]Know your Bottles[/u]", "[center][u]Know your Containers[/u]
 
@@ -96,23 +96,35 @@ Holds 35 units
 ", "[center][u]Know your Containers[/u]", "[center]Know your Clients
 [u]Swamp[/u]
 
+
 Swamp creatues only groans
 
+
+
 They know no numbers, so they only ask fo exclusive or 50/50 mix drinks
-", "[center]Know your Clients
+
+\"Jhrgr\" means Glass
+The only cup size for now", "[center]Know your Clients
 [u]Swamp[/u]
+
 
 [table=3]
 [cell][u]Order[/u][/cell][cell][/cell][cell][u]Deliver[/u][/cell]
-[cell]Arhg[/cell]		[cell] ..................  [/cell]	[cell]Yellow[/cell]
-[cell]Aahhrgh[/cell]	[cell] ..................  [/cell]	[cell]Purple[/cell]
+[cell]Arhg[/cell]		[cell] ..... [/cell]	[cell]Yellow[/cell]
+[cell]Aahhrgh[/cell]	[cell] ..... [/cell]	[cell]Purple[/cell]
 [cell] [/cell][cell] [/cell][cell] [/cell]
-[cell]Hrhar[/cell]	[cell] ..................  [/cell]	[cell]Tasteless[/cell]
-[cell]Hrurg[/cell]	[cell] ..................  [/cell]	[cell]Sparkly[/cell]
+[cell]Hrhar[/cell]	[cell] ..... [/cell]	[cell]Tasteless[/cell]
+[cell]Hrurg[/cell]	[cell] ..... [/cell]	[cell]Sparkly[/cell]
 [/table]
 
-[i]\"words\" other than these are gibberish[/i]
-", "[center][u]Progression[/u]
+
+
+
+
+
+
+
+[i]\"words\" other than these are gibberish[/i]", "[center][u]Progression[/u]
 
 
 

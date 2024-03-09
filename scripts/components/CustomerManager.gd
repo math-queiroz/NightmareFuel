@@ -8,6 +8,9 @@ const cap_s = Common.CupCapacity.SMALL
 const cap_m = Common.CupCapacity.MEDIUM
 const cap_l = Common.CupCapacity.LARGE
 
+const teleported_ice_enjoyers = [Common.Realm.ELDRITCH]
+const teleported_ice_sanity_bonus: float = 1.0
+
 const swapm_agregators = ["Aa", "Rh", "Agr", "Rrh", "Hgsr", "Rrrhg", "Ahhhrgs", "Shhshrg"]
 const swamp_min_max_agregators = Vector2i(2, 6)
 const swapm_drink_words = [["Arhg","Hrhar"],["Aahhrgh","Hrurg"],["Arhrr","Rrrrh"],["Ahrggru","Rhhgj"]]
@@ -41,11 +44,11 @@ var order : Common.Order
 
 func _ready() -> void:
 	randomize()
-#	#Mass test order generator
+	#Mass test order generator
 #	for i in 100:
-#		var o = new_space_order()
+#		var o = new_eldritch_order()
 #		print(o)
-#		print(space_order_to_text(o))
+#		print(eldritch_order_to_text(o))
 
 func _on_monster_departed() -> void:
 	if not %LevelTimer.is_stopped():
@@ -59,8 +62,14 @@ func _on_monster_departed() -> void:
 func _on_area_2d_customer_interaction_input_event(_viewport, event, _shape_idx) -> void:
 	var is_left_mouse = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
 	var obj = level_node.held_object
-	if  is_left_mouse and event.pressed and order != null and obj is Cup and obj.get_contents_sum() > 0:
-		if not spawned_special:
+	var has_monster_and_order = monster != null and monster.has_an_order
+	if is_left_mouse and event.pressed and order != null and has_monster_and_order and (obj is Item or obj is Cup):
+		if spawned_special:
+			if obj is Item:
+				Global.delivered_items_flag |= (1 << (level_node.cycle-1))
+				level_node.stats.special_order_delivered = true
+			monster.depart()
+		elif obj is Cup and obj.get_contents_sum() > 0:
 			level_node.stats.customers_served += 1
 
 			var delivered = Common.Order.new()
@@ -73,10 +82,18 @@ func _on_area_2d_customer_interaction_input_event(_viewport, event, _shape_idx) 
 			if deliver_score >= deliver_score_treshold:
 				$AnimationPlayerScore.play("score_up")
 				var s = level_node.correct_order_sanity_gain
+				if delivered.has_teleported_ice and teleported_ice_enjoyers.has(monster.realm):
+					print_debug("Had teleported ice! Adding %d bonus sanity" % teleported_ice_sanity_bonus)
+					s += teleported_ice_sanity_bonus
 				monster.on_correct_deliver()
 				level_node.set_sanity(level_node.sanity + s)
 				level_node.stats.correct_orders_served += 1
 				level_node.stats.sanity_replenished += s
+				if level_node.stats.correct_orders_served == level_node.special_item_order_count:
+					if level_node.special_monster_item != null:
+						var item = level_node.special_monster_item.instantiate()
+						item.global_position = global_position
+						level_node.add_child(item)
 			else:
 				$AnimationPlayerScore.play("score_down")
 				var s = level_node.wrong_order_sanity_drain
@@ -84,7 +101,7 @@ func _on_area_2d_customer_interaction_input_event(_viewport, event, _shape_idx) 
 				level_node.set_sanity(level_node.sanity - s)
 				level_node.stats.wrong_orders_served += 1
 		else:
-			monster.depart()
+			return
 		obj.on_deliver()
 		order = null
 
@@ -223,7 +240,7 @@ func new_eldritch_order() -> Common.EldritchOrder:
 	var avaliable_drinks = eldritch_drinks_names.keys().slice(0, min(
 		eldritch_cups_thresholds[level_node.avaliable_cups - 1], 
 		eldritch_bottles_thresholds[level_node.avaliable_bottles - 1]
-	) - 1)
+	))
 	o.drink_name = avaliable_drinks.pick_random()
 	o.contents = eldritch_drinks_names.get(o.drink_name).contents
 	o.cup_capacity = eldritch_drinks_names.get(o.drink_name).cup_capacity
