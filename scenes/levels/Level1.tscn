@@ -60,7 +60,7 @@ correct_order_sanity_gain = 3.0
 book_pages = ExtResource("5_04ks0")
 
 [node name="AudioStreamPlayer" parent="LevelUI/BookOverlay" index="0"]
-pitch_scale = 0.869749
+pitch_scale = 0.81538
 
 [node name="PageRight" parent="LevelUI/BookOverlay" index="2"]
 text = "[center][u]Getting Started[/u]

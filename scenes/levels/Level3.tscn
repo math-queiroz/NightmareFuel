@@ -72,7 +72,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ggqf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8k0hv"]
 resource_local_to_scene = true
 shader = SubResource("Shader_bugmt")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -139,7 +139,7 @@ is_ice_avaliable = true
 book_pages = ExtResource("5_7ufjg")
 
 [node name="AudioStreamPlayer" parent="LevelUI/BookOverlay" index="0"]
-pitch_scale = 1.0833
+pitch_scale = 1.0002
 
 [node name="PageRight" parent="LevelUI/BookOverlay" index="2"]
 text = "[center][u]Cycle 3 Unlocks[/u]
@@ -281,7 +281,7 @@ texture = ExtResource("14_1a3ty")
 
 [node name="Sprite2DLiquid" parent="CupLarge" index="4" instance=ExtResource("15_217sr")]
 z_index = 6
-material = SubResource("ShaderMaterial_4ggqf")
+material = SubResource("ShaderMaterial_8k0hv")
 position = Vector2(2, 0)
 
 [node name="SpillPoint" parent="CupLarge" index="5" instance=ExtResource("11_0o5ui")]

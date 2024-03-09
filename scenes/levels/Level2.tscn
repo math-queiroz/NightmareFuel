@@ -66,7 +66,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f73pf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axbjp"]
 resource_local_to_scene = true
 shader = SubResource("Shader_rip6k")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -131,33 +131,49 @@ is_ice_avaliable = true
 correct_order_sanity_gain = 3.0
 
 [node name="BookOverlay" parent="LevelUI" index="3"]
+page = 6
 book_pages = ExtResource("5_jr7nj")
 
 [node name="AudioStreamPlayer" parent="LevelUI/BookOverlay" index="0"]
-pitch_scale = 1.12338
+pitch_scale = 1.02446
+
+[node name="PageLeft" parent="LevelUI/BookOverlay" index="1"]
+text = "[center]Know your Clients
+[u]Space[/u]
+
+
+Space beigns are always with the head on the stars
+
+
+They're always pretty smart and only ask for equal parts mixes 
+
+They do have translators, but they're always broken
+
+Expect meaning to be mixed:
+- colors are always correct
+- properties are always reversed
+
+[i]And cup sizes are always correctly ordered too[/i]"
 
 [node name="PageRight" parent="LevelUI/BookOverlay" index="2"]
-text = "[center][u]Cycle 2 Unlocks[/u]
+text = "[center]Know your Clients
+[u]Space[/u]
 
 
+[table=3]
+[cell][u]Order[/u][/cell][cell][/cell][cell][u]Deliver[/u][/cell]
+[cell]Yellow[/cell]	[cell] ..... [/cell]	[cell]Yellow[/cell]
+[cell]Purple[/cell]	[cell] ..... [/cell]	[cell]Purple[/cell]
+[cell]Red[/cell]		[cell] ..... [/cell]	[cell]Red[/cell]
+[cell] [/cell][cell] [/cell][cell] [/cell]
+[cell]Strong[/cell]	[cell] ..... [/cell]	[cell]Tasteless[/cell]
+[cell]Light[/cell]	[cell] ..... [/cell]	[cell]Sparkly[/cell]
+[cell]Tasteless[/cell]	[cell] ..... [/cell]	[cell]Strong[/cell]
+[/table]
 
-- Ice is now avaliable!
-
-- You now have a new bottle:
-It's called Life Elixir
-
-- Your now have a new cup:
-It's a Large Mug
-
-
-
-
-
-
-[u]There will be no swamp 
-creatures on this cycle! 
-
-Revisit the latter pages![/u]"
+When asked for ice, 
+the count will be inverted 
+[i](So 3=0, 2=1, 1=2 and 0=3)[/i]"
 
 [node name="IceTray" type="Area2D" parent="." index="9"]
 position = Vector2(230, 367)
@@ -250,7 +266,7 @@ texture = ExtResource("14_5fx8n")
 
 [node name="Sprite2DLiquid" parent="CupLarge" index="4" instance=ExtResource("15_g7g3d")]
 z_index = 6
-material = SubResource("ShaderMaterial_f73pf")
+material = SubResource("ShaderMaterial_axbjp")
 position = Vector2(2, 0)
 
 [node name="SpillPoint" parent="CupLarge" index="5" instance=ExtResource("11_tglhf")]
