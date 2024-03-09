@@ -192,7 +192,6 @@ script = SubResource("GDScript_bqerq")
 start_game_level = ExtResource("10_cijv5")
 
 [node name="Main" type="Control" parent="Slider"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -412,6 +411,7 @@ text = "Return"
 script = ExtResource("13_g3rpc")
 
 [node name="About" type="Control" parent="Slider"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
