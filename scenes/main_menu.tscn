@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://co362w66hxapv"]
+[gd_scene load_steps=21 format=3 uid="uid://co362w66hxapv"]
 
 [ext_resource type="PackedScene" uid="uid://bhpbkyb44blvd" path="res://scenes/components/screen_fader.tscn" id="1_xkr8x"]
 [ext_resource type="AudioStream" uid="uid://b0ns5eih4rx5i" path="res://music/TheBeyond.wav" id="1_xy8lj"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/components/BusVolumeController.gd" id="11_na315"]
 [ext_resource type="Script" path="res://scripts/components/SoundButton.gd" id="13_g3rpc"]
 [ext_resource type="Script" path="res://scripts/settings_toggle_checkbox.gd" id="15_1utun"]
+[ext_resource type="Script" path="res://scripts/SetIntegerScale.gd" id="16_vw5ds"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_00t57"]
 shader = ExtResource("2_8m5s5")
@@ -191,6 +192,7 @@ script = SubResource("GDScript_bqerq")
 start_game_level = ExtResource("10_cijv5")
 
 [node name="Main" type="Control" parent="Slider"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -340,10 +342,6 @@ value = 0.5
 script = ExtResource("11_na315")
 bus_id = 2
 
-[node name="Separator2" type="Control" parent="Slider/Settings/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
 [node name="HBoxContainer4" type="HBoxContainer" parent="Slider/Settings/VBoxContainer"]
 layout_mode = 2
 
@@ -358,6 +356,52 @@ layout_mode = 2
 script = ExtResource("15_1utun")
 setting_name = "hide_book_on_new_customeer"
 
+[node name="Separator4" type="Control" parent="Slider/Settings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Control" type="VBoxContainer" parent="Slider/Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Slider/Settings/VBoxContainer/Control"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Slider/Settings/VBoxContainer/Control/HBoxContainer5"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Use Integer Scale"
+
+[node name="Button" type="Button" parent="Slider/Settings/VBoxContainer/Control/HBoxContainer5"]
+texture_filter = 1
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme = ExtResource("9_4iejn")
+theme_override_font_sizes/font_size = 16
+text = "1x"
+script = ExtResource("16_vw5ds")
+
+[node name="Button2" type="Button" parent="Slider/Settings/VBoxContainer/Control/HBoxContainer5"]
+texture_filter = 1
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme = ExtResource("9_4iejn")
+theme_override_font_sizes/font_size = 16
+text = "2x"
+script = ExtResource("16_vw5ds")
+target_scale = 2.0
+
+[node name="Label" type="Label" parent="Slider/Settings/VBoxContainer/Control"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Text is easier to read on integer scales 
+(only resizes in windowed mode)"
+horizontal_alignment = 1
+
+[node name="Separator2" type="Control" parent="Slider/Settings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
 [node name="Separator3" type="Control" parent="Slider/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -368,7 +412,6 @@ text = "Return"
 script = ExtResource("13_g3rpc")
 
 [node name="About" type="Control" parent="Slider"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -416,7 +459,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Return" type="Button" parent="Slider/About"]
-custom_minimum_size = Vector2(100, 0)
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -430,7 +473,6 @@ offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("9_4iejn")
-theme_override_font_sizes/font_size = 12
 text = "Return"
 script = ExtResource("13_g3rpc")
 

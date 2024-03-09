@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://dqaxloj2f6ui0"]
+[gd_scene load_steps=88 format=3 uid="uid://dqaxloj2f6ui0"]
 
 [ext_resource type="Script" path="res://scripts/components/Level.gd" id="1_pyr82"]
 [ext_resource type="Theme" uid="uid://bg4jjqmkvq134" path="res://resources/theme.tres" id="2_fe8gt"]
@@ -38,6 +38,7 @@
 [ext_resource type="AudioStream" uid="uid://5dp8wosrxl5l" path="res://sounds/BookPageNext.wav" id="24_ikrsm"]
 [ext_resource type="AudioStream" uid="uid://bw30hmnvujdwm" path="res://sounds/BookPagePrev.wav" id="25_qhf7o"]
 [ext_resource type="Texture2D" uid="uid://ctdg0edjta8k0" path="res://sprites/book_spot.png" id="26_enoih"]
+[ext_resource type="Script" path="res://scripts/SetIntegerScale.gd" id="27_2xt82"]
 [ext_resource type="Texture2D" uid="uid://bx124nkaqkrm8" path="res://sprites/book.png" id="27_nrjki"]
 [ext_resource type="Texture2D" uid="uid://c18twlbvu7lny" path="res://sprites/book_overlay.png" id="28_15ncf"]
 [ext_resource type="Script" path="res://scripts/components/BookOverlay.gd" id="29_u2l1q"]
@@ -505,7 +506,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1a4yn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8w5dp"]
 resource_local_to_scene = true
 shader = SubResource("Shader_k6wut")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -1022,6 +1023,48 @@ layout_mode = 2
 script = ExtResource("24_ervko")
 setting_name = "hide_book_on_new_customeer"
 
+[node name="Separator4" type="Control" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Control" type="VBoxContainer" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="LevelUI/PauseScreen/Controls/VBoxContainer/Control"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelUI/PauseScreen/Controls/VBoxContainer/Control/HBoxContainer5"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Use Integer Scale"
+
+[node name="Button" type="Button" parent="LevelUI/PauseScreen/Controls/VBoxContainer/Control/HBoxContainer5"]
+texture_filter = 1
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme = ExtResource("2_fe8gt")
+theme_override_font_sizes/font_size = 16
+text = "1x"
+script = ExtResource("27_2xt82")
+
+[node name="Button2" type="Button" parent="LevelUI/PauseScreen/Controls/VBoxContainer/Control/HBoxContainer5"]
+texture_filter = 1
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme = ExtResource("2_fe8gt")
+theme_override_font_sizes/font_size = 16
+text = "2x"
+script = ExtResource("27_2xt82")
+target_scale = 2.0
+
+[node name="Label" type="Label" parent="LevelUI/PauseScreen/Controls/VBoxContainer/Control"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Text is easier to read on integer scales 
+(only resizes in windowed mode)"
+horizontal_alignment = 1
+
 [node name="Separator2" type="Control" parent="LevelUI/PauseScreen/Controls/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -1242,7 +1285,7 @@ texture = ExtResource("51_cswak")
 
 [node name="Sprite2DLiquid" parent="CupMedium" instance=ExtResource("48_v15ix")]
 z_index = 7
-material = SubResource("ShaderMaterial_1a4yn")
+material = SubResource("ShaderMaterial_8w5dp")
 texture = ExtResource("52_hgo2k")
 
 [node name="SpillPoint" parent="CupMedium" instance=ExtResource("35_3uqy7")]

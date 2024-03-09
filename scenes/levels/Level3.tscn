@@ -72,7 +72,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8k0hv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_14jcg"]
 resource_local_to_scene = true
 shader = SubResource("Shader_bugmt")
 shader_parameter/Color1 = Color(1, 0.933333, 0.6, 1)
@@ -281,7 +281,7 @@ texture = ExtResource("14_1a3ty")
 
 [node name="Sprite2DLiquid" parent="CupLarge" index="4" instance=ExtResource("15_217sr")]
 z_index = 6
-material = SubResource("ShaderMaterial_8k0hv")
+material = SubResource("ShaderMaterial_14jcg")
 position = Vector2(2, 0)
 
 [node name="SpillPoint" parent="CupLarge" index="5" instance=ExtResource("11_0o5ui")]

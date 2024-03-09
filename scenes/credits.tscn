@@ -93,7 +93,6 @@ theme = ExtResource("2_lkusm")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 12
 text = "Return to Menu"
 script = ExtResource("3_on3sc")
 press_sound_variant = "Confirm"
