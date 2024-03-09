@@ -5,7 +5,8 @@ Godot game developed for <a href="https://itch.io/jam/acerola-jam-0">Acerola Jam
 </div>
 
 #### Software Used
-    -> Godot Game Engine
-    -> Aseprite
-    -> Audacity
-    -> Bfxr
++ Godot Game Engine
++ Aseprite
++ Audacity
++ Bfxr
++ Ableton Live Lite
